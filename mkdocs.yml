@@ -1,1 +1,63 @@
-site_name: My Docs
+site_name: Omni Documentation
+site_url: https://ruancardoso.github.io/Omni-Networking-Doc/
+repo_url: https://github.com/RuanCardoso/Omni-Networking-for-Unity
+repo_name: Omni Networking for Unity
+theme:
+  features:
+    - content.code.copy
+    # - navigation.tabs
+    # - navigation.tabs.sticky
+    # - navigation.expand
+    - content.code.select
+    - toc.follow
+    - toc.integrate
+  language: en
+  font:
+    text: Roboto
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+extra:
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+    - name: Português
+      link: /pt/
+      lang: pt
+
+nav:
+  - Getting Started: index.md
+  - Serialization: serialization.md
+  - Http Lite: http_lite.md
+  - RPC: rpc.md
+  - Database: database.md
+  - Network Variables: network_variables.md
+  - Port Forwarding: port_forwarding.md
+  - Performance Tips: performance_tips.md
+  - Bandwidth Optimization: bandwidth_optimization.md
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - tables
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
