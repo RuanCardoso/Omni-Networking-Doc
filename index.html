@@ -12,7 +12,7 @@
       
       
       
-        <link rel="next" href="serialization/">
+        <link rel="next" href="spawning/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -86,7 +86,7 @@
 
   
 
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="Omni Documentation" class="md-header__button md-logo" aria-label="Omni Documentation" data-md-component="logo">
       
@@ -224,13 +224,211 @@
     
   </nav>
   
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="spawning/" class="md-tabs__link">
+        
+  
+    
+  
+  Spawning
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="http_lite/" class="md-tabs__link">
+        
+  
+    
+  
+  Http Lite
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="rpc/" class="md-tabs__link">
+        
+  
+    
+  
+  RPC
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="database.md" class="md-tabs__link">
+        
+  
+    
+  
+  Database
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="network_variables.md" class="md-tabs__link">
+        
+  
+    
+  
+  Network Variables
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="port_forwarding.md" class="md-tabs__link">
+        
+  
+    
+  
+  Port Forwarding
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="performance_tips.md" class="md-tabs__link">
+        
+  
+    
+  
+  Performance Tips
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="bandwidth_optimization.md" class="md-tabs__link">
+        
+  
+    
+  
+  Bandwidth Optimization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="api_reference/" class="md-tabs__link">
+        
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
-        
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -244,10 +442,12 @@
                     
 
 
+  
+
 
   
 
-<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="." title="Omni Documentation" class="md-nav__button md-logo" aria-label="Omni Documentation" data-md-component="logo">
       
@@ -285,8 +485,17 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
         
@@ -298,6 +507,139 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registered-prefabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registered Prefabs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transporter-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transporter Settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Known Issues
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spawning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawning
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -462,6 +804,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api_reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -480,10 +842,39 @@
   
 
 
-<h1 id="overview">Overview</h1>
-<p><strong>Omni Networking</strong> is a comprehensive networking solution that offers features for high-performance multiplayer game development in Unity. Omni provides functionalities for database management, simulated HTTP, RPC, gRPC, port forwarding, network variables, binary and JSON serialization, among others.</p>
-<p>Omni supports only versions 2021.2 and above, as it utilizes the latest APIs available in .NET Standard 2.1 and beyond to achieve the highest possible performance.</p>
-<h1 id="installation">Installation</h1>
+  <h1>Getting Started</h1>
+
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">⚓️</a></h2>
+<p><strong>Omni Networking</strong> is a comprehensive networking solution that offers features for high-performance multiplayer game development in Unity. Omni provides functionalities for <code>Database Management, RouteX, RPC, gRPC, Port Forwarding, Network Variables, Binary and JSON serialization</code>, among others.</p>
+<p>Omni supports only versions <code>2021.3 and above</code>, as it utilizes the latest APIs available in .NET Standard 2.1 and beyond to achieve the highest possible performance.</p>
+<p>Compatibility Table:</p>
+<table>
+<thead>
+<tr>
+<th>Unity Version</th>
+<th>Compatibilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unity 2021.3 <em>(LTS)</em></td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Unity 2022.3 <em>(LTS)</em></td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Unity 6 <em>(LTS)</em></td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Versions not listed in the compatibility table may not be fully supported and could exhibit unexpected behavior. For the most reliable experience, please refer to the <a href="https://github.com/RuanCardoso/Omni-Networking-for-Unity/releases">Releases</a> page to verify compatibility with the latest available versions.</p>
+</div>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">⚓️</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>Before getting started, it's important to be aware that Omni includes some dependencies by default:</strong></p>
@@ -500,16 +891,16 @@
 <li>Download the latest Omni package from the <a href="https://github.com/RuanCardoso/Omni-Networking-for-Unity/releases">Releases</a>.</li>
 <li>Import the package into your project.</li>
 </ol>
-<h1 id="setup">Setup</h1>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">⚓️</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>After importing the package and waiting for the recompilation, some macros are automatically defined:</strong></p>
 <ul>
 <li><code>OMNI_RELEASE</code></li>
 <li><code>OMNI_DEBUG</code></li>
-<li><code>OMNI_SERVER</code> is defined when the target platform is set to <code>DEDICATED SERVER</code>.</li>
+<li><code>OMNI_SERVER</code> &lt;- is defined when the target platform is set to <code>DEDICATED SERVER</code> in the <code>Build Settings</code>.</li>
 </ul>
-<p>You can use these macros to switch between release and debug builds.</p>
+<p>You can use these macros to switch between release and debug builds, by default the <code>OMNI_DEBUG</code> macro is defined.</p>
 <div class="language-c# highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#if OMNI_RELEASE</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">print</span><span class="p">(</span><span class="s">&quot;You&#39;re in release mode&quot;</span><span class="p">);</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#endif</span>
@@ -521,6 +912,13 @@
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="cp">#if OMNI_SERVER</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">print</span><span class="p">(</span><span class="s">&quot;You&#39;re in server mode&quot;</span><span class="p">);</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="cp">#endif</span>
+</span></code></pre></div>
+<p>You can use these macros to strip the code from the build process for security reasons.</p>
+<div class="language-c# highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#if OMNI_SERVER</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">// sensitive server code</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">#else</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// Client code</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">#endif</span>
 </span></code></pre></div>
 </div>
 <ol>
@@ -534,8 +932,8 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code>Network Manager</code> object, There are two child objects that can be <strong>optionally</strong> used to run client and server scripts. Remember, it is <strong>optional</strong> to place scripts on these objects. When scripts are placed on these two objects, they will be automatically separated during the build process. In <strong>release</strong> mode, server scripts will not be executed in the client build, and vice versa. <strong>Note that this does not strip the code; it merely prevents it from being executed by removing the objects from the scene at build time.</strong></p>
-<p><strong>To strip the code, it is recommended to use the macros <code>OMNI_RELEASE</code>, <code>OMNI_DEBUG</code>, <code>OMNI_SERVER</code>.</strong></p>
+<p>The <code>Network Manager</code> object has two child objects that can <strong>optionally</strong> host client and server scripts. It’s <strong>optional</strong> to place scripts on these objects. When scripts are assigned to these child objects, Unity automatically separates them during the build process. In <code>release</code> mode, server scripts won’t run in the client build, and vice versa.</p>
+<p>Note: This approach doesn’t strip the code; it merely prevents execution by removing the objects from the scene at build time. To strip the code, consider using the <code>OMNI_RELEASE</code>, <code>OMNI_DEBUG</code>, and <code>OMNI_SERVER</code> macros.</p>
 </div>
 <ol>
 <li>Select the <code>Network Manager</code> object in the scene to view the network settings.</li>
@@ -558,7 +956,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="modules">Modules</h3>
+<h3 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">⚓️</a></h3>
 <table>
 <thead>
 <tr>
@@ -585,7 +983,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="connection-settings">Connection Settings</h3>
+<h3 id="connection-settings">Connection Settings<a class="headerlink" href="#connection-settings" title="Permanent link">⚓️</a></h3>
 <table>
 <thead>
 <tr>
@@ -622,7 +1020,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="miscellaneous">Miscellaneous</h3>
+<h3 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">⚓️</a></h3>
 <table>
 <thead>
 <tr>
@@ -634,6 +1032,14 @@
 <tr>
 <td><code>Tick Rate</code></td>
 <td>The rate at which the game loop processes updates, measured in ticks per second.</td>
+</tr>
+<tr>
+<td><code>Pool Capacity</code></td>
+<td>Represents, in bytes, the size of the buffer <code>(byte[])</code> internally allocated for each <code>DataBuffer</code>.</td>
+</tr>
+<tr>
+<td><code>Pool Size</code></td>
+<td>Specifies the number of <code>DataBuffer</code> instances pre-allocated in the pool, ready for use.</td>
 </tr>
 <tr>
 <td><code>Max Fps On Client</code></td>
@@ -653,7 +1059,7 @@
 </tr>
 <tr>
 <td><code>Use Binary Serialization</code></td>
-<td>Coming soon.</td>
+<td>Coming soon..... DON'T USE IT YET! Experimental feature.</td>
 </tr>
 <tr>
 <td><code>Use Unaligned Memory</code></td>
@@ -665,11 +1071,103 @@
 </tr>
 </tbody>
 </table>
-<h3 id="registered-prefabs">Registered Prefabs</h3>
+<h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">⚓️</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Allow NetVar's From Client</code></td>
+<td>Determines whether client-side changes to network variables are permitted, allowing clients to modify networked variables directly.</td>
+</tr>
+<tr>
+<td><code>Allow Across Group Message</code></td>
+<td>Allows messages to be sent across different network groups, enabling communication between distinct groups in the network.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="registered-prefabs">Registered Prefabs<a class="headerlink" href="#registered-prefabs" title="Permanent link">⚓️</a></h3>
 <p>This list is used to automatically instantiate network objects. When a network object is instantiated by name or indexer, the object will be looked up in this list and instantiated automatically. Remember, manual instantiation is also available, and using this list is not required.</p>
-<h3 id="transporter-settings">Transporter Settings</h3>
-<p>The <strong>Transporter Settings</strong> section configures network transport parameters such as disconnection time, network event processing per frame, lag simulation, channels, IPv6 support, and ping interval, etc. The available options depend on the selected transporter.</p>
-<p>Currently, we have two available transporters, with plans to add more in the future: Lite and KCP Transporter.</p>
+<h3 id="transporter-settings">Transporter Settings<a class="headerlink" href="#transporter-settings" title="Permanent link">⚓️</a></h3>
+<p>The <strong>Transporter Settings</strong> section allows you to configure various network transport parameters, including disconnection timeout, network event processing per frame, lag simulation, channel setup, IPv6 support, max connections, ping intervals, and more. Available options may vary based on the selected transporter.</p>
+<p>Currently, two transporters are supported: <strong>Lite Transporter</strong> and <strong>KCP Transporter</strong>, with additional options planned for future releases.</p>
+<table>
+<thead>
+<tr>
+<th>Transporter</th>
+<th>ReliableOrdered</th>
+<th>Unreliable</th>
+<th>ReliableUnordered</th>
+<th>Sequenced</th>
+<th>ReliableSequenced</th>
+<th>Browser Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lite Transporter</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Kcp Transporter</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Web Socket Transporter</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>⏳ Available Soon</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <strong>KCP Transporter</strong> is currently experimental and may contain unresolved issues. Use it with caution and consider thoroughly testing for stability in your specific use case.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, <strong>Omni</strong> utilizes the <strong>Lite Transporter</strong> for network operations. To switch to a different transporter, follow these steps:</p>
+<ol>
+<li><strong>Remove the Lite Transporter</strong>: In your scene, locate the <code>Network Manager</code> object. Select it, and remove the <code>Lite Transporter</code> component from this object.</li>
+<li><strong>Add the Desired Transporter</strong>: Once the Lite Transporter is removed, add the component of your preferred transporter to the <code>Network Manager</code> object.</li>
+</ol>
+<p>This configuration enables you to tailor network transport settings to suit the specific requirements of your project, ensuring optimal compatibility and performance.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some properties or functions may be unavailable for certain transporters. If an incompatible option is used, an error message will appear to inform you of the mismatch.</p>
+</div>
+<p>For detailed information on each transporter and their specific features, consult the respective documentation:</p>
+<ul>
+<li><a href="https://github.com/RevenantX/LiteNetLib">LiteNetLib Documentation</a></li>
+<li><a href="https://github.com/MirrorNetworking/kcp2k">KCP Transporter (kcp2k) Documentation</a></li>
+</ul>
+<h2 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">⚓️</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Public IP Configuration Required</strong>: Omni relies on the correct IP configuration in the <code>Public IP</code> field of the <code>Network Manager</code>. When sharing your project, this field may display an incorrect IP address from another user. To update it, open the context menu of the <code>Network Manager</code> script, press <strong>Get External IP</strong>, and Omni will automatically update the field to reflect your current IP address.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Omni Package Installation Issues</strong>: If you experience problems during the Omni package installation, such as Unity freezing or crashing, and the necessary macros are not defined, you may need to manually reset the macros. To do this, go to the root folder of the Omni package and delete the hidden file that begins with <code>omni_macros</code>. Ensure hidden files are visible in your file explorer to locate this file.</p>
+</div>
 
 
 
@@ -689,6 +1187,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -716,7 +1220,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "content.code.select", "toc.follow", "toc.integrate"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "navigation.top", "navigation.path", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "content.code.select", "toc.follow", "toc.integrate"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
