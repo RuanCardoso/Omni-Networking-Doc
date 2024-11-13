@@ -741,6 +741,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#connectaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConnectAddress
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Framerate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cputimems" class="md-nav__link">
+    <span class="md-ellipsis">
+      CpuTimeMs
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2192,6 +2219,54 @@
 </span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">serverConnectionPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">ConnectPort</span><span class="p">;</span>
 </span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Client will connect to server on port: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">serverConnectionPort</span><span class="p">);</span>
 </span></code></pre></div>
+<h4 id="connectaddress">ConnectAddress<a class="headerlink" href="#connectaddress" title="Permanent link">⚓️</a></h4>
+<p>Gets the IP address or hostname that the client uses to connect to the server.</p>
+<ul>
+<li><strong>Signature</strong>: <code>public static string ConnectAddress</code></li>
+</ul>
+<p>Description</p>
+<p>The <code>ConnectAddress</code> property provides access to the IP address or hostname of the server that the client connects to, as configured in <code>Manager.m_ConnectAddress</code>. This address is used as the endpoint for the client’s connection to the server.</p>
+<p>Returns</p>
+<ul>
+<li><strong><code>string</code></strong>: The IP address or hostname of the server that the client will connect to.</li>
+</ul>
+<p>Example</p>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1">// Example of retrieving the server&#39;s connection address</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="kt">string</span><span class="w"> </span><span class="n">serverAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">ConnectAddress</span><span class="p">;</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Client will connect to server at address: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">serverAddress</span><span class="p">);</span>
+</span></code></pre></div>
+<h4 id="framerate">Framerate<a class="headerlink" href="#framerate" title="Permanent link">⚓️</a></h4>
+<p>Gets the current framerate of the application.</p>
+<ul>
+<li><strong>Signature</strong>: <code>public static float Framerate { get; private set; }</code></li>
+</ul>
+<p>Description</p>
+<p>The <code>Framerate</code> property provides access to the application's current framerate. This value can be used to monitor the performance of the application in real-time, allowing developers to adjust settings or configurations based on performance metrics.</p>
+<p>Returns</p>
+<ul>
+<li><strong><code>float</code></strong>: The current framerate of the application.</li>
+</ul>
+<p>Example</p>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1">// Example of retrieving the current application framerate</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="kt">float</span><span class="w"> </span><span class="n">currentFramerate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkManager</span><span class="p">.</span><span class="n">Framerate</span><span class="p">;</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Current application framerate: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">currentFramerate</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; FPS&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<h4 id="cputimems">CpuTimeMs<a class="headerlink" href="#cputimems" title="Permanent link">⚓️</a></h4>
+<p>Gets the CPU time in milliseconds per frame.</p>
+<ul>
+<li><strong>Signature</strong>: <code>public static float CpuTimeMs { get; private set; }</code></li>
+</ul>
+<p>Description</p>
+<p>The <code>CpuTimeMs</code> property provides access to the CPU time taken per frame, measured in milliseconds. This metric indicates the amount of time the CPU spends processing each frame, which is useful for monitoring and optimizing application performance.</p>
+<p>Returns</p>
+<ul>
+<li><strong><code>float</code></strong>: The CPU time per frame, in milliseconds.</li>
+</ul>
+<p>Example</p>
+<p>```csharp
+// Example of retrieving the CPU time per frame in milliseconds
+float cpuTimePerFrame = NetworkManager.CpuTimeMs;
+Debug.Log("CPU time per frame: " + cpuTimePerFrame + " ms");</p>
 
 
 
