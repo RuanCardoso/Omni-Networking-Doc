@@ -12,7 +12,7 @@
       
       
       
-        <link rel="next" href="spawning/">
+        <link rel="next" href="communication/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -254,6 +254,23 @@
   
   
     <li class="md-tabs__item">
+      <a href="communication/" class="md-tabs__link">
+        
+  
+    
+  
+  Communication
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="spawning/" class="md-tabs__link">
         
   
@@ -294,23 +311,6 @@
     
   
   Http Lite
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="rpc/" class="md-tabs__link">
-        
-  
-    
-  
-  RPC
 
       </a>
     </li>
@@ -542,36 +542,78 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-networkbehaviour" class="md-nav__link">
+  <a href="#networkbehaviour" class="md-nav__link">
     <span class="md-ellipsis">
-      1. NetworkBehaviour
+      NetworkBehaviour
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-serverbehaviour" class="md-nav__link">
+  <a href="#serverbehaviour" class="md-nav__link">
     <span class="md-ellipsis">
-      2. ServerBehaviour
+      ServerBehaviour
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-clientbehaviour" class="md-nav__link">
+  <a href="#clientbehaviour" class="md-nav__link">
     <span class="md-ellipsis">
-      3. ClientBehaviour
+      ClientBehaviour
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-dualbehaviour" class="md-nav__link">
+  <a href="#dualbehaviour" class="md-nav__link">
     <span class="md-ellipsis">
-      4. DualBehaviour
+      DualBehaviour
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Identity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-locator-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Locator Pattern
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Service Locator Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-locator-vs-singleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Locator vs. Singleton
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Guide
     </span>
   </a>
   
@@ -586,6 +628,26 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="communication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Communication
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -657,26 +719,6 @@
   
   
     <li class="md-nav__item">
-      <a href="rpc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    RPC
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="api_reference/" class="md-nav__link">
         
   
@@ -707,8 +749,6 @@
   
   
 
-
-  <h1>Getting Started</h1>
 
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">⚓️</a></h2>
 <p><strong>Omni Networking</strong> is a comprehensive solution designed to support high-performance multiplayer game development in <code>Unity</code>. With a wide array of features, <code>Omni</code> provides robust tools to handle various networking needs essential for modern games. Below is an <code>overview</code> of Omni's core functionalities:</p>
@@ -1098,7 +1138,7 @@
 </ul>
 <p>Each class serves a unique purpose in managing networked objects and handling server or client logic.</p>
 <hr />
-<h3 id="1-networkbehaviour">1. <code>NetworkBehaviour</code><a class="headerlink" href="#1-networkbehaviour" title="Permanent link">⚓️</a></h3>
+<h3 id="networkbehaviour"><code>NetworkBehaviour</code><a class="headerlink" href="#networkbehaviour" title="Permanent link">⚓️</a></h3>
 <ul>
 <li>Designed for <strong>networked objects with a <code>NetworkIdentity</code></strong>.</li>
 <li>Primarily used for objects that require a unique identity within the network, such as player avatars or specific interactable objects in the game world.</li>
@@ -1109,7 +1149,7 @@
 <p>Network objects that have an <code>NetworkIdentity</code> must be instantiated to be registered with the network. Direct creation without instantiation will not register the object, and the <code>NetworkBehaviour</code> don't work.</p>
 </div>
 <hr />
-<h3 id="2-serverbehaviour">2. <code>ServerBehaviour</code><a class="headerlink" href="#2-serverbehaviour" title="Permanent link">⚓️</a></h3>
+<h3 id="serverbehaviour"><code>ServerBehaviour</code><a class="headerlink" href="#serverbehaviour" title="Permanent link">⚓️</a></h3>
 <ul>
 <li>Suited for <strong>networked objects that do not require a <code>NetworkIdentity</code></strong>.</li>
 <li>Manages logic exclusively on the <strong>server side</strong>.</li>
@@ -1117,7 +1157,7 @@
 <li>Simplifies server-side programming by abstracting client-specific requirements, allowing a focus on server logic.</li>
 </ul>
 <hr />
-<h3 id="3-clientbehaviour">3. <code>ClientBehaviour</code><a class="headerlink" href="#3-clientbehaviour" title="Permanent link">⚓️</a></h3>
+<h3 id="clientbehaviour"><code>ClientBehaviour</code><a class="headerlink" href="#clientbehaviour" title="Permanent link">⚓️</a></h3>
 <ul>
 <li>Suited for <strong>networked objects that do not require a <code>NetworkIdentity</code></strong>.</li>
 <li>Used for managing <strong>client-specific logic</strong> and interactions.</li>
@@ -1125,7 +1165,7 @@
 <li>Simplifies client-side programming by abstracting server-specific requirements, allowing a focus on client logic.</li>
 </ul>
 <hr />
-<h3 id="4-dualbehaviour">4. <code>DualBehaviour</code><a class="headerlink" href="#4-dualbehaviour" title="Permanent link">⚓️</a></h3>
+<h3 id="dualbehaviour"><code>DualBehaviour</code><a class="headerlink" href="#dualbehaviour" title="Permanent link">⚓️</a></h3>
 <ul>
 <li><strong>Combines <code>ClientBehaviour</code> and <code>ServerBehaviour</code></strong> to handle both client and server logic within a single script.</li>
 <li>Best suited for cases where a unified approach to client and server operations is necessary, reducing redundancy.</li>
@@ -1178,6 +1218,181 @@
 <p class="admonition-title">Warning</p>
 <p>All network operations, including RPC's, events, and network variables, require scripts to inherit from one of these four classes (<code>NetworkBehaviour</code>, <code>ServerBehaviour</code>, <code>ClientBehaviour</code>, or <code>DualBehaviour</code>). Without this inheritance, network functionality will not be available in the script.</p>
 </div>
+<h3 id="network-identity">Network Identity<a class="headerlink" href="#network-identity" title="Permanent link">⚓️</a></h3>
+<p>The <code>NetworkIdentity</code> component is at the heart of the Omni networking high-level API. It controls a game object's unique identity on the network, and it uses that identity to make the networking system aware of the game object.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is important to note that Omni does not support <code>NetworkIdentity</code> on nested GameObjects. Otherwise, Omni will emit an error. To avoid this, ensure your parent <code>GameObject</code> is the only <code>GameObject</code> in the stack with a <code>NetworkIdentity</code> component. Child GameObjects can access the parents' <code>NetworkIdentity</code> component via <code>Identity</code> property inhirited from <code>NetworkBehaviour</code>.</p>
+</div>
+<hr />
+<p>Network Identity Properties</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IdentityId</code></td>
+<td><code>int</code></td>
+<td>A unique identifier for the networked object. This ID is assigned by the server to track the object across all clients.</td>
+</tr>
+<tr>
+<td><code>IsServer</code></td>
+<td><code>bool</code></td>
+<td>Indicates if the object is running on the server side. <code>false</code> if the object is running on the client side.</td>
+</tr>
+<tr>
+<td><code>IsClient</code></td>
+<td><code>bool</code></td>
+<td>Indicates if the object is running on the client side. <code>true</code> if the object is running on the server side.</td>
+</tr>
+<tr>
+<td><code>IsLocalPlayer</code></td>
+<td><code>bool</code></td>
+<td>Specifies if this object represents the local player. <code>true</code> if the object is owned by the local client.</td>
+</tr>
+<tr>
+<td><code>IsServerOwner</code></td>
+<td><code>bool</code></td>
+<td>Indicates if the server has ownership of this object. <code>true</code> if the server is the primary controller of this object.</td>
+</tr>
+<tr>
+<td><code>LocalPlayer</code></td>
+<td><code>NetworkIdentity</code></td>
+<td>A static reference to the local player instance, set on the client only. Assigned when the local player is spawned.</td>
+</tr>
+<tr>
+<td><code>Owner</code></td>
+<td><code>NetworkPeer</code></td>
+<td>The owner of this object. Available only on the server, and returns <code>NetworkManager.LocalPeer</code> on the client.</td>
+</tr>
+<tr>
+<td><code>IsRegistered</code></td>
+<td><code>bool</code></td>
+<td>Indicates whether this <code>NetworkIdentity</code> is registered on the network.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>NetworkIdentity.LocalPlayer</code> is only available on the client side. Assigned when the prefab have the tag <code>Player</code>, contain <code>Player</code> in the tag, or include <code>Player</code> in the prefab name, otherwise it will be <code>null</code>.</p>
+<p><em>Example of valid prefab name</em>: </p>
+<ul>
+<li><code>RuanCharacterPlayer</code></li>
+<li><code>JuniorPlayer</code></li>
+</ul>
+<p><em>Example of valid prefab tag</em>: </p>
+<ul>
+<li><code>Player</code></li>
+<li><code>RuanTagPlayer</code></li>
+<li><code>JuniorTagPlayer</code></li>
+</ul>
+</div>
+<hr />
+<h1 id="service-locator-pattern">Service Locator Pattern<a class="headerlink" href="#service-locator-pattern" title="Permanent link">⚓️</a></h1>
+<p>The <strong>Service Locator</strong> pattern is a design pattern that provides a centralized registry or "locator" for retrieving instances of services or dependencies at runtime. This pattern allows for flexible dependency management and reduces the coupling between objects, making it ideal for complex applications like multiplayer games.</p>
+<p>Key Benefits of the Service Locator Pattern</p>
+<ul>
+<li><strong>Centralized Access to Services</strong>: By acting as a central registry, the Service Locator allows different parts of the application to access services without tightly coupling dependencies.</li>
+<li><strong>Flexible and Scalable</strong>: Services can be registered, replaced, or removed dynamically, providing flexibility for handling different networked components and systems in a multiplayer environment.</li>
+<li><strong>Reduced Dependency on Singleton</strong>: Unlike the Singleton pattern, which can introduce issues in multiplayer setups (such as unwanted global state persistence), the Service Locator keeps services manageable and avoids potential conflicts.</li>
+<li><strong>Improved Testing and Maintainability</strong>: The pattern facilitates testing and maintainability by allowing services to be swapped or mocked, which is crucial in a large multiplayer codebase.</li>
+</ul>
+<h2 id="service-locator-vs-singleton">Service Locator vs. Singleton<a class="headerlink" href="#service-locator-vs-singleton" title="Permanent link">⚓️</a></h2>
+<p>While the <strong>Singleton pattern</strong> is commonly used to ensure only one instance of a class exists, it can lead to issues in multiplayer environments. Singletons often hold global state, which can interfere with networked instances and create unpredictable behavior, especially when managing player-specific data.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Omni recommends using the <strong>Service Locator</strong> pattern instead of Singletons for multiplayer development. The Service Locator provides better control over dependencies and avoids the pitfalls of global state inherent in Singletons, making it a more stable choice for complex networked systems.</p>
+</div>
+<hr />
+<h2 id="usage-guide">Usage Guide<a class="headerlink" href="#usage-guide" title="Permanent link">⚓️</a></h2>
+<p>By default, any script that inherits from a network class(<code>NetworkBehaviour</code>, <code>ServerBehaviour</code>, <code>ClientBehaviour</code>, <code>DualBehaviour</code> or <code>ServiceBehaviour</code>) is automatically registered in the <strong>Service Locator</strong>. This registration simplifies access to network services across your game's architecture. </p>
+<p>Service Naming and Customization</p>
+<ul>
+<li><strong>Automatic Naming</strong>: Each service name is assigned automatically upon registration, based on the script's name.</li>
+<li><strong>Customizable Names</strong>: You can modify the default service name directly in the Unity Inspector, allowing flexibility in organizing and identifying services as needed.</li>
+</ul>
+<p>Types of Service Locators in Omni</p>
+<p>Omni provides two types of Service Locators to manage service instances effectively within different scopes:</p>
+<ol>
+<li>
+<p><strong>Global Service Locator</strong>: A shared Service Locator accessible across all networked instances. This global registry is ideal for managing universal services that need to be accessed by multiple objects or systems throughout the game.</p>
+</li>
+<li>
+<p><strong>Local Service Locator</strong>: Each <code>NetworkIdentity</code> has its own local Service Locator, unique to that networked identity. allows you to retrieve specific services within the same identity, providing fine control over dependencies and enabling isolated management of services per networked object.</p>
+</li>
+</ol>
+<hr />
+<p>With this dual Service Locator approach, Omni offers a flexible, scalable structure that enhances dependency management in multiplayer environments, ensuring services are easily accessible while maintaining clear separation between global and local contexts.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Global Service Locator</label><label for="__tabbed_1_2">Local Service Locator</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Example usage of the Global Service Locator</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">UIManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ServiceBehaviour</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LoginManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ClientBehaviour</span><span class="w"> </span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">{</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">   </span><span class="k">void</span><span class="w"> </span><span class="nf">Example</span><span class="p">()</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">   </span><span class="p">{</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">      </span><span class="c1">// Accessing the `LoginManager` from the Global Service Locator</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">      </span><span class="n">LoginManager</span><span class="w"> </span><span class="n">loginManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkService</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="n">LoginManager</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">      </span><span class="c1">// Accessing the `UIManager` from the Global Service Locator with a custom name</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">      </span><span class="n">UIManager</span><span class="w"> </span><span class="n">uiManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkService</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="n">UIManager</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;MyUIManager&quot;</span><span class="p">);</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">   </span><span class="p">}</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Example usage of the Local Service Locator</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">// This script must be attached to the same networked object(`NetworkIdentity`).</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">WeaponManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">{</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">   </span><span class="k">void</span><span class="w"> </span><span class="nf">Example</span><span class="p">()</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">   </span><span class="p">{</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">      </span><span class="c1">// Accessing the `WeaponManager` from the Local Service Locator using my own identity</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">      </span><span class="n">WeaponManager</span><span class="w"> </span><span class="n">weaponManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Identity</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="n">WeaponManager</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">   </span><span class="p">}</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The service locator can find services regardless of their depth within the hierarchy, ensuring accessibility even in deeply nested objects.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you have multiple instances of the same script type across different objects in the hierarchy (e.g., multiple <code>WeaponManager</code> scripts, one for each weapon), you should rename the service in the Inspector for each instance. Use a named lookup to retrieve the specific instance you need, such as: </p>
+<ul>
+<li><code>Identity.Get&lt;WeaponManager&gt;("GlockManager");</code></li>
+<li><code>Identity.Get&lt;WeaponManager&gt;("MeeleManager");</code></li>
+</ul>
+<p>An exception will be thrown if the service is not found or if multiple instances of the same type have the same name.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The Service Locator is designed to be fast and efficient, with minimal performance cost, unlike <code>GetComponent</code>, making it suitable for frequent use.</p>
+</div>
+<p><em>See the API Reference for more information about the Service Locator and its usage.</em></p>
 
 
 
