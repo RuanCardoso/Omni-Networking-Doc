@@ -442,8 +442,17 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -454,6 +463,41 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage-of-databuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage of DataBuffer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -537,10 +581,12 @@
   
 
 
-<h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">⚓️</a></h1>
+  <h1>Serialization</h1>
+
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">⚓️</a></h2>
 <p>Omni is capable of serializing various types of data, including primitives, complex classes, structures, dictionaries, and more. Omni offers two types of serialization: JSON-based and binary-based serialization.</p>
 <p>All network operations are performed using the <code>DataBuffer</code> object, which represents a buffer of data to be sent over the network.</p>
-<h1 id="basic-usage-of-databuffer">Basic Usage of DataBuffer<a class="headerlink" href="#basic-usage-of-databuffer" title="Permanent link">⚓️</a></h1>
+<h2 id="basic-usage-of-databuffer">Basic Usage of DataBuffer<a class="headerlink" href="#basic-usage-of-databuffer" title="Permanent link">⚓️</a></h2>
 <ul>
 <li>Basic serialization</li>
 </ul>

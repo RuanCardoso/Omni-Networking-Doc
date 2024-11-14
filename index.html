@@ -531,6 +531,57 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#communication-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-networkbehaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. NetworkBehaviour
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-serverbehaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. ServerBehaviour
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-clientbehaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. ClientBehaviour
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dualbehaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. DualBehaviour
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -660,8 +711,61 @@
   <h1>Getting Started</h1>
 
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">⚓️</a></h2>
-<p><strong>Omni Networking</strong> is a comprehensive networking solution that offers features for high-performance multiplayer game development in Unity. Omni provides functionalities for <code>Database Management, RouteX, RPC, gRPC, Port Forwarding, Network Variables, Binary and JSON serialization</code>, among others.</p>
-<p>Omni supports only versions <code>2021.3 and above</code>, as it utilizes the latest APIs available in .NET Standard 2.1 and beyond to achieve the highest possible performance.</p>
+<p><strong>Omni Networking</strong> is a comprehensive solution designed to support high-performance multiplayer game development in <code>Unity</code>. With a wide array of features, <code>Omni</code> provides robust tools to handle various networking needs essential for modern games. Below is an <code>overview</code> of Omni's core functionalities:</p>
+<hr />
+<p><strong>Core Functionalities</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Database Management</strong></td>
+<td>Supports relational databases with a built-in <code>ORM</code>, enabling scalable, efficient, and secure data operations tailored for multiplayer environments.</td>
+</tr>
+<tr>
+<td><strong>RouteX</strong></td>
+<td>A flexible routing system inspired by Express.js, allowing developers to define and manage network routes efficiently. It enables organized handling of network requests and responses, making it ideal for complex multiplayer interactions.</td>
+</tr>
+<tr>
+<td><strong>RPC (Remote Procedure Call)</strong></td>
+<td>Allows methods to be called across clients and servers, enabling synchronized actions and data sharing in multiplayer environments. Making it easy to call functions remotely.</td>
+</tr>
+<tr>
+<td><strong>gRPC (Global Remote Procedure Call)</strong></td>
+<td>Allows methods to be called across clients and servers, enabling synchronized actions and data sharing in multiplayer environments. Making it easy to call functions remotely.</td>
+</tr>
+<tr>
+<td><strong>Port Forwarding</strong></td>
+<td>Facilitates NAT traversal and opens network ports using protocols like <code>PMP</code> and <code>UPnP</code>, ensuring seamless connectivity for multiplayer sessions.</td>
+</tr>
+<tr>
+<td><strong>Network Variables</strong></td>
+<td>Enables automatic synchronization of properties between server and clients without the need for custom messages or RPCs, streamlining data consistency across networked players.</td>
+</tr>
+<tr>
+<td><strong>Binary Serialization</strong></td>
+<td>Utilizes the <code>MemoryPack</code> library for efficient binary data serialization, minimizing data size for faster transmission and optimized network performance.</td>
+</tr>
+<tr>
+<td><strong>JSON Serialization</strong></td>
+<td>Uses the <code>Json.NET (Newtonsoft)</code> library for flexible and reliable JSON data serialization, ensuring compatibility with third-party services and smooth data interchange.</td>
+</tr>
+<tr>
+<td><strong>Compression</strong></td>
+<td>Leverages <code>Brotli</code> and <code>LZ4</code> algorithms to reduce data size, optimizing bandwidth usage and improving transmission speed for smoother network performance.</td>
+</tr>
+<tr>
+<td><strong>Cryptography</strong></td>
+<td>Utilizes <code>AES</code> and <code>RSA</code> encryption algorithms to secure data transmission, ensuring protection of sensitive information across the network.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><code>Omni</code> supports only versions <code>2021.3 and above</code>, as it utilizes the latest APIs available in .NET Standard 2.1 and beyond to achieve the highest possible performance.</p>
 <p>Compatibility Table:</p>
 <table>
 <thead>
@@ -982,6 +1086,97 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>Omni Package Installation Issues</strong>: If you experience problems during the Omni package installation, such as Unity freezing or crashing, and the necessary macros are not defined, you may need to manually reset the macros. To do this, go to the root folder of the Omni package and delete the hidden file that begins with <code>omni_macros</code>. Ensure hidden files are visible in your file explorer to locate this file.</p>
+</div>
+<h2 id="communication-structure">Communication Structure<a class="headerlink" href="#communication-structure" title="Permanent link">⚓️</a></h2>
+<p>The Omni framework is structured around four foundational classes designed for general communication. These classes implement methods and properties that simplify and expedite multiplayer functionalities, making the process both efficient and straightforward. Additionally, a "low-level" class is available for advanced communication, which should be utilized in contexts where restrictions or limitations apply, offering finer control for specialized cases.</p>
+<p>The Omni framework currently utilizes four base classes, each designed for different networking roles within the multiplayer structure. These classes include:</p>
+<ul>
+<li><code>NetworkBehaviour</code></li>
+<li><code>ServerBehaviour</code></li>
+<li><code>ClientBehaviour</code></li>
+<li><code>DualBehaviour</code></li>
+</ul>
+<p>Each class serves a unique purpose in managing networked objects and handling server or client logic.</p>
+<hr />
+<h3 id="1-networkbehaviour">1. <code>NetworkBehaviour</code><a class="headerlink" href="#1-networkbehaviour" title="Permanent link">⚓️</a></h3>
+<ul>
+<li>Designed for <strong>networked objects with a <code>NetworkIdentity</code></strong>.</li>
+<li>Primarily used for objects that require a unique identity within the network, such as player avatars or specific interactable objects in the game world.</li>
+<li>This class provides essential methods and properties to facilitate identity-based communication and synchronization across the network.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Network objects that have an <code>NetworkIdentity</code> must be instantiated to be registered with the network. Direct creation without instantiation will not register the object, and the <code>NetworkBehaviour</code> don't work.</p>
+</div>
+<hr />
+<h3 id="2-serverbehaviour">2. <code>ServerBehaviour</code><a class="headerlink" href="#2-serverbehaviour" title="Permanent link">⚓️</a></h3>
+<ul>
+<li>Suited for <strong>networked objects that do not require a <code>NetworkIdentity</code></strong>.</li>
+<li>Manages logic exclusively on the <strong>server side</strong>.</li>
+<li>Ideal for general server tasks, such as managing game state or processing server-side events.</li>
+<li>Simplifies server-side programming by abstracting client-specific requirements, allowing a focus on server logic.</li>
+</ul>
+<hr />
+<h3 id="3-clientbehaviour">3. <code>ClientBehaviour</code><a class="headerlink" href="#3-clientbehaviour" title="Permanent link">⚓️</a></h3>
+<ul>
+<li>Suited for <strong>networked objects that do not require a <code>NetworkIdentity</code></strong>.</li>
+<li>Used for managing <strong>client-specific logic</strong> and interactions.</li>
+<li>Ideal for general client tasks, such as login, character selection, or UI management, etc.</li>
+<li>Simplifies client-side programming by abstracting server-specific requirements, allowing a focus on client logic.</li>
+</ul>
+<hr />
+<h3 id="4-dualbehaviour">4. <code>DualBehaviour</code><a class="headerlink" href="#4-dualbehaviour" title="Permanent link">⚓️</a></h3>
+<ul>
+<li><strong>Combines <code>ClientBehaviour</code> and <code>ServerBehaviour</code></strong> to handle both client and server logic within a single script.</li>
+<li>Best suited for cases where a unified approach to client and server operations is necessary, reducing redundancy.</li>
+<li>Enables shared logic across client and server while maintaining the separation of client-exclusive and server-exclusive tasks.</li>
+</ul>
+<hr />
+<p><strong>Summary Table</strong></p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Identity Requirement</th>
+<th>Logic Scope</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NetworkBehaviour</code></td>
+<td>Requires a <code>NetworkIdentity</code></td>
+<td>General network</td>
+<td>For networked objects with unique identifiers(<code>NetworkIdentity</code>)</td>
+</tr>
+<tr>
+<td><code>ServerBehaviour</code></td>
+<td>No <code>NetworkIdentity</code></td>
+<td>Server-side only</td>
+<td>For server-exclusive logic without identity dependencies.</td>
+</tr>
+<tr>
+<td><code>ClientBehaviour</code></td>
+<td>No <code>NetworkIdentity</code></td>
+<td>Client-side only</td>
+<td>For client-specific logic, optimized for local processing.</td>
+</tr>
+<tr>
+<td><code>DualBehaviour</code></td>
+<td>No <code>NetworkIdentity</code></td>
+<td>Client and Server</td>
+<td>Combines client and server logic within a single script.</td>
+</tr>
+</tbody>
+</table>
+<p>This structured approach with these base classes simplifies multiplayer development, enabling clear separation of client and server responsibilities while providing flexibility for objects with and without identities.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Objects with <code>ClientBehaviour</code>, <code>ServerBehaviour</code>, or <code>DualBehaviour</code> scripts attached cannot be spawned and not support <code>NetworkIdentity</code>, as they are intended for use with scene objects only. These classes should be used exclusively for objects that exist in the scene from the start, rather than dynamically spawned instances. For this case use the <code>NetworkBehaviour</code> class with a <code>NetworkIdentity</code> attached.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All network operations, including RPC's, events, and network variables, require scripts to inherit from one of these four classes (<code>NetworkBehaviour</code>, <code>ServerBehaviour</code>, <code>ClientBehaviour</code>, or <code>DualBehaviour</code>). Without this inheritance, network functionality will not be available in the script.</p>
 </div>
 
 
