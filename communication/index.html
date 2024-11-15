@@ -578,6 +578,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#serialization-and-deserialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serialization and Deserialization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Serialization and Deserialization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primitives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complex-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complex Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#imessage-interface" class="md-nav__link">
     <span class="md-ellipsis">
       IMessage Interface
@@ -697,42 +730,13 @@
 <h2 id="rpc-remote-procedure-call">RPC (Remote Procedure Call)<a class="headerlink" href="#rpc-remote-procedure-call" title="Permanent link">⚓️</a></h2>
 <p>RPCs (Remote Procedure Calls) are a standard software industry concept that allows methods to be called on objects that are not in the same executable. They enable communication between different processes or systems over a network.</p>
 <p>With RPCs, a server can invoke functions on a client, and similarly, a client can invoke functions on a server. This bi-directional communication allows for flexible and dynamic interactions between clients and servers, facilitating various operations such as requesting data, executing commands, and synchronizing states across different parts of a distributed system. RPCs provide a powerful mechanism for enabling remote interactions and enhancing the functionality of networked applications.</p>
+<hr />
 <pre class="mermaid"><code>graph LR
   A[Ruan] ---&gt; | User Input Rpc | B{Server}
   B ---&gt; | Move Rpc | A
   B ---&gt; | Move Rpc | C[Junior]
   B ---&gt; | Move Rpc | D[Mike]</code></pre>
-<p>Compatibility Table:</p>
-<table>
-<thead>
-<tr>
-<th>Base Class</th>
-<th>Compatibilidade</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>NetworkBehaviour</code></td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>ServerBehaviour</code></td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>ClientBehaviour</code></td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>DualBehaviour</code></td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>MyCustomScriptBase</code></td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
+<hr />
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>RPC's are also supported in base classes. If you are using a base class for network functionality, ensure that the base class name includes the <code>Base</code> prefix.  </p>
@@ -753,6 +757,7 @@
 <p class="admonition-title">Note</p>
 <p>Before proceeding, refer to the <a href="../#communication-structure">Communication Structure</a> and <a href="../#service-locator-pattern">Service Locator Pattern</a> pages for essential background information.</p>
 </div>
+<hr />
 <h3 id="method-signature">Method Signature<a class="headerlink" href="#method-signature" title="Permanent link">⚓️</a></h3>
 <p>RPC method signatures can accept up to three parameters, allowing flexibility in handling data, network information, and communication channels. The available parameters include:</p>
 <ul>
@@ -761,6 +766,7 @@
 <li><strong>int seqChannel</strong>: Specifies the sequence channel for the RPC, allowing control over the order and priority of messages.</li>
 </ul>
 <p>Each RPC method must be marked with the <code>[Server]</code> or <code>[Client]</code> attribute. The method name, parameters, and their order determine the specific signature of the RPC.</p>
+<hr />
 <p>Below are examples of valid RPC method signatures on the server side:</p>
 <h4 id="server-side">Server-Side<a class="headerlink" href="#server-side" title="Permanent link">⚓️</a></h4>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Signature 1</label><label for="__tabbed_1_2">Signature 2</label><label for="__tabbed_1_3">Signature 3</label><label for="__tabbed_1_4">Signature 4</label></div>
@@ -823,6 +829,7 @@
 </div>
 </div>
 </div>
+<hr />
 <p>Below are examples of valid RPC method signatures on the client side:</p>
 <h4 id="client-side">Client-Side<a class="headerlink" href="#client-side" title="Permanent link">⚓️</a></h4>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Signature 1</label><label for="__tabbed_2_2">Signature 2</label><label for="__tabbed_2_3">Signature 3</label></div>
@@ -879,6 +886,7 @@
 <p class="admonition-title">Warning</p>
 <p>RPC ID's must be between <strong><em>1</em></strong> and <strong><em>230</em></strong>. An exception will be thrown if the ID is out of range. The id's are unique only within the script itself, other script instances can use the same id.</p>
 </div>
+<hr />
 <p>Examples</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Example 1 (NetworkBehaviour)</label><label for="__tabbed_3_2">Example 2 (ServerBehaviour &amp; ClientBehaviour)</label><label for="__tabbed_3_3">Example 3 (DualBehaviour)</label></div>
 <div class="tabbed-content">
@@ -947,6 +955,7 @@
 </div>
 </div>
 </div>
+<hr />
 <h3 id="how-to-invoke-a-rpc">How to Invoke a RPC<a class="headerlink" href="#how-to-invoke-a-rpc" title="Permanent link">⚓️</a></h3>
 <p>The <code>Local</code> and <code>Remote</code> properties are part of the public API inherited from <code>NetworkBehaviour</code>, <code>ClientBehaviour</code>, <code>ServerBehaviour</code>, and <code>DualBehaviour</code>. They are designed to facilitate communication between client and server in the network environment. Each property enforces specific usage restrictions to ensure proper client-server interactions.</p>
 <p><strong>Local</strong></p>
@@ -963,6 +972,7 @@
 <li><strong>Usage</strong>: Useful for server-initiated communications directed at the client.</li>
 <li><strong>Overloads</strong>: Invoke() has 8 overloads. For details on the available overloads, please refer to the <a href="../">API Reference</a>.</li>
 </ul>
+<hr />
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Example 1 (NetworkBehaviour) - Send an RPC from the client to the server</label><label for="__tabbed_4_2">Example 2 (NetworkBehaviour) - Send an RPC from the server to the client</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1013,7 +1023,7 @@
 </div>
 </div>
 </div>
-<p>Invoke with <code>arguments</code>:</p>
+<p><code>Invoke</code> with <strong><em>arguments</em></strong>:</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The <code>Local.Invoke()</code> and <code>Remote.Invoke()</code> methods has 8 overloads and optional arguments. However, the overloads available can vary depending on the network base class used(i.e. <code>NetworkBehaviour</code>, <code>ClientBehaviour</code>, <code>ServerBehaviour</code>, and <code>DualBehaviour</code>). For details on the available overloads, please refer to the <a href="../">API Reference</a>.</p>
@@ -1096,39 +1106,9 @@
 <p>Using this overload only unmanaged types is allowed. Like <code>Vector3</code>, <code>Quaternion</code>, <code>int</code>, <code>float</code>, etc.</p>
 </div>
 </div>
+<hr />
 <h2 id="network-variables">Network Variables<a class="headerlink" href="#network-variables" title="Permanent link">⚓️</a></h2>
 <p>At a high level, a <code>[NetworkVariable]</code> attribute is a automatic way to synchronize a property ("variable") between a server and client(s) without having to use custom messages or RPCs.</p>
-<p>Compatibility Table:</p>
-<table>
-<thead>
-<tr>
-<th>Base Class</th>
-<th>Compatibilidade</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>NetworkBehaviour</code></td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>ServerBehaviour</code></td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>ClientBehaviour</code></td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>DualBehaviour</code></td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>MyCustomScriptBase</code></td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Network Variables are also supported in base classes. If you are using a base class for network functionality, ensure that the base class name includes the <code>Base</code> prefix.  </p>
@@ -1171,6 +1151,7 @@
 </details>
 <p>The class must be <code>partial</code> to use the <code>[NetworkVariable]</code> attribute.</p>
 </div>
+<hr />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code>Omni Source Generator</code> will generate properties, hooks, options, and methods for each <code>[NetworkVariable]</code>.</p>
@@ -1278,6 +1259,7 @@
 </span></code></pre></div>
 </details>
 </div>
+<hr />
 <h4 id="generated-methods">Generated Methods<a class="headerlink" href="#generated-methods" title="Permanent link">⚓️</a></h4>
 <p>The <code>[NetworkVariable]</code> attribute will generate methods for each network variable, such as:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Health Hook</label><label for="__tabbed_6_2">Mana Hook</label></div>
@@ -1326,36 +1308,226 @@
 <li><strong><code>void SyncMana(NetworkVariableOptions options);</code></strong> </li>
 </ul>
 <p>Manually synchronizes the <code>m_Mana</code> field.</p>
+<hr />
+<h2 id="serialization-and-deserialization">Serialization and Deserialization<a class="headerlink" href="#serialization-and-deserialization" title="Permanent link">⚓️</a></h2>
+<p>Omni supports serialization of a wide range of data types, including primitives, complex classes, structs, dictionaries, and more, providing unmatched flexibility for networked data structures. Omni offers two serialization methods: JSON-based serialization for readability and compatibility, and binary-based serialization for optimized performance and minimized data size.</p>
+<p>With Omni, <strong>everything is serializable</strong>. All network operations utilize the <code>DataBuffer</code> object, a dedicated data buffer that efficiently handles data preparation and transmission across the network, ensuring seamless and effective communication.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The <code>DataBuffer</code> is the core of all Omni operations. It is used universally across RPCs, RouteX, custom messages, and other network features. Understanding how to manage and utilize <code>DataBuffer</code> is essential for working effectively with Omni.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>As a binary serializer, <code>DataBuffer</code> requires that the order of reading matches the order of writing precisely. Any discrepancy in the read/write sequence can lead to corrupted or unexpected data. Developers should ensure consistency and adherence to the defined structure when serializing and deserializing data with <code>DataBuffer</code>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The <code>DataBuffer</code> functions similarly to a combination of <a href="https://learn.microsoft.com/en-us/dotnet/api/system.io.memorystream?view=net-8.0"><code>MemoryStream</code></a> and <a href="https://learn.microsoft.com/en-us/dotnet/api/system.io.binarywriter?view=net-8.0"><code>BinaryWriter</code></a> and <a href="https://learn.microsoft.com/en-us/dotnet/api/system.io.binaryreader?view=net-8.0"><code>BinaryReader</code></a>. It includes comparable properties and features, such as <code>Position</code>, enabling developers to efficiently manage and navigate the buffer while performing read and write operations.</p>
+</div>
+<hr />
+<h3 id="primitives">Primitives<a class="headerlink" href="#primitives" title="Permanent link">⚓️</a></h3>
+<p>Omni’s <code>DataBuffer</code> provides efficient support for primitive types, allowing direct serialization of commonly used data types such as integers, floats, and booleans. This simplifies network data handling by enabling fast read and write operations for foundational data types.</p>
+<p>Using these primitives, Omni ensures minimal overhead in data serialization, making it suitable for high-performance networking where lightweight data handling is essential. Primitive types can be written to or read from the <code>DataBuffer</code> in a straightforward manner, supporting rapid data transmission across client-server boundaries.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Writing Primitives</label><label for="__tabbed_7_2">Reading Primitives</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<details class="example" open="open">
+<summary>Writing Primitives</summary>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">void</span><span class="w"> </span><span class="nf">Example</span><span class="p">()</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="p">{</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">   </span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataBuffer</span><span class="p">();</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">   </span><span class="n">message</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="m">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// Writes an integer value to the buffer</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">   </span><span class="n">message</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="m">3.14f</span><span class="p">);</span><span class="w"> </span><span class="c1">// Writes a floating-point value to the buffer</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">   </span><span class="n">message</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="k">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Writes a boolean value to the buffer</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="p">}</span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="tabbed-block">
+<details class="example" open="open">
+<summary>Reading Primitives</summary>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">void</span><span class="w"> </span><span class="nf">Example</span><span class="p">()</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="p">{</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">   </span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetHypotheticalValidDataBuffer</span><span class="p">();</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">Read</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// Reads an integer value from the buffer</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">   </span><span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">Read</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// Reads a floating-point value from the buffer</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">Read</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// Reads a boolean value from the buffer</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="p">}</span>
+</span></code></pre></div>
+</details>
+</div>
+</div>
+</div>
+<hr />
+<h3 id="complex-types">Complex Types<a class="headerlink" href="#complex-types" title="Permanent link">⚓️</a></h3>
+<p>Omni supports the serialization of complex types using <a href="https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.2/manual/index.html"><code>Newtonsoft.JSON</code></a> or <a href="https://github.com/Cysharp/MemoryPack"><code>MemoryPack</code></a>. For objects and data structures that go beyond primitive types, JSON serialization provides a readable, flexible format ideal for compatibility with third-party systems, while <code>MemoryPack</code> enables efficient binary serialization for high-performance network transfers.</p>
+<p>Using these serialization methods, Omni can seamlessly handle complex data types, such as custom <code>structs</code>, <code>classes</code>, <code>dictionaries</code>, and <code>nested structures</code>, ensuring that all necessary data is transmitted effectively and accurately across the network.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:4"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">JSON Serialization</label><label for="__tabbed_8_2">MemoryPack Serialization</label><label for="__tabbed_8_3">JSON Deserialization</label><label for="__tabbed_8_4">MemoryPack Deserialization</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<details class="example" open="open">
+<summary>JSON Serialization</summary>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="p">{</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">inventory</span><span class="p">;</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="p">}</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="k">void</span><span class="w"> </span><span class="nf">Example</span><span class="p">()</span>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="p">{</span>
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">   </span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Player</span><span class="p">();</span>
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>
+</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="w">   </span><span class="c1">// Serialize the player object</span>
+</span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="w">   </span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataBuffer</span><span class="p">();</span>
+</span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">   </span><span class="n">message</span><span class="p">.</span><span class="n">WriteAsJson</span><span class="p">(</span><span class="n">player</span><span class="p">);</span>
+</span><span id="__span-25-15"><a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="p">}</span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="tabbed-block">
+<details class="example" open="open">
+<summary>MemoryPack Serialization</summary>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="na">[MemoryPackable]</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="k">public</span><span class="w"> </span><span class="k">partial</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="p">{</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">inventory</span><span class="p">;</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="p">}</span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="k">void</span><span class="w"> </span><span class="nf">Example</span><span class="p">()</span>
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="p">{</span>
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">   </span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Player</span><span class="p">();</span>
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>
+</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="w">   </span><span class="c1">// Serialize the player object</span>
+</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="w">   </span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataBuffer</span><span class="p">();</span>
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="w">   </span><span class="n">message</span><span class="p">.</span><span class="n">WriteAsBinary</span><span class="p">(</span><span class="n">player</span><span class="p">);</span>
+</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="p">}</span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="tabbed-block">
+<details class="example" open="open">
+<summary>JSON Deserialization</summary>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="p">{</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">inventory</span><span class="p">;</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="p">}</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="k">void</span><span class="w"> </span><span class="nf">Example</span><span class="p">()</span>
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="p">{</span>
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="w">   </span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetHypotheticalValidDataBuffer</span><span class="p">();</span>
+</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="w">   </span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">ReadAsJson</span><span class="o">&lt;</span><span class="n">Player</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// Deserializes to a Player object</span>
+</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="p">}</span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="tabbed-block">
+<details class="example" open="open">
+<summary>MemoryPack Deserialization</summary>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="na">[MemoryPackable]</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">public</span><span class="w"> </span><span class="k">partial</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="p">{</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">inventory</span><span class="p">;</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="p">}</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="k">void</span><span class="w"> </span><span class="nf">Example</span><span class="p">()</span>
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="p">{</span>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">   </span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetHypotheticalValidDataBuffer</span><span class="p">();</span>
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="w">   </span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">ReadAsBinary</span><span class="o">&lt;</span><span class="n">Player</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// Deserializes to a Player object</span>
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="p">}</span>
+</span></code></pre></div>
+</details>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See the <a href="https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.2/manual/index.html"><code>Newtonsoft.JSON</code></a> or <a href="https://github.com/Cysharp/MemoryPack"><code>MemoryPack</code></a> documentation for more information about using <strong>annotation attributes</strong> to customize serialization and deserialization.</p>
+</div>
+<hr />
 <h2 id="imessage-interface">IMessage Interface<a class="headerlink" href="#imessage-interface" title="Permanent link">⚓️</a></h2>
 <p>This interface, <code>IMessage</code>, can be implemented to customize the serialization and deserialization of a type when used within an RPC or <code>NetworkVariable</code>. By implementing <code>IMessage</code>, you define how data is written to and read from a <code>DataBuffer</code>, enabling greater control over data structure and format.</p>
 <p>The <code>IMessageWithPeer</code> interface extends <code>IMessage</code> to include additional properties, such as <code>SharedPeer</code> and <code>IsServer</code>, which are useful for managing encryption and authentication in networked communications. This extension provides enhanced flexibility for handling secure and authenticated messaging between server and client.</p>
 <details class="example" open="open">
 <summary>Example</summary>
-<div class="language-csharp highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="w">   </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerStruct</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IMessage</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">   </span><span class="p">{</span>
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">m_Name</span><span class="p">;</span>
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">m_Position</span><span class="p">;</span>
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m_Health</span><span class="p">;</span>
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m_Mana</span><span class="p">;</span>
-</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
-</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">      </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Serialize</span><span class="p">(</span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">writer</span><span class="p">)</span>
-</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">      </span><span class="p">{</span>
-</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="w">        </span><span class="n">writer</span><span class="p">.</span><span class="n">WriteString</span><span class="p">(</span><span class="n">m_Name</span><span class="p">);</span>
-</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="w">        </span><span class="n">writer</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">m_Position</span><span class="p">);</span>
-</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="w">        </span><span class="n">writer</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">m_Health</span><span class="p">);</span>
-</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="w">        </span><span class="n">writer</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">m_Mana</span><span class="p">);</span>
-</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="w">      </span><span class="p">}</span>
-</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>
-</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="w">      </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Deserialize</span><span class="p">(</span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">reader</span><span class="p">)</span>
-</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="w">      </span><span class="p">{</span>
-</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="w">        </span><span class="n">m_Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reader</span><span class="p">.</span><span class="n">ReadString</span><span class="p">();</span>
-</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="w">        </span><span class="n">m_Position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="o">&lt;</span><span class="n">Vector3</span><span class="o">&gt;</span><span class="p">();</span>
-</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="w">        </span><span class="n">m_Health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
-</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="w">        </span><span class="n">m_Mana</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
-</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="w">      </span><span class="p">}</span>
-</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a><span class="w">   </span><span class="p">}</span>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="w">   </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerStruct</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IMessage</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">   </span><span class="p">{</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">m_Name</span><span class="p">;</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">m_Position</span><span class="p">;</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m_Health</span><span class="p">;</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m_Mana</span><span class="p">;</span>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">      </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Serialize</span><span class="p">(</span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">writer</span><span class="p">)</span>
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="w">      </span><span class="p">{</span>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="w">        </span><span class="n">writer</span><span class="p">.</span><span class="n">WriteString</span><span class="p">(</span><span class="n">m_Name</span><span class="p">);</span>
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="w">        </span><span class="n">writer</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">m_Position</span><span class="p">);</span>
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="w">        </span><span class="n">writer</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">m_Health</span><span class="p">);</span>
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="w">        </span><span class="n">writer</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">m_Mana</span><span class="p">);</span>
+</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-29-15"><a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>
+</span><span id="__span-29-16"><a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="w">      </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Deserialize</span><span class="p">(</span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">reader</span><span class="p">)</span>
+</span><span id="__span-29-17"><a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="w">      </span><span class="p">{</span>
+</span><span id="__span-29-18"><a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="w">        </span><span class="n">m_Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reader</span><span class="p">.</span><span class="n">ReadString</span><span class="p">();</span>
+</span><span id="__span-29-19"><a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a><span class="w">        </span><span class="n">m_Position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="o">&lt;</span><span class="n">Vector3</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span id="__span-29-20"><a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a><span class="w">        </span><span class="n">m_Health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span id="__span-29-21"><a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a><span class="w">        </span><span class="n">m_Mana</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span id="__span-29-22"><a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-29-23"><a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a><span class="w">   </span><span class="p">}</span>
 </span></code></pre></div>
 </details>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Network Variable</label><label for="__tabbed_9_2">RPC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<details class="example" open="open">
+<summary>Network Variable</summary>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="w">   </span><span class="k">public</span><span class="w"> </span><span class="k">partial</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">   </span><span class="p">{</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">      </span><span class="na">[NetworkVariable]</span><span class="w"> </span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">      </span><span class="k">private</span><span class="w"> </span><span class="n">PlayerStruct</span><span class="w"> </span><span class="n">m_PlayerStruct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PlayerStruct</span><span class="p">();</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">   </span><span class="p">}</span>
+</span></code></pre></div>
+</details>
+</div>
+<div class="tabbed-block">
+<details class="example" open="open">
+<summary>RPC</summary>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="w">   </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">   </span><span class="p">{</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">       </span><span class="k">private</span><span class="w"> </span><span class="n">PlayerStruct</span><span class="w"> </span><span class="n">m_PlayerStruct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PlayerStruct</span><span class="p">();</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">       </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="w">       </span><span class="p">{</span>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">          </span><span class="k">if</span><span class="p">(</span><span class="n">IsServer</span><span class="p">)</span>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">          </span><span class="p">{</span>
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="w">            </span><span class="c1">// Send an RPC from the server to the client</span>
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="w">            </span><span class="n">Remote</span><span class="p">.</span><span class="n">Invoke</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">m_PlayerStruct</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">()</span>
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="w">                </span><span class="n">DeliveryMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DeliveryMode</span><span class="p">.</span><span class="n">Unreliable</span>
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="w">            </span><span class="p">});</span>
+</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="w">          </span><span class="p">}</span>
+</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="w">       </span><span class="p">}</span>
+</span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a>
+</span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a><span class="w">       </span><span class="na">[Client(1)]</span>
+</span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="w">       </span><span class="k">void</span><span class="w"> </span><span class="nf">Example</span><span class="p">(</span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="c1">// Signature 2</span>
+</span><span id="__span-31-19"><a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a><span class="w">       </span><span class="p">{</span>
+</span><span id="__span-31-20"><a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a><span class="w">          </span><span class="n">m_PlayerStruct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">Deserialize</span><span class="o">&lt;</span><span class="n">PlayerStruct</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span id="__span-31-21"><a id="__codelineno-31-21" name="__codelineno-31-21" href="#__codelineno-31-21"></a>
+</span><span id="__span-31-22"><a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a><span class="w">           </span><span class="c1">// Alternative:</span>
+</span><span id="__span-31-23"><a id="__codelineno-31-23" name="__codelineno-31-23" href="#__codelineno-31-23"></a><span class="w">          </span><span class="c1">// Populate an existing object</span>
+</span><span id="__span-31-24"><a id="__codelineno-31-24" name="__codelineno-31-24" href="#__codelineno-31-24"></a><span class="w">          </span><span class="c1">// message.Populate(m_PlayerStruct);</span>
+</span><span id="__span-31-25"><a id="__codelineno-31-25" name="__codelineno-31-25" href="#__codelineno-31-25"></a><span class="w">       </span><span class="p">}</span>
+</span><span id="__span-31-26"><a id="__codelineno-31-26" name="__codelineno-31-26" href="#__codelineno-31-26"></a><span class="w">   </span><span class="p">}</span>
+</span></code></pre></div>
+</details>
+</div>
+</div>
+</div>
 
 
 

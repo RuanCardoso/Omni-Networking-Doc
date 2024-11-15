@@ -833,6 +833,7 @@
 <p class="admonition-title">Warning</p>
 <p>Versions not listed in the compatibility table may not be fully supported and could exhibit unexpected behavior. For the most reliable experience, please refer to the <a href="https://github.com/RuanCardoso/Omni-Networking-for-Unity/releases">Releases</a> page to verify compatibility with the latest available versions.</p>
 </div>
+<hr />
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">⚓️</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -850,6 +851,7 @@
 <li>Download the latest Omni package from the <a href="https://github.com/RuanCardoso/Omni-Networking-for-Unity/releases">Releases</a>.</li>
 <li>Import the package into your project.</li>
 </ol>
+<hr />
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">⚓️</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -919,6 +921,7 @@
 </tr>
 </tbody>
 </table>
+<hr />
 <h3 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">⚓️</a></h3>
 <table>
 <thead>
@@ -946,6 +949,7 @@
 </tr>
 </tbody>
 </table>
+<hr />
 <h3 id="connection-settings">Connection Settings<a class="headerlink" href="#connection-settings" title="Permanent link">⚓️</a></h3>
 <table>
 <thead>
@@ -983,6 +987,7 @@
 </tr>
 </tbody>
 </table>
+<hr />
 <h3 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">⚓️</a></h3>
 <table>
 <thead>
@@ -1034,6 +1039,7 @@
 </tr>
 </tbody>
 </table>
+<hr />
 <h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">⚓️</a></h3>
 <table>
 <thead>
@@ -1053,8 +1059,10 @@
 </tr>
 </tbody>
 </table>
+<hr />
 <h3 id="registered-prefabs">Registered Prefabs<a class="headerlink" href="#registered-prefabs" title="Permanent link">⚓️</a></h3>
 <p>This list is used to automatically instantiate network objects. When a network object is instantiated by name or indexer, the object will be looked up in this list and instantiated automatically. Remember, manual instantiation is also available, and using this list is not required.</p>
+<hr />
 <h3 id="transporter-settings">Transporter Settings<a class="headerlink" href="#transporter-settings" title="Permanent link">⚓️</a></h3>
 <p>The <strong>Transporter Settings</strong> section allows you to configure various network transport parameters, including disconnection timeout, network event processing per frame, lag simulation, channel setup, IPv6 support, max connections, ping intervals, and more. Available options may vary based on the selected transporter.</p>
 <p>Currently, two transporters are supported: <strong>Lite Transporter</strong> and <strong>KCP Transporter</strong>, with additional options planned for future releases.</p>
@@ -1122,6 +1130,7 @@
 <li><a href="https://github.com/RevenantX/LiteNetLib">LiteNetLib Documentation</a></li>
 <li><a href="https://github.com/MirrorNetworking/kcp2k">KCP Transporter (kcp2k) Documentation</a></li>
 </ul>
+<hr />
 <h2 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">⚓️</a></h2>
 <div class="admonition bug">
 <p class="admonition-title">Bug</p>
@@ -1131,6 +1140,7 @@
 <p class="admonition-title">Bug</p>
 <p><strong>Omni Package Installation Issues</strong>: If you experience problems during the Omni package installation, such as Unity freezing or crashing, and the necessary macros are not defined, you may need to manually reset the macros. To do this, go to the root folder of the Omni package and delete the hidden file that begins with <code>omni_macros</code>. Ensure hidden files are visible in your file explorer to locate this file.</p>
 </div>
+<hr />
 <h2 id="communication-structure">Communication Structure<a class="headerlink" href="#communication-structure" title="Permanent link">⚓️</a></h2>
 <p>The Omni framework is structured around four foundational classes designed for general communication. These classes implement methods and properties that simplify and expedite multiplayer functionalities, making the process both efficient and straightforward. Additionally, a "low-level" class is available for advanced communication, which should be utilized in contexts where restrictions or limitations apply, offering finer control for specialized cases.</p>
 <p>The Omni framework currently utilizes four base classes, each designed for different networking roles within the multiplayer structure. These classes include:</p>
@@ -1222,14 +1232,14 @@
 <p class="admonition-title">Warning</p>
 <p>All network operations, including RPC's, events, and network variables, require scripts to inherit from one of these four classes (<code>NetworkBehaviour</code>, <code>ServerBehaviour</code>, <code>ClientBehaviour</code>, or <code>DualBehaviour</code>). Without this inheritance, network functionality will not be available in the script.</p>
 </div>
+<hr />
 <h3 id="network-identity">Network Identity<a class="headerlink" href="#network-identity" title="Permanent link">⚓️</a></h3>
 <p>The <code>NetworkIdentity</code> component is at the heart of the Omni networking high-level API. It controls a game object's unique identity on the network, and it uses that identity to make the networking system aware of the game object.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>It is important to note that Omni does not support <code>NetworkIdentity</code> on nested GameObjects. Otherwise, Omni will emit an error. To avoid this, ensure your parent <code>GameObject</code> is the only <code>GameObject</code> in the stack with a <code>NetworkIdentity</code> component. Child GameObjects can access the parents' <code>NetworkIdentity</code> component via <code>Identity</code> property inhirited from <code>NetworkBehaviour</code>.</p>
 </div>
-<hr />
-<p>Network Identity Properties</p>
+<p>Properties:</p>
 <table>
 <thead>
 <tr>
