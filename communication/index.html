@@ -731,11 +731,16 @@
 <p>RPCs (Remote Procedure Calls) are a standard software industry concept that allows methods to be called on objects that are not in the same executable. They enable communication between different processes or systems over a network.</p>
 <p>With RPCs, a server can invoke functions on a client, and similarly, a client can invoke functions on a server. This bi-directional communication allows for flexible and dynamic interactions between clients and servers, facilitating various operations such as requesting data, executing commands, and synchronizing states across different parts of a distributed system. RPCs provide a powerful mechanism for enabling remote interactions and enhancing the functionality of networked applications.</p>
 <hr />
+<div class="admonition info">
+<p class="admonition-title">RPC Basic Structure</p>
+<p><center>
 <pre class="mermaid"><code>graph LR
   A[Ruan] ---&gt; | User Input Rpc | B{Server}
   B ---&gt; | Move Rpc | A
   B ---&gt; | Move Rpc | C[Junior]
   B ---&gt; | Move Rpc | D[Mike]</code></pre>
+</center></p>
+</div>
 <hr />
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
