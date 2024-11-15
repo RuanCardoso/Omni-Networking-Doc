@@ -735,10 +735,10 @@
 <p class="admonition-title">RPC Basic Structure</p>
 <p><center>
 <pre class="mermaid"><code>graph LR
-  A[Ruan] ---&gt; | User Input Rpc | B{Server}
+  A[Ruan&lt;br&gt;___Local Player___] ---&gt; | User Input Rpc | B{Server}
   B ---&gt; | Move Rpc | A
-  B ---&gt; | Move Rpc | C[Junior]
-  B ---&gt; | Move Rpc | D[Mike]</code></pre>
+  B ---&gt; | Move Rpc | C[Junior&lt;br&gt;___Remote Player___]
+  B ---&gt; | Move Rpc | D[Mike&lt;br&gt;___Remote Player___]</code></pre>
 </center></p>
 </div>
 <hr />
