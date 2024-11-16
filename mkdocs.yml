@@ -1,13 +1,21 @@
 site_name: Omni Documentation
-site_url: https://ruancardoso.github.io/Omni-Networking-Doc/
+site_url: https://ruancardoso.github.io/Omni-Networking-Doc
 repo_url: https://github.com/RuanCardoso/Omni-Networking-for-Unity
 repo_name: Omni Networking for Unity
 theme:
   features:
+    # - search.highlight
     - content.code.copy
-    # - navigation.tabs
-    # - navigation.tabs.sticky
-    # - navigation.expand
+    - navigation.prune
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.path
+    - navigation.tabs
+    - navigation.instant
+    - navigation.tabs.sticky
+    - navigation.expand
+    - navigation.tracking
     - content.code.select
     - toc.follow
     - toc.integrate
@@ -20,7 +28,6 @@ theme:
     - scheme: default
       toggle:
         icon: material/brightness-7
-
         name: Switch to dark mode
 
     # Palette toggle for dark mode
@@ -39,18 +46,19 @@ extra:
 
 nav:
   - Getting Started: index.md
-  - Serialization: serialization.md
-  - Http Lite: http_lite.md
-  - RPC: rpc.md
-  - Database: database.md
-  - Network Variables: network_variables.md
-  - Port Forwarding: port_forwarding.md
-  - Performance Tips: performance_tips.md
-  - Bandwidth Optimization: bandwidth_optimization.md
+  - Communication: communication.md
+  - Spawning: spawning.md
+  - API Reference: api_reference.md
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -61,3 +69,5 @@ markdown_extensions:
   - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
+  - toc:
+      permalink: ⚓️

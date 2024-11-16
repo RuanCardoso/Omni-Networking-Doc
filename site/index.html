@@ -12,11 +12,11 @@
       
       
       
-        <link rel="next" href="serialization/">
+        <link rel="next" href="communication/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -46,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -86,17 +86,17 @@
 
   
 
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="Omni Documentation" class="md-header__button md-logo" aria-label="Omni Documentation" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -124,7 +124,7 @@
     <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
@@ -134,7 +134,7 @@
     <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
@@ -142,14 +142,14 @@
       
     
     
-      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
       <div class="md-header__option">
   <div class="md-select">
     
     <button class="md-header__button md-icon" aria-label="Select language">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
     </button>
     <div class="md-select__inner">
       <ul class="md-select__list">
@@ -174,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -183,21 +183,21 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -214,7 +214,7 @@
         <a href="https://github.com/RuanCardoso/Omni-Networking-for-Unity" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     Omni Networking for Unity
@@ -224,13 +224,126 @@
     
   </nav>
   
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="communication/" class="md-tabs__link">
+        
+  
+    
+  
+  Communication
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="spawning/" class="md-tabs__link">
+        
+  
+    
+  
+  Spawning
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="http_lite/" class="md-tabs__link">
+        
+  
+    
+  
+  Http Lite
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="api_reference/" class="md-tabs__link">
+        
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
-        
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -244,15 +357,17 @@
                     
 
 
+  
+
 
   
 
-<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="." title="Omni Documentation" class="md-nav__button md-logo" aria-label="Omni Documentation" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     Omni Documentation
@@ -262,7 +377,7 @@
       <a href="https://github.com/RuanCardoso/Omni-Networking-for-Unity" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     Omni Networking for Unity
@@ -285,8 +400,17 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
         
@@ -298,6 +422,252 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registered-prefabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registered Prefabs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transporter-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transporter Settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Known Issues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#networkbehaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      NetworkBehaviour
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serverbehaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      ServerBehaviour
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clientbehaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      ClientBehaviour
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dualbehaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      DualBehaviour
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Identity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-locator-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Locator Pattern
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Service Locator Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-locator-vs-singleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Locator vs. Singleton
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="communication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Communication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spawning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawning
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -349,111 +719,11 @@
   
   
     <li class="md-nav__item">
-      <a href="rpc/" class="md-nav__link">
+      <a href="api_reference/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    RPC
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="database.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Database
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="network_variables.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Network Variables
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="port_forwarding.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Port Forwarding
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="performance_tips.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Performance Tips
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="bandwidth_optimization.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Bandwidth Optimization
+    API Reference
   </span>
   
 
@@ -480,10 +750,91 @@
   
 
 
-<h1 id="overview">Overview</h1>
-<p><strong>Omni Networking</strong> is a comprehensive networking solution that offers features for high-performance multiplayer game development in Unity. Omni provides functionalities for database management, simulated HTTP, RPC, gRPC, port forwarding, network variables, binary and JSON serialization, among others.</p>
-<p>Omni supports only versions 2021.2 and above, as it utilizes the latest APIs available in .NET Standard 2.1 and beyond to achieve the highest possible performance.</p>
-<h1 id="installation">Installation</h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">⚓️</a></h2>
+<p><strong>Omni Networking</strong> is a comprehensive solution designed to support high-performance multiplayer game development in <code>Unity</code>. With a wide array of features, <code>Omni</code> provides robust tools to handle various networking needs essential for modern games. Below is an <code>overview</code> of Omni's core functionalities:</p>
+<hr />
+<p><strong>Core Functionalities</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Database Management</strong></td>
+<td>Supports relational databases with a built-in <code>ORM</code>, enabling scalable, efficient, and secure data operations tailored for multiplayer environments.</td>
+</tr>
+<tr>
+<td><strong>RouteX</strong></td>
+<td>A flexible routing system inspired by Express.js, allowing developers to define and manage network routes efficiently. It enables organized handling of network requests and responses, making it ideal for complex multiplayer interactions.</td>
+</tr>
+<tr>
+<td><strong>RPC (Remote Procedure Call)</strong></td>
+<td>Allows methods to be called across clients and servers, enabling synchronized actions and data sharing in multiplayer environments. Making it easy to call functions remotely.</td>
+</tr>
+<tr>
+<td><strong>gRPC (Global Remote Procedure Call)</strong></td>
+<td>Allows methods to be called across clients and servers, enabling synchronized actions and data sharing in multiplayer environments. Making it easy to call functions remotely.</td>
+</tr>
+<tr>
+<td><strong>Port Forwarding</strong></td>
+<td>Facilitates NAT traversal and opens network ports using protocols like <code>PMP</code> and <code>UPnP</code>, ensuring seamless connectivity for multiplayer sessions.</td>
+</tr>
+<tr>
+<td><strong>Network Variables</strong></td>
+<td>Enables automatic synchronization of properties between server and clients without the need for custom messages or RPCs, streamlining data consistency across networked players.</td>
+</tr>
+<tr>
+<td><strong>Binary Serialization</strong></td>
+<td>Utilizes the <code>MemoryPack</code> library for efficient binary data serialization, minimizing data size for faster transmission and optimized network performance.</td>
+</tr>
+<tr>
+<td><strong>JSON Serialization</strong></td>
+<td>Uses the <code>Json.NET (Newtonsoft)</code> library for flexible and reliable JSON data serialization, ensuring compatibility with third-party services and smooth data interchange.</td>
+</tr>
+<tr>
+<td><strong>Compression</strong></td>
+<td>Leverages <code>Brotli</code> and <code>LZ4</code> algorithms to reduce data size, optimizing bandwidth usage and improving transmission speed for smoother network performance.</td>
+</tr>
+<tr>
+<td><strong>Cryptography</strong></td>
+<td>Utilizes <code>AES</code> and <code>RSA</code> encryption algorithms to secure data transmission, ensuring protection of sensitive information across the network.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><code>Omni</code> supports only versions <code>2021.3 and above</code>, as it utilizes the latest APIs available in .NET Standard 2.1 and beyond to achieve the highest possible performance.</p>
+<p>Compatibility Table:</p>
+<table>
+<thead>
+<tr>
+<th>Unity Version</th>
+<th>Compatibilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unity 2021.3 <em>(LTS)</em></td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Unity 2022.3 <em>(LTS)</em></td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Unity 6 <em>(LTS)</em></td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Versions not listed in the compatibility table may not be fully supported and could exhibit unexpected behavior. For the most reliable experience, please refer to the <a href="https://github.com/RuanCardoso/Omni-Networking-for-Unity/releases">Releases</a> page to verify compatibility with the latest available versions.</p>
+</div>
+<hr />
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">⚓️</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>Before getting started, it's important to be aware that Omni includes some dependencies by default:</strong></p>
@@ -500,17 +851,18 @@
 <li>Download the latest Omni package from the <a href="https://github.com/RuanCardoso/Omni-Networking-for-Unity/releases">Releases</a>.</li>
 <li>Import the package into your project.</li>
 </ol>
-<h1 id="setup">Setup</h1>
+<hr />
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">⚓️</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>After importing the package and waiting for the recompilation, some macros are automatically defined:</strong></p>
 <ul>
 <li><code>OMNI_RELEASE</code></li>
 <li><code>OMNI_DEBUG</code></li>
-<li><code>OMNI_SERVER</code> is defined when the target platform is set to <code>DEDICATED SERVER</code>.</li>
+<li><code>OMNI_SERVER</code> &lt;- is defined when the target platform is set to <code>DEDICATED SERVER</code> in the <code>Build Settings</code>.</li>
 </ul>
-<p>You can use these macros to switch between release and debug builds.</p>
-<div class="language-c# highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#if OMNI_RELEASE</span>
+<p>You can use these macros to switch between release and debug builds, by default the <code>OMNI_DEBUG</code> macro is defined.</p>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#if OMNI_RELEASE</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">print</span><span class="p">(</span><span class="s">&quot;You&#39;re in release mode&quot;</span><span class="p">);</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#endif</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
@@ -522,6 +874,17 @@
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">print</span><span class="p">(</span><span class="s">&quot;You&#39;re in server mode&quot;</span><span class="p">);</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="cp">#endif</span>
 </span></code></pre></div>
+<p>You can use these macros to strip the code from the build process for security reasons.</p>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#if OMNI_SERVER</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">// sensitive server code</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">#else</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// Client code</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">#endif</span>
+</span></code></pre></div>
+<p>Omni using's:</p>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">Omni.Core</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">Omni</span><span class="p">.</span><span class="n">Core</span><span class="p">.</span><span class="n">RouteX</span><span class="p">;</span>
+</span></code></pre></div>
 </div>
 <ol>
 <li>Go to the Unity Navigation Bar and select <code>Omni Networking</code>.</li>
@@ -532,10 +895,10 @@
 <p class="admonition-title">Warning</p>
 <p>The <code>Network Manager</code> object must be in the scene for Omni to function properly and not should be destroyed or renamed.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code>Network Manager</code> object, There are two child objects that can be <strong>optionally</strong> used to run client and server scripts. Remember, it is <strong>optional</strong> to place scripts on these objects. When scripts are placed on these two objects, they will be automatically separated during the build process. In <strong>release</strong> mode, server scripts will not be executed in the client build, and vice versa. <strong>Note that this does not strip the code; it merely prevents it from being executed by removing the objects from the scene at build time.</strong></p>
-<p><strong>To strip the code, it is recommended to use the macros <code>OMNI_RELEASE</code>, <code>OMNI_DEBUG</code>, <code>OMNI_SERVER</code>.</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code>Network Manager</code> object has two child objects that can <strong>optionally</strong> host client and server scripts. It’s <strong>optional</strong> to place scripts on these objects. When scripts are assigned to these child objects, Unity automatically separates them during the build process. In <code>release</code> mode, server scripts won’t run in the client build, and vice versa.</p>
+<p>Note: This approach doesn’t strip the code; it merely prevents execution by removing the objects from the scene at build time. To strip the code, consider using the <code>OMNI_RELEASE</code>, <code>OMNI_DEBUG</code>, and <code>OMNI_SERVER</code> macros.</p>
 </div>
 <ol>
 <li>Select the <code>Network Manager</code> object in the scene to view the network settings.</li>
@@ -558,7 +921,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="modules">Modules</h3>
+<hr />
+<h3 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">⚓️</a></h3>
 <table>
 <thead>
 <tr>
@@ -585,7 +949,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="connection-settings">Connection Settings</h3>
+<hr />
+<h3 id="connection-settings">Connection Settings<a class="headerlink" href="#connection-settings" title="Permanent link">⚓️</a></h3>
 <table>
 <thead>
 <tr>
@@ -622,7 +987,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="miscellaneous">Miscellaneous</h3>
+<hr />
+<h3 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">⚓️</a></h3>
 <table>
 <thead>
 <tr>
@@ -634,6 +1000,14 @@
 <tr>
 <td><code>Tick Rate</code></td>
 <td>The rate at which the game loop processes updates, measured in ticks per second.</td>
+</tr>
+<tr>
+<td><code>Pool Capacity</code></td>
+<td>Represents, in bytes, the size of the buffer <code>(byte[])</code> internally allocated for each <code>DataBuffer</code>.</td>
+</tr>
+<tr>
+<td><code>Pool Size</code></td>
+<td>Specifies the number of <code>DataBuffer</code> instances pre-allocated in the pool, ready for use.</td>
 </tr>
 <tr>
 <td><code>Max Fps On Client</code></td>
@@ -653,7 +1027,7 @@
 </tr>
 <tr>
 <td><code>Use Binary Serialization</code></td>
-<td>Coming soon.</td>
+<td>Coming soon..... DON'T USE IT YET! Experimental feature.</td>
 </tr>
 <tr>
 <td><code>Use Unaligned Memory</code></td>
@@ -665,11 +1039,374 @@
 </tr>
 </tbody>
 </table>
-<h3 id="registered-prefabs">Registered Prefabs</h3>
+<hr />
+<h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">⚓️</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Allow NetVar's From Client</code></td>
+<td>Determines whether client-side changes to network variables are permitted, allowing clients to modify networked variables directly.</td>
+</tr>
+<tr>
+<td><code>Allow Across Group Message</code></td>
+<td>Allows messages to be sent across different network groups, enabling communication between distinct groups in the network.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="registered-prefabs">Registered Prefabs<a class="headerlink" href="#registered-prefabs" title="Permanent link">⚓️</a></h3>
 <p>This list is used to automatically instantiate network objects. When a network object is instantiated by name or indexer, the object will be looked up in this list and instantiated automatically. Remember, manual instantiation is also available, and using this list is not required.</p>
-<h3 id="transporter-settings">Transporter Settings</h3>
-<p>The <strong>Transporter Settings</strong> section configures network transport parameters such as disconnection time, network event processing per frame, lag simulation, channels, IPv6 support, and ping interval, etc. The available options depend on the selected transporter.</p>
-<p>Currently, we have two available transporters, with plans to add more in the future: Lite and KCP Transporter.</p>
+<hr />
+<h3 id="transporter-settings">Transporter Settings<a class="headerlink" href="#transporter-settings" title="Permanent link">⚓️</a></h3>
+<p>The <strong>Transporter Settings</strong> section allows you to configure various network transport parameters, including disconnection timeout, network event processing per frame, lag simulation, channel setup, IPv6 support, max connections, ping intervals, and more. Available options may vary based on the selected transporter.</p>
+<p>Currently, two transporters are supported: <strong>Lite Transporter</strong> and <strong>KCP Transporter</strong>, with additional options planned for future releases.</p>
+<table>
+<thead>
+<tr>
+<th>Transporter</th>
+<th>ReliableOrdered</th>
+<th>Unreliable</th>
+<th>ReliableUnordered</th>
+<th>Sequenced</th>
+<th>ReliableSequenced</th>
+<th>Browser Compatibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lite Transporter</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Kcp Transporter</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Web Socket Transporter</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>⏳ Available Soon</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>The <strong>KCP Transporter</strong> is currently <strong><em>experimental</em></strong> and may contain unresolved issues. Use it with caution and consider thoroughly testing for stability in your specific use case.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, <strong>Omni</strong> utilizes the <strong>Lite Transporter</strong> for network operations. To switch to a different transporter, follow these steps:</p>
+<ol>
+<li><strong>Remove the Lite Transporter</strong>: In your scene, locate the <code>Network Manager</code> object. Select it, and remove the <code>Lite Transporter</code> component from this object.</li>
+<li><strong>Add the Desired Transporter</strong>: Once the Lite Transporter is removed, add the component of your preferred transporter to the <code>Network Manager</code> object.</li>
+</ol>
+<p>This configuration enables you to tailor network transport settings to suit the specific requirements of your project, ensuring optimal compatibility and performance.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some properties or functions may be unavailable for certain transporters. If an incompatible option is used, an error message will appear to inform you of the mismatch.</p>
+</div>
+<p>For detailed information on each transporter and their specific features, consult the respective documentation:</p>
+<ul>
+<li><a href="https://github.com/RevenantX/LiteNetLib">LiteNetLib Documentation</a></li>
+<li><a href="https://github.com/MirrorNetworking/kcp2k">KCP Transporter (kcp2k) Documentation</a></li>
+</ul>
+<hr />
+<h2 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">⚓️</a></h2>
+<div class="admonition bug">
+<p class="admonition-title">Bug</p>
+<p><strong>Public IP Configuration Required</strong>: Omni relies on the correct IP configuration in the <code>Public IP</code> field of the <code>Network Manager</code>. When sharing your project, this field may display an incorrect IP address from another user. To update it, open the context menu of the <code>Network Manager</code> script, press <strong>Get External IP</strong>, and Omni will automatically update the field to reflect your current IP address.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">Bug</p>
+<p><strong>Omni Package Installation Issues</strong>: If you experience problems during the Omni package installation, such as Unity freezing or crashing, and the necessary macros are not defined, you may need to manually reset the macros. To do this, go to the root folder of the Omni package and delete the hidden file that begins with <code>omni_macros</code>. Ensure hidden files are visible in your file explorer to locate this file.</p>
+</div>
+<hr />
+<h2 id="communication-structure">Communication Structure<a class="headerlink" href="#communication-structure" title="Permanent link">⚓️</a></h2>
+<p>The Omni framework is structured around four foundational classes designed for general communication. These classes implement methods and properties that simplify and expedite multiplayer functionalities, making the process both efficient and straightforward. Additionally, a "low-level" class is available for advanced communication, which should be utilized in contexts where restrictions or limitations apply, offering finer control for specialized cases.</p>
+<p>The Omni framework currently utilizes four base classes, each designed for different networking roles within the multiplayer structure. These classes include:</p>
+<ul>
+<li><code>NetworkBehaviour</code></li>
+<li><code>ServerBehaviour</code></li>
+<li><code>ClientBehaviour</code></li>
+<li><code>DualBehaviour</code></li>
+</ul>
+<p>Each class serves a unique purpose in managing networked objects and handling server or client logic.</p>
+<hr />
+<h3 id="networkbehaviour"><code>NetworkBehaviour</code><a class="headerlink" href="#networkbehaviour" title="Permanent link">⚓️</a></h3>
+<ul>
+<li>Designed for <strong>networked objects with a <code>NetworkIdentity</code></strong>.</li>
+<li>Primarily used for objects that require a unique identity within the network, such as player avatars or specific interactable objects in the game world.</li>
+<li>This class provides essential methods and properties to facilitate identity-based communication and synchronization across the network.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Network objects that have an <code>NetworkIdentity</code> must be instantiated to be registered with the network. Direct creation without instantiation will not register the object, and the <code>NetworkBehaviour</code> don't work.</p>
+</div>
+<hr />
+<h3 id="serverbehaviour"><code>ServerBehaviour</code><a class="headerlink" href="#serverbehaviour" title="Permanent link">⚓️</a></h3>
+<ul>
+<li>Suited for <strong>networked objects that do not require a <code>NetworkIdentity</code></strong>.</li>
+<li>Manages logic exclusively on the <strong>server side</strong>.</li>
+<li>Ideal for general server tasks, such as managing game state or processing server-side events.</li>
+<li>Simplifies server-side programming by abstracting client-specific requirements, allowing a focus on server logic.</li>
+</ul>
+<hr />
+<h3 id="clientbehaviour"><code>ClientBehaviour</code><a class="headerlink" href="#clientbehaviour" title="Permanent link">⚓️</a></h3>
+<ul>
+<li>Suited for <strong>networked objects that do not require a <code>NetworkIdentity</code></strong>.</li>
+<li>Used for managing <strong>client-specific logic</strong> and interactions.</li>
+<li>Ideal for general client tasks, such as login, character selection, or UI management, etc.</li>
+<li>Simplifies client-side programming by abstracting server-specific requirements, allowing a focus on client logic.</li>
+</ul>
+<hr />
+<h3 id="dualbehaviour"><code>DualBehaviour</code><a class="headerlink" href="#dualbehaviour" title="Permanent link">⚓️</a></h3>
+<ul>
+<li><strong>Combines <code>ClientBehaviour</code> and <code>ServerBehaviour</code></strong> to handle both client and server logic within a single script.</li>
+<li>Best suited for cases where a unified approach to client and server operations is necessary, reducing redundancy.</li>
+<li>Enables shared logic across client and server while maintaining the separation of client-exclusive and server-exclusive tasks.</li>
+</ul>
+<hr />
+<p><strong>Summary Table</strong></p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Identity Requirement</th>
+<th>Logic Scope</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NetworkBehaviour</code></td>
+<td>Requires a <code>NetworkIdentity</code></td>
+<td>General network</td>
+<td>For networked objects with unique identifiers(<code>NetworkIdentity</code>)</td>
+</tr>
+<tr>
+<td><code>ServerBehaviour</code></td>
+<td>No <code>NetworkIdentity</code></td>
+<td>Server-side only</td>
+<td>For server-exclusive logic without identity dependencies.</td>
+</tr>
+<tr>
+<td><code>ClientBehaviour</code></td>
+<td>No <code>NetworkIdentity</code></td>
+<td>Client-side only</td>
+<td>For client-specific logic, optimized for local processing.</td>
+</tr>
+<tr>
+<td><code>DualBehaviour</code></td>
+<td>No <code>NetworkIdentity</code></td>
+<td>Client and Server</td>
+<td>Combines client and server logic within a single script.</td>
+</tr>
+</tbody>
+</table>
+<p>This structured approach with these base classes simplifies multiplayer development, enabling clear separation of client and server responsibilities while providing flexibility for objects with and without identities.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Objects with <code>ClientBehaviour</code>, <code>ServerBehaviour</code>, or <code>DualBehaviour</code> scripts attached cannot be spawned and not support <code>NetworkIdentity</code>, as they are intended for use with scene objects only. These classes should be used exclusively for objects that exist in the scene from the start, rather than dynamically spawned instances. For this case use the <code>NetworkBehaviour</code> class with a <code>NetworkIdentity</code> attached.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All network operations, including RPC's, events, and network variables, require scripts to inherit from one of these four classes (<code>NetworkBehaviour</code>, <code>ServerBehaviour</code>, <code>ClientBehaviour</code>, or <code>DualBehaviour</code>). Without this inheritance, network functionality will not be available in the script.</p>
+</div>
+<hr />
+<h3 id="network-identity">Network Identity<a class="headerlink" href="#network-identity" title="Permanent link">⚓️</a></h3>
+<p>The <code>NetworkIdentity</code> component is at the heart of the Omni networking high-level API. It controls a game object's unique identity on the network, and it uses that identity to make the networking system aware of the game object.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is important to note that Omni does not support <code>NetworkIdentity</code> on nested GameObjects. Otherwise, Omni will emit an error. To avoid this, ensure your parent <code>GameObject</code> is the only <code>GameObject</code> in the stack with a <code>NetworkIdentity</code> component. Child GameObjects can access the parents' <code>NetworkIdentity</code> component via <code>Identity</code> property inhirited from <code>NetworkBehaviour</code>.</p>
+</div>
+<p>Properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IdentityId</code></td>
+<td><code>int</code></td>
+<td>A unique identifier for the networked object. This ID is assigned by the server to track the object across all clients.</td>
+</tr>
+<tr>
+<td><code>IsServer</code></td>
+<td><code>bool</code></td>
+<td>Indicates if the object is running on the server side. <code>false</code> if the object is running on the client side.</td>
+</tr>
+<tr>
+<td><code>IsClient</code></td>
+<td><code>bool</code></td>
+<td>Indicates if the object is running on the client side. <code>true</code> if the object is running on the server side.</td>
+</tr>
+<tr>
+<td><code>IsLocalPlayer</code></td>
+<td><code>bool</code></td>
+<td>Specifies if this object represents the local player. <code>true</code> if the object is owned by the local client.</td>
+</tr>
+<tr>
+<td><code>IsServerOwner</code></td>
+<td><code>bool</code></td>
+<td>Indicates if the server has ownership of this object. <code>true</code> if the server is the primary controller of this object.</td>
+</tr>
+<tr>
+<td><code>LocalPlayer</code></td>
+<td><code>NetworkIdentity</code></td>
+<td>A static reference to the local player instance, set on the client only. Assigned when the local player is spawned.</td>
+</tr>
+<tr>
+<td><code>Owner</code></td>
+<td><code>NetworkPeer</code></td>
+<td>The owner of this object. Available only on the server, and returns <code>NetworkManager.LocalPeer</code> on the client.</td>
+</tr>
+<tr>
+<td><code>IsRegistered</code></td>
+<td><code>bool</code></td>
+<td>Indicates whether this <code>NetworkIdentity</code> is registered on the network.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>NetworkIdentity.LocalPlayer</code> is only available on the client side. Assigned when the prefab have the tag <code>Player</code>, contain <code>Player</code> in the tag, or include <code>Player</code> in the prefab name, otherwise it will be <code>null</code>.</p>
+<p><em>Example of valid prefab name</em>: </p>
+<ul>
+<li><code>RuanCharacterPlayer</code></li>
+<li><code>JuniorPlayer</code></li>
+</ul>
+<p><em>Example of valid prefab tag</em>: </p>
+<ul>
+<li><code>Player</code></li>
+<li><code>RuanTagPlayer</code></li>
+<li><code>JuniorTagPlayer</code></li>
+</ul>
+</div>
+<hr />
+<h1 id="service-locator-pattern">Service Locator Pattern<a class="headerlink" href="#service-locator-pattern" title="Permanent link">⚓️</a></h1>
+<p>The <strong>Service Locator</strong> pattern is a design pattern that provides a centralized registry or "locator" for retrieving instances of services or dependencies at runtime. This pattern allows for flexible dependency management and reduces the coupling between objects, making it ideal for complex applications like multiplayer games.</p>
+<p>Key Benefits of the Service Locator Pattern</p>
+<ul>
+<li><strong>Centralized Access to Services</strong>: By acting as a central registry, the Service Locator allows different parts of the application to access services without tightly coupling dependencies.</li>
+<li><strong>Flexible and Scalable</strong>: Services can be registered, replaced, or removed dynamically, providing flexibility for handling different networked components and systems in a multiplayer environment.</li>
+<li><strong>Reduced Dependency on Singleton</strong>: Unlike the Singleton pattern, which can introduce issues in multiplayer setups (such as unwanted global state persistence), the Service Locator keeps services manageable and avoids potential conflicts.</li>
+<li><strong>Improved Testing and Maintainability</strong>: The pattern facilitates testing and maintainability by allowing services to be swapped or mocked, which is crucial in a large multiplayer codebase.</li>
+</ul>
+<h2 id="service-locator-vs-singleton">Service Locator vs. Singleton<a class="headerlink" href="#service-locator-vs-singleton" title="Permanent link">⚓️</a></h2>
+<p>While the <strong>Singleton pattern</strong> is commonly used to ensure only one instance of a class exists, it can lead to issues in multiplayer environments. Singletons often hold global state, which can interfere with networked instances and create unpredictable behavior, especially when managing player-specific data.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Omni recommends using the <strong>Service Locator</strong> pattern instead of Singletons for multiplayer development. The Service Locator provides better control over dependencies and avoids the pitfalls of global state inherent in Singletons, making it a more stable choice for complex networked systems.</p>
+</div>
+<hr />
+<h2 id="usage-guide">Usage Guide<a class="headerlink" href="#usage-guide" title="Permanent link">⚓️</a></h2>
+<p>By default, any script that inherits from a network class(<code>NetworkBehaviour</code>, <code>ServerBehaviour</code>, <code>ClientBehaviour</code>, <code>DualBehaviour</code> or <code>ServiceBehaviour</code>) is automatically registered in the <strong>Service Locator</strong>. This registration simplifies access to network services across your game's architecture. </p>
+<p>Service Naming and Customization</p>
+<ul>
+<li><strong>Automatic Naming</strong>: Each service name is assigned automatically upon registration, based on the script's name.</li>
+<li><strong>Customizable Names</strong>: You can modify the default service name directly in the Unity Inspector, allowing flexibility in organizing and identifying services as needed.</li>
+</ul>
+<p>Types of Service Locators in Omni</p>
+<p>Omni provides two types of Service Locators to manage service instances effectively within different scopes:</p>
+<ol>
+<li>
+<p><strong>Global Service Locator</strong>: A shared Service Locator accessible across all networked instances. This global registry is ideal for managing universal services that need to be accessed by multiple objects or systems throughout the game.</p>
+</li>
+<li>
+<p><strong>Local Service Locator</strong>: Each <code>NetworkIdentity</code> has its own local Service Locator, unique to that networked identity. allows you to retrieve specific services within the same identity, providing fine control over dependencies and enabling isolated management of services per networked object.</p>
+</li>
+</ol>
+<hr />
+<p>With this dual Service Locator approach, Omni offers a flexible, scalable structure that enhances dependency management in multiplayer environments, ensuring services are easily accessible while maintaining clear separation between global and local contexts.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Global Service Locator</label><label for="__tabbed_1_2">Local Service Locator</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Example usage of the Global Service Locator</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">UIManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ServiceBehaviour</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LoginManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ClientBehaviour</span><span class="w"> </span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">{</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">   </span><span class="k">void</span><span class="w"> </span><span class="nf">Example</span><span class="p">()</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">   </span><span class="p">{</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">      </span><span class="c1">// Accessing the `LoginManager` from the Global Service Locator</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">      </span><span class="n">LoginManager</span><span class="w"> </span><span class="n">loginManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkService</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="n">LoginManager</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">      </span><span class="c1">// Accessing the `UIManager` from the Global Service Locator with a custom name</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">      </span><span class="n">UIManager</span><span class="w"> </span><span class="n">uiManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkService</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="n">UIManager</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;MyUIManager&quot;</span><span class="p">);</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">   </span><span class="p">}</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Example usage of the Local Service Locator</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">// This script must be attached to the same networked object(`NetworkIdentity`).</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">WeaponManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NetworkBehaviour</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">{</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">   </span><span class="k">void</span><span class="w"> </span><span class="nf">Example</span><span class="p">()</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">   </span><span class="p">{</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">      </span><span class="c1">// Accessing the `WeaponManager` from the Local Service Locator using my own identity</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">      </span><span class="n">WeaponManager</span><span class="w"> </span><span class="n">weaponManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Identity</span><span class="p">.</span><span class="n">Get</span><span class="o">&lt;</span><span class="n">WeaponManager</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">   </span><span class="p">}</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The service locator can find services regardless of their depth within the hierarchy, ensuring accessibility even in deeply nested objects.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you have multiple instances of the same script type across different objects in the hierarchy (e.g., multiple <code>WeaponManager</code> scripts, one for each weapon), you should rename the service in the Inspector for each instance. Use a named lookup to retrieve the specific instance you need, such as: </p>
+<ul>
+<li><code>Identity.Get&lt;WeaponManager&gt;("GlockManager");</code></li>
+<li><code>Identity.Get&lt;WeaponManager&gt;("MeeleManager");</code></li>
+</ul>
+<p>An exception will be thrown if the service is not found or if multiple instances of the same type have the same name.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The Service Locator is designed to be fast and efficient, with minimal performance cost, unlike <code>GetComponent</code>, making it suitable for frequent use.</p>
+</div>
+<p><em>See the API Reference for more information about the Service Locator and its usage.</em></p>
 
 
 
@@ -689,6 +1426,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -716,10 +1459,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "content.code.select", "toc.follow", "toc.integrate"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "navigation.prune", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "navigation.tabs", "navigation.instant", "navigation.tabs.sticky", "navigation.expand", "navigation.tracking", "content.code.select", "toc.follow", "toc.integrate"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
