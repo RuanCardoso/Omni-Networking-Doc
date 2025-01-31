@@ -1,5 +1,8 @@
 ## Overview
 
+!!! tip
+    If you plan to translate this documentation, it is recommended to use `Google Chrome` to avoid translation bugs and ensure accurate rendering of the content.
+
 **Omni Networking** is a comprehensive solution designed to support high-performance multiplayer game development in `Unity`. With a wide array of features, `Omni` provides robust tools to handle various networking needs essential for modern games. Below is an `overview` of Omni's core functionalities:
 
 ---
