@@ -2,48 +2,53 @@ site_name: Omni Documentation
 site_url: https://ruancardoso.github.io/Omni-Networking-Doc
 repo_url: https://github.com/RuanCardoso/Omni-Networking-for-Unity
 repo_name: Omni Networking for Unity
+copyright: Copyright &copy; 2024 Ruan Cardoso
 theme:
   features:
-    # - search.highlight
+    - search.share
     - content.code.copy
-    - navigation.prune
-    - navigation.sections
-    - navigation.indexes
-    - navigation.top
-    - navigation.path
-    - navigation.tabs
-    - navigation.instant
-    - navigation.tabs.sticky
-    - navigation.expand
-    - navigation.tracking
     - content.code.select
     - toc.follow
     - toc.integrate
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.prune
+    - navigation.top
+    - navigation.path
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking
   language: en
+  logo: assets/icon.png
+  favicon: assets/icon.png
   font:
     text: Roboto
   name: material
   palette:
     # Palette toggle for light mode
     - scheme: default
+      primary: black
+      accent: pink
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
 
     # Palette toggle for dark mode
     - scheme: slate
+      primary: black
+      accent: pink
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+# extra_javascript:
+#   - javascripts/feedback.js
 extra:
-  alternate:
-    - name: English
-      link: /en/
-      lang: en
-    - name: Português
-      link: /pt/
-      lang: pt
-
+  generator: false
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/X3una5fgZJ
 nav:
   - Getting Started: index.md
   - Communication: communication.md
@@ -60,8 +65,11 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.highlight:
+      auto_title: true
+      linenums: true
       anchor_linenums: true
       line_spans: __span
+      use_pygments: true
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
