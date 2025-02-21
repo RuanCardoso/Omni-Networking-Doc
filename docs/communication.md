@@ -19,28 +19,69 @@ With RPCs, a server can invoke functions on a client, and similarly, a client ca
 
      The diagram illustrates the basic flow of an RPC (Remote Procedure Call) in a multiplayer environment.  
 
-    - The `local player` (Ruan) sends an RPC to the `server` (e.g., a movement or input).  
-    - The `server` processes the request and broadcasts the action to all relevant clients.  
-    - The remote players (e.g., Junior and Mike), the server sends the update, which they process and direct the action to the identity of the player who initiated the action (Ruan).  
-    - This ensures that all players, including the initiating player (Ruan), receive the update, maintaining a consistent and authoritative game state across the network.
+    **RPC Flow**
+
+    1. **Local Player (Ruan)**
+        - Sends input to server via RPC
+        - Receives validated updates back
+    
+    2. **Server**
+        - Validates input
+        - Broadcasts updates to all players
+    
+    3. **Remote Players**
+        - Receive server-validated updates
+        - Apply changes to maintain sync
 ---                   
 
-!!! warning
-    RPC's are also supported in base classes. If you are using a base class for network functionality, ensure that the base class name includes the `Base` prefix.  
+!!! tip "RPC Naming Convention and Base Classes"
+    RPC's are also supported in base classes. If you are using a base class for network functionality, ensure that the base class name includes the `Base` prefix.
+
+    **Naming Convention**
+
+    Base classes using RPCs **must** include the `Base` suffix:
+
+    - ✅ `PlayerBase`
+    - ✅ `CharacterBase` 
+    - ❌ `BasePlayer`
+    - ❌ `Player`
     
     ???+ example
         ```csharp
         public class PlayerBase : NetworkBehaviour // Note the "Base" prefix
         {
+            const byte FireRpcId = 1;
+
+            // 1. Define virtual RPCs here
+            [Client(FireRpcId)]
+            protected virtual void FireRpc()
+            {
+               Debug.Log("Fired from base class");
+            }
+
+            void Update()
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (IsServer)
+                    {
+                        // 2. Server invokes the RPC on the client
+                        Server.Rpc(FireRpcId);
+                    }
+                }
+            }
         }
         
         public class Player : PlayerBase
         {
+            // 3. Implement the virtual RPC in the derived class
+            protected override void FireRpc()
+            {
+               Debug.Log("Fired from derived class");
+            }
         }
         ```
    
-    This naming convention is required for the RPCs to function correctly in inherited classes.
-
 !!! note
     Before proceeding, refer to the [Communication Structure](./index.md#communication-structure) and [Service Locator Pattern](./index.md#service-locator-pattern) pages for essential background information.
 
@@ -48,159 +89,304 @@ With RPCs, a server can invoke functions on a client, and similarly, a client ca
 
 ### Method Signature
 
-RPC method signatures can accept up to three parameters, allowing flexibility in handling data, network information, and communication channels. The available parameters include:
+Remote Procedure Calls (RPCs) in our networking system allow communication between clients and servers. Each RPC method can be configured with different parameters to handle various networking scenarios.
 
-- **DataBuffer message**: Used for receiving data sent by the client or server.
-- **NetworkPeer peer (***Server-Only***)**: Provides information about the client that invoked the RPC, useful for identifying the sender.
-- **int seqChannel**: Specifies the sequence channel for the RPC, allowing control over the order and priority of messages.
+RPC methods can accept up to three parameters:
 
-Each RPC method must be marked with the `[Server]` or `[Client]` attribute. The method name, parameters, and their order determine the specific signature of the RPC.
+| Parameter | Description | Availability |
+|-----------|-------------|--------------|
+| `DataBuffer message` | Contains the transmitted data | Client & Server |
+| `NetworkPeer peer` | Information about the calling client | Server Only |
+| `int seqChannel` | Controls message ordering and priority | Client & Server |
 
----
+Remote Procedure Calls (RPCs) require proper method decoration with either:
 
-Below are examples of valid RPC method signatures on the server side:
+- `[Server]` - Marks a method that executes on the server when called by a client
+- `[Client]` - Marks a method that executes on clients when called by the server 
 
-#### Server-Side
+Each RPC method must specify a unique numeric ID between 1-230 within its class:
+
+```csharp
+[Server(1)] // Method executes on server when invoked from client, using ID 1
+void MyServerMethod() { }
+
+[Client(2)] // Method executes on client when invoked from server, using ID 2  
+void MyClientMethod() { }
+```
+
+Here are all valid server RPC signatures, from simplest to most complex:
+
+#### Server-Side Signatures
 
 === "Signature 1"
-    ???+ example "Signature 1"
+    ???+ example "Basic RPC - No parameters"
         ```csharp
         public class Player : NetworkBehaviour
         {
             [Server(1)]
-            void Example()
+            void OnServerMethod()
             {
-               // This function is called on the server when a client invokes it
+               // Handles simple server-side logic
+               // Use when no data transfer is needed
             }
         }
         ```
 === "Signature 2"
-    ???+ example "Signature 2"
+    ???+ example "Data-only RPC"
         ```csharp
         public class Player : NetworkBehaviour
         {
             [Server(1)]
-            void Example(DataBuffer message)
+            void OnServerMethod(DataBuffer message)
             {
-               // This function is called on the server when a client invokes it
+                // Handles incoming client data
+                // Example: Reading player input
+                var input = message.Read<Vector2>();
             }
         }
         ```
 === "Signature 3"
-    ???+ example "Signature 3"
+    ???+ example "Data + Peer Info"
         ```csharp
         public class Player : NetworkBehaviour
         {
             [Server(1)]
-            void Example(DataBuffer message, NetworkPeer peer)
+            void OnServerMethod(DataBuffer message, NetworkPeer peer)
             {
-               // This function is called on the server when a client invokes it
+               // Handles data with client identification
+               // Example: Processing authenticated requests
+               if ((bool)peer.Data["IsAuthenticated"]) {
+                   ProcessRequest(message);
+               }
             }
         }
         ```
 === "Signature 4"
-    ???+ example "Signature 4"
+    ???+ example "Full Configuration"
         ```csharp
         public class Player : NetworkBehaviour
         {
             [Server(1)]
-            void Example(DataBuffer message, NetworkPeer peer, int seqChannel)
+            void OnServerMethod(DataBuffer message, NetworkPeer peer, int seqChannel)
             {
-               // This function is called on the server when a client invokes it
+               // Complete control over message handling
+               // Example: Priority-based game events
             }
         }
         ```
 
----
+Valid client RPC signatures with common use cases:
 
-Below are examples of valid RPC method signatures on the client side:
-
-#### Client-Side
+#### Client-Side Signatures
 
 === "Signature 1"
-    ???+ example "Signature 1"
+    ???+ example "Basic RPC - No parameters"
         ```csharp
         public class Player : NetworkBehaviour
         {
             [Client(1)]
-            void Example()
+            void OnClientMethod()
             {
-                // This function is called on the client when a server invokes it
+                // Simple client-side updates
+                // Example: UI refreshes
+                UpdatePlayerUI();
             }
         }
         ```
 === "Signature 2"
-    ???+ example "Signature 2"
+    ???+ example "Data-only RPC"
         ```csharp
         public class Player : NetworkBehaviour
         {
             [Client(1)]
-            void Example(DataBuffer message)
+            void OnClientMethod(DataBuffer message)
             {
-                // This function is called on the client when a server invokes it
+                // Handle server data
+                // Example: Receiving game state
+                var position = message.Read<Vector3>();
+                UpdatePlayerPosition(position);
             }
         }
         ```
 === "Signature 3"
-    ???+ example "Signature 3"
+    ???+ example "Data + Channel"
         ```csharp
         public class Player : NetworkBehaviour
         {
             [Client(1)]
-            void Example(DataBuffer message, int seqChannel)
+            void OnClientMethod(DataBuffer message, int seqChannel)
             {
-                // This function is called on the client when a server invokes it
+                // Ordered message processing
+                // Example: Animation sequences
+                ProcessAnimationSequence(message, seqChannel);
             }
         }
         ```
 
-!!! note
-    Each RPC is assigned a unique **ID** within its class to ensure routing. This ID differentiates RPC methods within the same class for client-server communication.
+---
 
-!!! warning
-    RPC ID's must be between ***1*** and ***230***. An exception will be thrown if the ID is out of range. The id's are unique only within the script itself, other script instances can use the same id.
+!!! info "RPC ID System"
+    📝 Each RPC method requires a unique numeric identifier (ID) within its class:
+
+    - IDs are used for message routing between client and server
+    - Only needs to be unique within the same class
+    - Different classes can reuse the same IDs
+    ```csharp
+    // Valid - Different classes can use same ID
+    public class PlayerSystem {
+        [Server(1)] void Method1() { }
+        [Server(2)] void Method2() { }  // ✅ Unique within class
+    }
+    
+    public class InventorySystem {
+        [Server(1)] void Method1() { }  // ✅ OK to reuse ID in different class
+    }
+    ```
+
+!!! danger "ID Range Requirements"
+    ⚠️ RPC IDs must follow these rules:
+
+    - Valid range: `1` to `230`
+    - Cannot be zero or negative
+    - Cannot exceed 230
+    ```csharp
+    // Invalid ID examples
+    [Server(0)]    void Invalid1() { }  // ❌ Zero not allowed
+    [Server(-1)]   void Invalid2() { }  // ❌ Negative not allowed
+    [Server(231)]  void Invalid3() { }  // ❌ Exceeds maximum
+    
+    // Valid ID example
+    [Server(1)]    void Valid() { }     // ✅ Correct usage
+    ```
+    💥 **Runtime Exception** will be thrown if these rules are violated
+
+!!! tip "Use Constants for RPC IDs"
+    It's recommended to use constants for RPC IDs to improve code maintainability and prevent duplicate IDs. This makes it easier to manage and refactor RPC calls across your codebase.
+    ???+ example
+        ```csharp
+        public class Player : NetworkBehaviour
+        {
+            private const byte MOVE_RPC_ID = 1;
+            private const byte ATTACK_RPC_ID = 2;
+            private const byte HEAL_RPC_ID = 3;
+
+            [Server(MOVE_RPC_ID)]
+            void MoveRpc() { }
+
+            [Server(ATTACK_RPC_ID)] 
+            void AttackRpc() { }
+
+            [Server(HEAL_RPC_ID)]
+            void HealRpc() { }
+        }
+        ```
 
 ---
 
-Examples
+### Implementation Examples
 
 === "Example 1 (NetworkBehaviour)"
     ???+ example "Example 1 (NetworkBehaviour)"
         ```csharp
         public class Player : NetworkBehaviour
         {
-            [Server(1)]
-            void ExampleOnServer() // Signature 1
+            private const byte MOVEMENT_RPC = 1;
+
+            [Server(MOVEMENT_RPC)]
+            void UpdateMovementServer(DataBuffer message)
             {
-               print("Wow! This works on the server!");
+               // server reads the client's movement data and broadcasts it to all clients
+                Vector3 position = message.Read<Vector3>();
+                Quaternion rotation = message.Read<Quaternion>();
+
+                // validate the data and send it to all clients
+
+                Server.Rpc(MOVEMENT_RPC, position, rotation);
             }
     
-            [Client(1)]
-            void ExampleOnClient() // Signature 1
+            [Client(MOVEMENT_RPC)]
+            void UpdateMovementClient(DataBuffer message)
             {
-               print("Wow! This works on the client!");
+                // client receives the movement data from the server
+                Vector3 position = message.Read<Vector3>();
+                Quaternion rotation = message.Read<Quaternion>();
+
+                // update the player's position and rotation
+                transform.position = position;
+                transform.rotation = rotation;
+            }
+
+            void Update()
+            {
+                // Client authoritatively sends movement data to the server
+                if (IsLocalPlayer)
+                {
+                    Client.Rpc(MOVEMENT_RPC, transform.position, transform.rotation);
+                }
             }
         }
         ```
 
 === "Example 2 (ServerBehaviour & ClientBehaviour)"
     ???+ example "Example 2 (ServerBehaviour & ClientBehaviour)"
+        !!! warning "Script ID Configuration"
+            Script IDs act as a bridge between client and server components, ensuring they can communicate properly. Each pair of corresponding client/server scripts must share the same ID in their Unity Inspector.
+
+            **Key Points:**
+
+            - The ID links matching client and server components
+            - Must be unique across your project
+            - Set in Unity Inspector for both scripts
+            - Mismatched IDs will break communication
+
+            ???+ example "Example"
+                ```text
+                LoginServer.cs    -> Script ID: 1  ✓
+                LoginClient.cs    -> Script ID: 1  ✓
+
+                PlayerServer.cs   -> Script ID: 2  ✓ 
+                PlayerClient.cs   -> Script ID: 2  ✓
+                ```
         ```csharp
+        // Server-side class for handling login requests
         public class LoginServer : ServerBehaviour
         {
-            [Server(1)]
-            void Example() // Signature 1
+            private const byte LOGIN_RPC = 1;
+
+            [Server(LOGIN_RPC)]
+            void LoginServer(DataBuffer message, NetworkPeer peer)
             {
-               print("Wow! This works on the server!");
+                string username = message.ReadString();
+                string password = message.ReadString();
+
+                // Server-side login logic
+
+                // Send a response to the client
+                Server.Rpc(LOGIN_RPC, peer, Target.SelfOnly);
             }
         }
     
+        // Client-side class for handling login requests
         public class LoginClient : ClientBehaviour
         {
-            [Client(1)]
-            void Example() // Signature 1
+            private const byte LOGIN_RPC = 1;
+
+            [Client(LOGIN_RPC)]
+            void LoginClient()
             {
-               print("Wow! This works on the client!");
+               print("Wow! you are logged in!");
+            }
+
+            void Update()
+            {
+                // Client sends a login request to the server
+                if (Input.GetKeyDown(KeyCode.L))
+                {
+                    using var message = Rent();
+                    message.WriteString("username");
+                    message.WriteString("password");
+                    Client.Rpc(LOGIN_RPC, message);
+                }
             }
         }
         ```
@@ -228,21 +414,51 @@ Examples
 
 ### How to Invoke a RPC
 
-The `Local` and `Remote` properties are part of the public API inherited from `NetworkBehaviour`, `ClientBehaviour`, `ServerBehaviour`, and `DualBehaviour`. They are designed to facilitate communication between client and server in the network environment. Each property enforces specific usage restrictions to ensure proper client-server interactions.
+The `Client` and `Server` properties are part of the public API inherited from `NetworkBehaviour`, `ClientBehaviour`, `ServerBehaviour`, and `DualBehaviour`. 
 
-**Local**
+They are designed to facilitate communication between client and server in the network environment. Each property enforces specific usage restrictions to ensure proper client-server interactions.
 
-  - **Purpose**: Allows the client to invoke messages on the server.
-  - **Restriction**: This property is intended for client-side use only. Attempting to access it on the server side will throw an exception, preventing unintended server-side access.
-  - **Usage**: Useful for client-initiated communications directed at the server.
-  - **Overloads**: Invoke() has 8 overloads. For details on the available overloads, please refer to the [API Reference](./index.md).
+The network components provide two key properties for managing client-server communication:
 
-**Remote**
+**Client Property**
 
-  - **Purpose**: Allows the server to invoke messages on the client.
-  - **Restriction**: This property is intended for server-side use only. Attempting to access it on the client side will throw an exception, ensuring that only the server can utilize this property.
-  - **Usage**: Useful for server-initiated communications directed at the client.
-  - **Overloads**: Invoke() has 8 overloads. For details on the available overloads, please refer to the [API Reference](./index.md).
+- **Purpose**: Enables clients to send RPCs to the server
+- **Access**: Client-side only (throws exception if accessed on server)
+- **Main Method**: `Rpc()` with multiple overloads
+- **Example Usage**:
+```csharp 
+// On client:
+using var someData = Rent();
+someData.WriteString("Hello World!");
+
+Client.Rpc(rpcId);              // Basic RPC
+Client.Rpc(rpcId, someData);    // RPC with data
+Client.Rpc(rpcId, someData, DeliveryMode.ReliableOrdered); // RPC with data and delivery mode
+Client.Rpc(rpcId, someData, DeliveryMode.ReliableOrdered, 10); // RPC with data, delivery mode, and sequence channel
+Client.Rpc(rpcId, transform.position, transform.rotation, new ClientOptions() {}); // RPC with unmanaged types
+```
+
+**Server Property**
+
+- **Purpose**: Enables server to send RPCs to clients
+- **Access**: Server-side only (throws exception if accessed on client) 
+- **Main Method**: `Rpc()` with multiple overloads
+- **Example Usage**:
+```csharp
+// On server:
+using var data = Rent();
+data.WriteString("Hello World!");
+
+Server.Rpc(rpcId);                    // Broadcast to all(default)
+Server.Rpc(rpcId, data, Target.All);  // Targeted broadcast
+Server.Rpc(rpcId, data, Target.AllExceptSelf, DeliveryMode.ReliableOrdered); // Targeted broadcast with delivery mode
+Server.Rpc(rpcId, data, Target.GroupOnly, DeliveryMode.ReliableOrdered, 10); // Targeted broadcast with delivery mode and sequence channel
+Server.Rpc(rpcId, transform.position, transform.rotation, new ServerOptions() { 
+    Target = Target.SelfOnly 
+}); // RPC with unmanaged types
+```
+
+Both properties enforce proper client-server architecture by restricting access to the appropriate side. For detailed API information including all overloads, see the [API Reference](./index.md).
 
 ---
 
@@ -256,7 +472,7 @@ The `Local` and `Remote` properties are part of the public API inherited from `N
                // Send an RPC from the client to the server
                if (Input.GetKeyUp(KeyCode.S) && IsLocalPlayer)
                {
-                   Local.Invoke(1);
+                   Client.Rpc(1);
                }
             }
     
@@ -278,7 +494,7 @@ The `Local` and `Remote` properties are part of the public API inherited from `N
                // Send an RPC from the server to the client
                if (Input.GetKeyUp(KeyCode.A) && IsServer)
                {
-                   Remote.Invoke(1);
+                   Server.Rpc(1);
                }
             }
     
@@ -290,10 +506,12 @@ The `Local` and `Remote` properties are part of the public API inherited from `N
         }
         ```
 
-`Invoke` with ***arguments***:
+`Rpc()` with ***arguments***:
 
 !!! tip
-    The `Local.Invoke()` and `Remote.Invoke()` methods has 8 overloads and optional arguments. However, the overloads available can vary depending on the network base class used(i.e. `NetworkBehaviour`, `ClientBehaviour`, `ServerBehaviour`, and `DualBehaviour`). For details on the available overloads, please refer to the [API Reference](./index.md).
+    The `Client.Rpc()` and `Server.Rpc()` methods has 8 overloads and optional arguments. However, the overloads available can vary depending on the network base class used(i.e. `NetworkBehaviour`, `ClientBehaviour`, `ServerBehaviour`, and `DualBehaviour`). 
+    
+    For details on the available overloads, please refer to the [API Reference](./index.md).
 
 === "Client-Side"
     ???+ example "Client-Side"
@@ -308,7 +526,7 @@ The `Local` and `Remote` properties are part of the public API inherited from `N
                    using DataBuffer message = Rent();
                    message.WriteString("Hello World!");
                    message.Write(123f);
-                   Local.Invoke(1, message, DeliveryMode.ReliableOrdered);
+                   Client.Rpc(1, message, DeliveryMode.ReliableOrdered);
                }
             }
     
@@ -317,6 +535,7 @@ The `Local` and `Remote` properties are part of the public API inherited from `N
             {
                string str = message.ReadString();
                float num = message.Read<float>();
+               Debug.Log(str + " " + num);
             }
         }
         ```
@@ -334,7 +553,7 @@ The `Local` and `Remote` properties are part of the public API inherited from `N
                    using DataBuffer message = Rent();
                    message.WriteString("Hello World!");
                    message.Write(123f);
-                   Remote.Invoke(1, message, Target.All, DeliveryMode.ReliableOrdered);
+                   Server.Rpc(1, message, Target.All, DeliveryMode.ReliableOrdered);
                }
             }
     
@@ -343,35 +562,65 @@ The `Local` and `Remote` properties are part of the public API inherited from `N
             {
                string str = message.ReadString();
                float num = message.Read<float>();
+               Debug.Log(str + " " + num);
             }
         }
         ```
 
-!!! tip
-    `Invoke()` can send primitive values without the need a explicit `DataBuffer` object. For details on the available overloads, please refer to the [API Reference](./index.md).
+!!! tip "Direct Value Transmission"
+    RPCs support direct sending of primitive and unmanaged types without manual `DataBuffer` creation.
 
-    ???+ example
-        ```csharp
-           // Send an RPC from the client to the server without a explicit `DataBuffer`
-           Local.Invoke(1, transform.position, transform.rotation); // Has optional arguments
+    **Supported Types**
+
+    - Primitives (`int`, `float`, `bool`, etc)
+    - Unity types (`Vector3`, `Quaternion`, etc)
+    - Blittable structs
     
-           // Send an RPC from the server to the client without a explicit `DataBuffer`
-           Remote.Invoke(1, transform.position, transform.rotation, new SyncOptions()
-           {
-           	  DeliveryMode = DeliveryMode.Unreliable
-           });
-        ```
+    **Examples**
+    ```csharp
+    // Client-side examples
+    Client.Rpc(rpcId, 42);                     // Single int
+    Client.Rpc(rpcId, true, 3.14f, 23.3d);           // Multiple primitives
+    Client.Rpc(rpcId, transform.position, transform.rotation, Vector3.Zero, new ClientOptions() {});     // Unity type
+    
+    // Server-side examples with options
+    Server.Rpc(rpcId, Vector3.zero, new ServerOptions {
+        DeliveryMode = DeliveryMode.Unreliable
+    });
+    
+    Server.Rpc(rpcId, transform.position, transform.rotation, 100f, new ServerOptions {
+        Target = Target.AllExceptSelf
+        DeliveryMode = DeliveryMode.Unreliable,
+    });
+    ```
 
-    !!! warning
-        Using this overload only unmanaged types is allowed. Like `Vector3`, `Quaternion`, `int`, `float`, etc.
+    !!! warning "Type Restrictions"
+        ❌ **Not Allowed Without a `DataBuffer`**:
+
+        - Reference types
+        - Classes
+        - Arrays
+        - Strings
+    
+        ✅ **Allowed**:
+
+        - Primitive types
+        - Unmanaged structs
+        - Unity value types
 
 ---
 
 ## Network Variables
 
-At a high level, a `[NetworkVariable]` attribute is a automatic way to synchronize a property ("variable") between a server and client(s) without having to use custom messages or RPCs.
+A `[NetworkVariable]` is a powerful attribute that automatically synchronizes state between server and clients without manual RPC implementation. When a network variable's value changes on the server, the framework automatically propagates these changes to all connected clients, ensuring state consistency across the network.
 
----
+Key benefits:
+
+- Automatic synchronization without manual networking code
+- Significantly reduces boilerplate compared to RPCs
+- Change detection and validation out of the box
+
+This provides an efficient way to maintain synchronized game state with minimal code overhead.
 
 !!! info "Network Variable Structure"
     <center>
@@ -393,50 +642,158 @@ At a high level, a `[NetworkVariable]` attribute is a automatic way to synchroni
     This structure highlights the server's role in maintaining authority and consistency across the network.
 ---          
 
-!!! warning
-    Network Variables are also supported in base classes. If you are using a base class for network functionality, ensure that the base class name includes the `Base` prefix.  
-    
-    ???+ example
+### Base Class Support
+
+Network Variables support inheritance through base classes, allowing you to define shared networked state that derived classes can access and modify.
+
+!!! warning "Base Class Naming Convention"
+    When using Network Variables in base classes:
+
+    - Base class names **must** end with the `Base` suffix
+    - The suffix is required for proper code generation
+    - Incorrect naming will prevent network synchronization
+
+    ???+ example "Valid Base Class Names"
         ```csharp
-        public class PlayerBase : NetworkBehaviour // Note the "Base" prefix
-        {
-        }
-        
-        public class Player : PlayerBase
-        {
-        }
+        ✅ PlayerBase
+        ✅ CharacterBase
+        ✅ VehicleBase
+        ❌ BasePlayer    // Incorrect - 'Base' must be suffix
+        ❌ Player       // Missing 'Base' suffix
         ```
-   
-    This naming convention is required for the Network Variables to function correctly in inherited classes.
+
+???+ example "Base Class Implementation"
+    ```csharp
+    public partial class CharacterBase : NetworkBehaviour 
+    {
+        [NetworkVariable]
+        private float m_Health = 100f;  // Base class network variable
+        
+        protected virtual void OnHealthChanged(float prev, float next, bool isWriting)
+        {
+            Debug.Log($"Health changed from {prev} to {next}");
+        }
+    }
+    
+    public partial class Player : CharacterBase  // Inherits network variable
+    {
+        protected override void OnHealthChanged(float prev, float next, bool isWriting)
+        {
+            base.OnHealthChanged(prev, next, isWriting);
+            UpdateHealthUI(next);  // Add custom behavior
+        }
+    }
+    ```
+
+Network Variables defined in base classes are automatically available to all derived classes, maintaining synchronization across the inheritance chain while allowing customization through virtual hooks.
+
 
 !!! note
     Before proceeding, refer to the [Communication Structure](./index.md#communication-structure) and [Service Locator Pattern](./index.md#service-locator-pattern) pages for essential background information.
 
 ### How to Use
 
-!!! warning
-    **Naming Convention**: The field name must be prefixed with `m_` and the first letter after the prefix must be capitalized.
+!!! warning "Network Variable Inspector"
+    Network variables are automatically displayed in the Unity Inspector even without the `[SerializeField]` attribute. However, without this attribute they are read-only and not serialized.
 
-    - For example, `m_Health`
-    - For example, `m_Mana`
+    To make network variables both visible and editable in the Inspector:
+
+    - Add both `[NetworkVariable]` and `[SerializeField]` attributes
+    - This enables full serialization and editing capabilities
+    - Without `[SerializeField]`, values reset on scene reload
 
     ???+ example
         ```csharp
-        public partial class Player : NetworkBehaviour
+        public partial class Player : NetworkBehaviour 
         {
-            [NetworkVariable] 
+            [NetworkVariable]
+            [SerializeField] // Required for Inspector editing
             private float m_Health = 100f;
 
-            [NetworkVariable] 
-            private float m_Mana = 100f;
+            [NetworkVariable] // Displayed, but Read-only in Inspector
+            private float m_Stamina = 100f; 
         }
         ```
-    The class must be `partial` to use the `[NetworkVariable]` attribute.
+
+!!! warning "Network Variable Naming Requirements"
+    **Field Naming Convention**
+
+    Network variable fields must follow these rules:
+
+    1. Fields must be prefixed with `m_`
+    2. First letter after prefix must be capitalized
+    3. Class must be marked as `partial`
+
+    ✅ **Valid Examples:**
+    ```csharp
+    public partial class Player : NetworkBehaviour 
+    {
+        [NetworkVariable]
+        private float m_Health = 100f;  // Correct prefix and capitalization
+        
+        [NetworkVariable]
+        private Vector3 m_Position;      // Correct format
+    }
+    ```
+
+    ❌ **Invalid Examples:**
+    ```csharp
+    public class Player : NetworkBehaviour // Missing partial
+    {
+        [NetworkVariable]
+        private float health;      // Missing m_ prefix
+        
+        [NetworkVariable]
+        private float m_mana;      // Lowercase after prefix
+    }
+    ```
+
+    !!! note "Why partial?"
+        The `partial` keyword is required because the source generator needs to extend the class with additional generated code for network variable functionality.
 
 ---
 
-!!! note
-     The `Omni Source Generator` will generate properties, hooks, options, and methods for each `[NetworkVariable]`.
+!!! note "Network Variable Source Generation"
+    The `Omni Source Generator` automatically generates several elements for each `[NetworkVariable]`:
+
+    **Properties**:
+
+       - Public property for accessing the variable
+       - Getter/setter with network synchronization
+    
+    **Hooks**:
+
+       - `OnVariableChanged` method for value change detection
+       - `partial void` hooks for custom change handling
+       - Base class override hooks with `protected virtual` methods
+    
+    **Options**:
+
+       - Variable-specific network options (e.g., `HealthOptions`)
+       - Customizable delivery modes and target options
+       - Serialization and synchronization settings
+    
+    **Methods**:
+
+       - Manual sync methods (e.g., `SyncHealth()`)
+       - Value validation methods
+       - Networking utility methods
+
+    Example of generated elements for a health variable:
+    ```csharp 
+    // Generated property
+    public float Health { get; set; }
+    
+    // Generated hook
+    partial void OnHealthChanged(float prev, float next, bool isWriting);
+    virtual void OnHealthChanged(float prev, float next, bool isWriting);
+    
+    // Generated options
+    public NetworkVariableOptions HealthOptions { get; set; }
+    
+    // Generated sync method
+    public void SyncHealth(NetworkVariableOptions options);
+    ```
 
 #### Generated Properties
 
@@ -1066,7 +1423,7 @@ The `IMessageWithPeer` interface extends `IMessage` to include additional proper
                   if(IsServer)
                   {
                     // Send an RPC from the server to the client
-                    Remote.Invoke(1, m_PlayerStruct, new()
+                    Server.Rpc(1, m_PlayerStruct, new()
                     {
                     	DeliveryMode = DeliveryMode.Unreliable
                     });

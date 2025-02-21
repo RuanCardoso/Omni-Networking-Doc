@@ -54,6 +54,7 @@ nav:
   - Communication: communication.md
   - Spawning: spawning.md
   - API Reference: api_reference.md
+  - Database: database.md
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -79,3 +80,6 @@ markdown_extensions:
       custom_checkbox: true
   - toc:
       permalink: ⚓️
+plugins:
+  - with-pdf:
+      output_path: pdf/omni-documentation.pdf
