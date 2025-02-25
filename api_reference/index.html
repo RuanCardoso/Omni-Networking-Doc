@@ -2052,7 +2052,7 @@
 <ul>
 <li><strong>Signature</strong>:</li>
 <li><code>public static void Invoke(byte msgId, NetworkPeer peer, int identityId, byte instanceId, SyncOptions options)</code></li>
-<li><code>public static void Invoke(byte msgId, NetworkPeer peer, int identityId, byte instanceId, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</code></li>
+<li><code>public static void Invoke(byte msgId, NetworkPeer peer, int identityId, byte instanceId, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</code></li>
 </ul>
 <p>Description</p>
 <p>The <code>Invoke</code> method allows the server to execute a specific RPC on clients by targeting a <code>NetworkIdentity</code> and a specific script instance associated with that identity. The <code>identityId</code> identifies the object, while <code>instanceId</code> specifies the exact script instance on that object that should receive the RPC. This function provides options for message delivery such as buffer, target recipients, delivery reliability, grouping, and sequencing.</p>
@@ -2124,7 +2124,7 @@
 </tbody>
 </table>
 <p>Overloads</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Invoke (byte msgId, NetworkPeer peer, int identityId, byte instanceId, SyncOptions options)</label><label for="__tabbed_4_2">Invoke (byte msgId, NetworkPeer peer, int identityId, byte instanceId, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Invoke (byte msgId, NetworkPeer peer, int identityId, byte instanceId, SyncOptions options)</label><label for="__tabbed_4_2">Invoke (byte msgId, NetworkPeer peer, int identityId, byte instanceId, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Invokes an RPC using <code>SyncOptions</code> to specify buffer, target, delivery mode, group ID, data cache, and sequence channel, targeting both a <code>NetworkIdentity</code> and script instance.</p>
@@ -2183,7 +2183,7 @@
 <span class="normal"><a href="#__codelineno-4-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">// Example of invoking an RPC with SyncOptions targeting a specific identity and script instance</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="n">SyncOptions</span><span class="w"> </span><span class="n">syncOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SyncOptions</span><span class="p">(</span><span class="n">myDataBuffer</span><span class="p">)</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="p">{</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="n">Target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">Self</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="n">Target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">SelfOnly</span><span class="p">,</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="n">DeliveryMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DeliveryMode</span><span class="p">.</span><span class="n">Unreliable</span><span class="p">,</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="n">GroupId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">    </span><span class="n">DataCache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataCache</span><span class="p">.</span><span class="n">None</span><span class="p">,</span>
@@ -2282,7 +2282,7 @@
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">    </span><span class="n">identityId</span><span class="p">:</span><span class="w"> </span><span class="m">101</span><span class="p">,</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">    </span><span class="n">instanceId</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="p">,</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="n">buffer</span><span class="p">:</span><span class="w"> </span><span class="n">myDataBuffer</span><span class="p">,</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">    </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">All</span><span class="p">,</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">    </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">Auto</span><span class="p">,</span>
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="n">deliveryMode</span><span class="p">:</span><span class="w"> </span><span class="n">DeliveryMode</span><span class="p">.</span><span class="n">Unreliable</span><span class="p">,</span>
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">    </span><span class="n">groupId</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
 </span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">    </span><span class="n">dataCache</span><span class="p">:</span><span class="w"> </span><span class="n">DataCache</span><span class="p">.</span><span class="n">None</span><span class="p">,</span>
@@ -2311,7 +2311,7 @@
 <ul>
 <li><strong>Signature</strong>:</li>
 <li><code>public static void Invoke(byte msgId, NetworkPeer peer, int identityId, SyncOptions options)</code></li>
-<li><code>public static void Invoke(byte msgId, NetworkPeer peer, int identityId, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</code></li>
+<li><code>public static void Invoke(byte msgId, NetworkPeer peer, int identityId, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</code></li>
 </ul>
 <p>Description</p>
 <p>The <code>Invoke</code> method allows the server to execute a specific RPC on clients by using the unique <code>identityId</code> of a network identity. Unlike global RPCs, this method requires the identity ID to establish correspondence, ensuring that only scripts or objects tied to that identity will respond. This method offers flexibility for customizing message delivery with options such as buffer, target recipients, delivery reliability, grouping, and message sequencing.</p>
@@ -2378,7 +2378,7 @@
 </tbody>
 </table>
 <p>Overloads</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Invoke (byte msgId, NetworkPeer peer, int identityId, SyncOptions options)</label><label for="__tabbed_7_2">Invoke (byte msgId, NetworkPeer peer, int identityId, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Invoke (byte msgId, NetworkPeer peer, int identityId, SyncOptions options)</label><label for="__tabbed_7_2">Invoke (byte msgId, NetworkPeer peer, int identityId, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Invokes an RPC using a <code>SyncOptions</code> instance to specify buffer, target, delivery mode, group ID, data cache, and sequence channel.</p>
@@ -2432,7 +2432,7 @@
 <span class="normal"><a href="#__codelineno-6-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">// Example of invoking an RPC with SyncOptions targeting a specific identity</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">SyncOptions</span><span class="w"> </span><span class="n">syncOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SyncOptions</span><span class="p">(</span><span class="n">myDataBuffer</span><span class="p">)</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="p">{</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="n">Target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">Self</span><span class="p">,</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="n">Target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">SelfOnly</span><span class="p">,</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="n">DeliveryMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DeliveryMode</span><span class="p">.</span><span class="n">Unreliable</span><span class="p">,</span>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">    </span><span class="n">GroupId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span><span class="n">DataCache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataCache</span><span class="p">.</span><span class="n">None</span><span class="p">,</span>
@@ -2524,7 +2524,7 @@
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="n">clientPeer</span><span class="p">,</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="n">identityId</span><span class="p">:</span><span class="w"> </span><span class="m">101</span><span class="p">,</span>
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">    </span><span class="n">buffer</span><span class="p">:</span><span class="w"> </span><span class="n">myDataBuffer</span><span class="p">,</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">All</span><span class="p">,</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">Auto</span><span class="p">,</span>
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="n">deliveryMode</span><span class="p">:</span><span class="w"> </span><span class="n">DeliveryMode</span><span class="p">.</span><span class="n">Unreliable</span><span class="p">,</span>
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">    </span><span class="n">groupId</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">    </span><span class="n">dataCache</span><span class="p">:</span><span class="w"> </span><span class="n">DataCache</span><span class="p">.</span><span class="n">None</span><span class="p">,</span>
@@ -2553,7 +2553,7 @@
 <ul>
 <li><strong>Signature</strong>:</li>
 <li><code>public static void GlobalInvoke(byte msgId, NetworkPeer peer, SyncOptions options)</code></li>
-<li><code>public static void GlobalInvoke(byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</code></li>
+<li><code>public static void GlobalInvoke(byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</code></li>
 </ul>
 <p>Description</p>
 <p>The <code>GlobalInvoke</code> method allows the server to invoke a global RPC on connected clients. Unlike instance-based RPCs, <code>GlobalInvoke</code> does not require a specific script instance or identity, allowing any client-side script with the matching RPC to be called directly. This is ideal for general-purpose commands and broadcasts. The method offers flexible parameters for controlling the target recipients, delivery reliability, grouping, and message sequencing.</p>
@@ -2615,7 +2615,7 @@
 </tbody>
 </table>
 <p>Overloads</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">GlobalInvoke (byte msgId, NetworkPeer peer, SyncOptions options)</label><label for="__tabbed_10_2">GlobalInvoke (byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">GlobalInvoke (byte msgId, NetworkPeer peer, SyncOptions options)</label><label for="__tabbed_10_2">GlobalInvoke (byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Invokes an RPC on clients using a <code>SyncOptions</code> instance to specify buffer, target, delivery mode, group ID, data cache, and sequence channel.</p>
@@ -2664,8 +2664,8 @@
 <span class="normal"><a href="#__codelineno-8-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1">// Example of invoking a global RPC with SyncOptions</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">SyncOptions</span><span class="w"> </span><span class="n">syncOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SyncOptions</span><span class="p">(</span><span class="n">myDataBuffer</span><span class="p">)</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="p">{</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="n">Target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">All</span><span class="p">,</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="n">DeliveryMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DeliveryMode</span><span class="p">.</span><span class="n">Reliable</span><span class="p">,</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="n">Target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">Auto</span><span class="p">,</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="n">DeliveryMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DeliveryMode</span><span class="p">.</span><span class="n">ReliableOrdered</span><span class="p">,</span>
 </span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">    </span><span class="n">GroupId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">    </span><span class="n">DataCache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataCache</span><span class="p">.</span><span class="n">None</span><span class="p">,</span>
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">    </span><span class="n">SequenceChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
@@ -2749,8 +2749,8 @@
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span><span class="m">1</span><span class="p">,</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">    </span><span class="n">clientPeer</span><span class="p">,</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">    </span><span class="n">buffer</span><span class="p">:</span><span class="w"> </span><span class="n">myDataBuffer</span><span class="p">,</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">    </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">Self</span><span class="p">,</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">    </span><span class="n">deliveryMode</span><span class="p">:</span><span class="w"> </span><span class="n">DeliveryMode</span><span class="p">.</span><span class="n">Reliable</span><span class="p">,</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">    </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">SelfOnly</span><span class="p">,</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">    </span><span class="n">deliveryMode</span><span class="p">:</span><span class="w"> </span><span class="n">DeliveryMode</span><span class="p">.</span><span class="n">ReliableOrdered</span><span class="p">,</span>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">    </span><span class="n">groupId</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
 </span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">    </span><span class="n">dataCache</span><span class="p">:</span><span class="w"> </span><span class="n">DataCache</span><span class="p">.</span><span class="n">None</span><span class="p">,</span>
 </span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">    </span><span class="n">sequenceChannel</span><span class="p">:</span><span class="w"> </span><span class="m">0</span>
@@ -4589,7 +4589,7 @@
 <ul>
 <li><strong>Signature</strong>:</li>
 <li><code>public static void SendMessage(byte msgId, NetworkPeer peer, SyncOptions options)</code></li>
-<li><code>public static void SendMessage(byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</code></li>
+<li><code>public static void SendMessage(byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</code></li>
 </ul>
 <p>Description</p>
 <p>The <code>SendMessage</code> method provides multiple overloads to send a message through the network with flexible settings for various parameters. The method allows specifying the message ID, target peer, and delivery options like delivery mode, group ID, and sequence channel. This enables fine-grained control over how messages are delivered, such as targeting specific peers, ensuring message ordering, and managing data cache. <code>SendMessage</code> is typically used to send data from the server to clients or between clients.</p>
@@ -4651,7 +4651,7 @@
 </tbody>
 </table>
 <p>Overloads</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="41:2"><input checked="checked" id="__tabbed_41_1" name="__tabbed_41" type="radio" /><input id="__tabbed_41_2" name="__tabbed_41" type="radio" /><div class="tabbed-labels"><label for="__tabbed_41_1">SendMessage (byte msgId, NetworkPeer peer, SyncOptions options)</label><label for="__tabbed_41_2">SendMessage (byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="41:2"><input checked="checked" id="__tabbed_41_1" name="__tabbed_41" type="radio" /><input id="__tabbed_41_2" name="__tabbed_41" type="radio" /><div class="tabbed-labels"><label for="__tabbed_41_1">SendMessage (byte msgId, NetworkPeer peer, SyncOptions options)</label><label for="__tabbed_41_2">SendMessage (byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Sends a message using a <code>SyncOptions</code> instance to specify buffer, target, delivery mode, group ID, data cache, and sequence channel.</p>
@@ -4700,7 +4700,7 @@
 <span class="normal"><a href="#__codelineno-42-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="c1">// Example of sending a message with SyncOptions(optional)</span>
 </span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="n">SyncOptions</span><span class="w"> </span><span class="n">syncOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SyncOptions</span><span class="p">(</span><span class="n">myDataBuffer</span><span class="p">)</span>
 </span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3"></a><span class="p">{</span>
-</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="w">    </span><span class="n">Target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">All</span><span class="p">,</span>
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="w">    </span><span class="n">Target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">Auto</span><span class="p">,</span>
 </span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5"></a><span class="w">    </span><span class="n">DeliveryMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DeliveryMode</span><span class="p">.</span><span class="n">Unreliable</span><span class="p">,</span>
 </span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6"></a><span class="w">    </span><span class="n">GroupId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
 </span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7"></a><span class="w">    </span><span class="n">DataCache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataCache</span><span class="p">.</span><span class="n">None</span><span class="p">,</span>
@@ -4785,7 +4785,7 @@
 </span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3"></a><span class="w">    </span><span class="m">1</span><span class="p">,</span>
 </span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4"></a><span class="w">    </span><span class="n">clientPeer</span><span class="p">,</span>
 </span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5"></a><span class="w">    </span><span class="n">buffer</span><span class="p">:</span><span class="w"> </span><span class="n">myDataBuffer</span><span class="p">,</span>
-</span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6"></a><span class="w">    </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">All</span><span class="p">,</span>
+</span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6"></a><span class="w">    </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">Target</span><span class="p">.</span><span class="n">Auto</span><span class="p">,</span>
 </span><span id="__span-43-7"><a id="__codelineno-43-7" name="__codelineno-43-7"></a><span class="w">    </span><span class="n">deliveryMode</span><span class="p">:</span><span class="w"> </span><span class="n">DeliveryMode</span><span class="p">.</span><span class="n">Unreliable</span><span class="p">,</span>
 </span><span id="__span-43-8"><a id="__codelineno-43-8" name="__codelineno-43-8"></a><span class="w">    </span><span class="n">groupId</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
 </span><span id="__span-43-9"><a id="__codelineno-43-9" name="__codelineno-43-9"></a><span class="w">    </span><span class="n">dataCache</span><span class="p">:</span><span class="w"> </span><span class="n">DataCache</span><span class="p">.</span><span class="n">None</span><span class="p">,</span>
@@ -6240,36 +6240,6 @@
 
 
 
-
-  <aside class="md-source-file">
-    
-    
-    
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="Contributors">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/RuanCardoso" class="md-author" title="@RuanCardoso">
-          
-          <img src="https://avatars.githubusercontent.com/u/61716126?v=4&size=72" alt="RuanCardoso">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
-    
-  </aside>
 
 
 

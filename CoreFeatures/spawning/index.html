@@ -552,20 +552,14 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Simple Instantiation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manual-instantiation" class="md-nav__link">
     <span class="md-ellipsis">
       Manual Instantiation
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -606,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network-identity.md" class="md-nav__link">
+      <a href="../network-identity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -791,20 +785,14 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Simple Instantiation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manual-instantiation" class="md-nav__link">
     <span class="md-ellipsis">
       Manual Instantiation
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -832,10 +820,10 @@
 <p>Omni supports spawning objects on both the server and client, providing several methods for network object instantiation. In this guide, we’ll walk you through the available options, from the simplest to the most advanced approaches, enabling you to choose the best method based on your project’s requirements.</p>
 <p>Each method allows for a different level of control over networked objects, from basic automatic spawning to more complex, customizable instantiation processes.</p>
 <h2 id="simple-instantiation">Simple Instantiation<a class="headerlink" href="#simple-instantiation" title="Permanent link">⚓️</a></h2>
-<p>The <strong>Network Object Spawner</strong> component provides a quick and efficient way to instantiate networked objects, making it ideal for prototyping stages. This component simplifies the process by automatically handling the instantiation of both prefabs and scene objects over the network. </p>
-<p>With <strong>Network Object Spawner</strong>, you can set up networked objects with minimal configuration, allowing you to focus on testing gameplay and mechanics rather than complex network setups.</p>
+<p>The <strong>Network Identity Spawner</strong> component provides a quick and efficient way to instantiate networked objects, making it ideal for prototyping stages. This component simplifies the process by automatically handling the instantiation of both prefabs and scene objects over the network. </p>
+<p>With <strong>Network Identity Spawner</strong>, you can set up networked objects with minimal configuration, allowing you to focus on testing gameplay and mechanics rather than complex network setups.</p>
 <ul>
-<li>Add the <code>Network Object Spawner</code> component to any game object in your scene.</li>
+<li>Add the <code>Network Identity Spawner</code> component to any game object in your scene.</li>
 </ul>
 <table>
 <thead>
@@ -850,17 +838,22 @@
 <td>A <code>NetworkIdentity</code> reference for the object that will be controlled by the local player. This object will receive input and commands directly from the local player.</td>
 </tr>
 <tr>
-<td><strong>Objects to Spawn</strong></td>
+<td><strong>Identities to Spawn</strong></td>
 <td>A list of <code>NetworkIdentity</code> references for objects to be managed by the server. These objects will be instantiated over the network and controlled by the server.</td>
 </tr>
 </tbody>
 </table>
-<p>Using this setup, the <code>Network Object Spawner</code> manages instantiation and synchronization, simplifying networked spawning for both player-controlled and server-managed objects.</p>
+<p>Using this setup, the <code>Network Identity Spawner</code> manages instantiation and synchronization, simplifying networked spawning for both player-controlled and server-managed objects.</p>
 <div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can add either a prefab or a scene object to the <strong>Local Player</strong> or <strong>Objects to Spawn</strong> list, depending on your project’s requirements.</p>
+<p class="admonition-title">Object Assignment Flexibility</p>
+<ul>
+<li><strong>Local Player</strong>: Can be assigned either a prefab or scene object that will be controlled by the local player</li>
+<li><strong>Identities to Spawn</strong>: Accepts both prefabs and scene objects that need network synchronization</li>
+<li>Each object must have a NetworkIdentity component attached</li>
+<li>This component is designed for rapid prototyping only and should not be used in production environments</li>
+</ul>
 </div>
-<h3 id="manual-instantiation">Manual Instantiation<a class="headerlink" href="#manual-instantiation" title="Permanent link">⚓️</a></h3>
+<h2 id="manual-instantiation">Manual Instantiation<a class="headerlink" href="#manual-instantiation" title="Permanent link">⚓️</a></h2>
 <p>If you want to instantiate a networked object manually in a straightforward way, here are some examples to guide you. Manual instantiation provides you with more control over when and where the networked object appears in the scene, ideal for scenarios where specific logic or conditions dictate object creation. </p>
 <p>Follow these examples to quickly and easily get started with manual instantiation of networked objects in your project.</p>
 <p><strong>First example:</strong></p>
