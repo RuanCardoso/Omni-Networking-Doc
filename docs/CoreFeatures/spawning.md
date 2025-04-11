@@ -6,23 +6,26 @@ Each method allows for a different level of control over networked objects, from
 
 ## Simple Instantiation
 
-The **Network Object Spawner** component provides a quick and efficient way to instantiate networked objects, making it ideal for prototyping stages. This component simplifies the process by automatically handling the instantiation of both prefabs and scene objects over the network. 
+The **Network Identity Spawner** component provides a quick and efficient way to instantiate networked objects, making it ideal for prototyping stages. This component simplifies the process by automatically handling the instantiation of both prefabs and scene objects over the network. 
 
-With **Network Object Spawner**, you can set up networked objects with minimal configuration, allowing you to focus on testing gameplay and mechanics rather than complex network setups.
+With **Network Identity Spawner**, you can set up networked objects with minimal configuration, allowing you to focus on testing gameplay and mechanics rather than complex network setups.
 
-- Add the `Network Object Spawner` component to any game object in your scene.
+- Add the `Network Identity Spawner` component to any game object in your scene.
 
 | Field               | Description                                                                                                                                                       |
 |---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Local Player**    | A `NetworkIdentity` reference for the object that will be controlled by the local player. This object will receive input and commands directly from the local player. |
-| **Objects to Spawn** | A list of `NetworkIdentity` references for objects to be managed by the server. These objects will be instantiated over the network and controlled by the server.   |
+| **Identities to Spawn** | A list of `NetworkIdentity` references for objects to be managed by the server. These objects will be instantiated over the network and controlled by the server.   |
 
-Using this setup, the `Network Object Spawner` manages instantiation and synchronization, simplifying networked spawning for both player-controlled and server-managed objects.
+Using this setup, the `Network Identity Spawner` manages instantiation and synchronization, simplifying networked spawning for both player-controlled and server-managed objects.
 
-!!! tip
-    You can add either a prefab or a scene object to the **Local Player** or **Objects to Spawn** list, depending on your project’s requirements.
+!!! tip "Object Assignment Flexibility"
+    - **Local Player**: Can be assigned either a prefab or scene object that will be controlled by the local player
+    - **Identities to Spawn**: Accepts both prefabs and scene objects that need network synchronization
+    - Each object must have a NetworkIdentity component attached
+    - This component is designed for rapid prototyping only and should not be used in production environments
 
-### Manual Instantiation
+## Manual Instantiation
 
 If you want to instantiate a networked object manually in a straightforward way, here are some examples to guide you. Manual instantiation provides you with more control over when and where the networked object appears in the scene, ideal for scenarios where specific logic or conditions dictate object creation. 
 

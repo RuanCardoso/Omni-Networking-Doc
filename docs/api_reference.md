@@ -116,7 +116,7 @@ Invokes a Remote Procedure Call (RPC) on clients, targeting a specific network i
 
 - **Signature**:
   - `public static void Invoke(byte msgId, NetworkPeer peer, int identityId, byte instanceId, SyncOptions options)`
-  - `public static void Invoke(byte msgId, NetworkPeer peer, int identityId, byte instanceId, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)`
+  - `public static void Invoke(byte msgId, NetworkPeer peer, int identityId, byte instanceId, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)`
 
 Description
 
@@ -157,7 +157,7 @@ Overloads
         // Example of invoking an RPC with SyncOptions targeting a specific identity and script instance
         SyncOptions syncOptions = new SyncOptions(myDataBuffer)
         {
-            Target = Target.Self,
+            Target = Target.SelfOnly,
             DeliveryMode = DeliveryMode.Unreliable,
             GroupId = 0,
             DataCache = DataCache.None,
@@ -166,7 +166,7 @@ Overloads
         NetworkManager.Server.Invoke(1, clientPeer, identityId: 101, instanceId: 5, syncOptions);
         ```
 
-=== "Invoke (byte msgId, NetworkPeer peer, int identityId, byte instanceId, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)"
+=== "Invoke (byte msgId, NetworkPeer peer, int identityId, byte instanceId, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)"
     Invokes an RPC with detailed parameters for buffer, target, delivery mode, grouping, and sequencing, targeting both a `NetworkIdentity` and script instance.
 
     | Parameter         | Type              | Description                                                  |
@@ -192,7 +192,7 @@ Overloads
             identityId: 101,
             instanceId: 5,
             buffer: myDataBuffer,
-            target: Target.All,
+            target: Target.Auto,
             deliveryMode: DeliveryMode.Unreliable,
             groupId: 0,
             dataCache: DataCache.None,
@@ -219,7 +219,7 @@ Invokes a Remote Procedure Call (RPC) on clients, targeting a specific network i
 
 - **Signature**:
   - `public static void Invoke(byte msgId, NetworkPeer peer, int identityId, SyncOptions options)`
-  - `public static void Invoke(byte msgId, NetworkPeer peer, int identityId, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)`
+  - `public static void Invoke(byte msgId, NetworkPeer peer, int identityId, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)`
 
 Description
 
@@ -258,7 +258,7 @@ Overloads
         // Example of invoking an RPC with SyncOptions targeting a specific identity
         SyncOptions syncOptions = new SyncOptions(myDataBuffer)
         {
-            Target = Target.Self,
+            Target = Target.SelfOnly,
             DeliveryMode = DeliveryMode.Unreliable,
             GroupId = 0,
             DataCache = DataCache.None,
@@ -267,7 +267,7 @@ Overloads
         NetworkManager.Server.Invoke(1, clientPeer, identityId: 101, syncOptions);
         ```
 
-=== "Invoke (byte msgId, NetworkPeer peer, int identityId, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)"
+=== "Invoke (byte msgId, NetworkPeer peer, int identityId, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)"
     Invokes an RPC with detailed parameters for buffer, target, delivery mode, grouping, and sequencing.
 
     | Parameter         | Type              | Description                                                  |
@@ -291,7 +291,7 @@ Overloads
             clientPeer,
             identityId: 101,
             buffer: myDataBuffer,
-            target: Target.All,
+            target: Target.Auto,
             deliveryMode: DeliveryMode.Unreliable,
             groupId: 0,
             dataCache: DataCache.None,
@@ -318,7 +318,7 @@ Invokes a global Remote Procedure Call (RPC) on clients, independent of script i
 
 - **Signature**:
   - `public static void GlobalInvoke(byte msgId, NetworkPeer peer, SyncOptions options)`
-  - `public static void GlobalInvoke(byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)`
+  - `public static void GlobalInvoke(byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)`
 
 Description
 
@@ -355,8 +355,8 @@ Overloads
         // Example of invoking a global RPC with SyncOptions
         SyncOptions syncOptions = new SyncOptions(myDataBuffer)
         {
-            Target = Target.All,
-            DeliveryMode = DeliveryMode.Reliable,
+            Target = Target.Auto,
+            DeliveryMode = DeliveryMode.ReliableOrdered,
             GroupId = 0,
             DataCache = DataCache.None,
             SequenceChannel = 0
@@ -364,7 +364,7 @@ Overloads
         NetworkManager.Server.GlobalInvoke(1, clientPeer, syncOptions);
         ```
 
-=== "GlobalInvoke (byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)"
+=== "GlobalInvoke (byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)"
     Invokes an RPC on clients with detailed parameters for buffer, target, delivery mode, grouping, and sequencing.
 
     | Parameter         | Type              | Description                                                  |
@@ -386,8 +386,8 @@ Overloads
             1,
             clientPeer,
             buffer: myDataBuffer,
-            target: Target.Self,
-            deliveryMode: DeliveryMode.Reliable,
+            target: Target.SelfOnly,
+            deliveryMode: DeliveryMode.ReliableOrdered,
             groupId: 0,
             dataCache: DataCache.None,
             sequenceChannel: 0
@@ -1394,7 +1394,7 @@ Sends a message from the server to a client or from a client to other networked 
 
 - **Signature**:
   - `public static void SendMessage(byte msgId, NetworkPeer peer, SyncOptions options)`
-  - `public static void SendMessage(byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)`
+  - `public static void SendMessage(byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)`
 
 Description
 
@@ -1431,7 +1431,7 @@ Overloads
         // Example of sending a message with SyncOptions(optional)
         SyncOptions syncOptions = new SyncOptions(myDataBuffer)
         {
-            Target = Target.All,
+            Target = Target.Auto,
             DeliveryMode = DeliveryMode.Unreliable,
             GroupId = 0,
             DataCache = DataCache.None,
@@ -1440,7 +1440,7 @@ Overloads
         NetworkManager.Server.SendMessage(1, clientPeer, syncOptions);
         ```
 
-=== "SendMessage (byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.All, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)"
+=== "SendMessage (byte msgId, NetworkPeer peer, DataBuffer buffer = null, Target target = Target.Auto, DeliveryMode deliveryMode = DeliveryMode.ReliableOrdered, int groupId = 0, DataCache dataCache = default, byte sequenceChannel = 0)"
     Sends a message with detailed parameters for target, delivery mode, grouping, and sequence channel.
 
     | Parameter         | Type              | Description                                                  |
@@ -1462,7 +1462,7 @@ Overloads
             1,
             clientPeer,
             buffer: myDataBuffer,
-            target: Target.All,
+            target: Target.Auto,
             deliveryMode: DeliveryMode.Unreliable,
             groupId: 0,
             dataCache: DataCache.None,

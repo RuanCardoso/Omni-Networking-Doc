@@ -450,7 +450,7 @@ using var data = Rent();
 data.WriteString("Hello World!");
 
 Server.Rpc(rpcId);                    // Broadcast to all(default)
-Server.Rpc(rpcId, data, Target.All);  // Targeted broadcast
+Server.Rpc(rpcId, data, Target.AllPlayers);  // Targeted broadcast
 Server.Rpc(rpcId, data, Target.AllExceptSelf, DeliveryMode.ReliableOrdered); // Targeted broadcast with delivery mode
 Server.Rpc(rpcId, data, Target.GroupOnly, DeliveryMode.ReliableOrdered, 10); // Targeted broadcast with delivery mode and sequence channel
 Server.Rpc(rpcId, transform.position, transform.rotation, new ServerOptions() { 
@@ -553,7 +553,7 @@ Both properties enforce proper client-server architecture by restricting access 
                    using DataBuffer message = Rent();
                    message.WriteString("Hello World!");
                    message.Write(123f);
-                   Server.Rpc(1, message, Target.All, DeliveryMode.ReliableOrdered);
+                   Server.Rpc(1, message, Target.AllPlayers, DeliveryMode.ReliableOrdered);
                }
             }
     
@@ -884,13 +884,13 @@ Generated properties in Omni are designed to automatically synchronize their val
                 HealthOptions = new()
                 {
                     DeliveryMode = DeliveryMode.ReliableOrdered,
-                    Target = Target.All
+                    Target = Target.AllPlayers
                 };
 
                 ManaOptions = new()
                 {
                     DeliveryMode = DeliveryMode.ReliableOrdered,
-                    Target = Target.All
+                    Target = Target.AllPlayers
                 };
             }
         }

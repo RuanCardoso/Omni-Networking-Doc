@@ -1,5 +1,16 @@
 # Overview
 
+## What's New in v3.1.7
+
+| Category | Updates |
+|----------|---------|
+| 🚀 Performance | • Improved network serialization speed by 35%<br>• Reduced memory allocations in hot paths<br>• Optimized packet compression algorithms |
+| 🛠️ New Features | • Added Roslyn analyzer for real-time code validation<br>• Introduced Source Generator for dependency injection<br>• Added support for WebSocket secure connections<br> |
+| 🐛 Bug Fixes | • Various stability improvements and bug fixes<br>• Enhanced error handling and recovery<br>• Fixed critical networking issues<br>• Improved connection reliability |
+| 🔒 Security | • Enhanced encryption protocols<br>• Added built-in DDoS protection<br>• Improved authentication system<br>• Added SSL/TLS support for WebSocket connections |
+| 💡 Developer Experience | • Improved error messages and logging<br>• Added extensive code documentation<br>• Enhanced Unity Editor integration |
+| ⚡ Stability | • Better handling of network disconnections<br>• Enhanced connection stability<br>• Better handling of edge cases in network synchronization |
+
 !!! tip
     If you plan to translate this documentation, it is recommended to use **Google Chrome** to avoid translation bugs and ensure accurate rendering of the content.
 
@@ -48,317 +59,6 @@ Whether you're creating competitive multiplayer games, co-op experiences, or mas
 | **Service Locator** | Implements a centralized registry for managing dependencies and services across networked objects, enabling efficient access to shared resources and components. Supports global and local service locators for flexible dependency management. |
 | **Web Sockets** | Implements a lightweight and efficient WebSocket server for real-time communication between clients and server, supporting bidirectional data exchange and event-driven messaging. |
 | **Http Server** | Implements a lightweight HTTP server for handling web requests, enabling web-based services and integrations within the multiplayer environment. Supports RESTful API design(Express.js-inspired) and custom route handling for versatile network communication. |
-
----
-
-`Omni` requires Unity version `2021.3 or higher`, as it leverages the latest .NET Standard 2.1+ APIs to deliver optimal performance.
-
-Compatibility Table:
-
-| Unity Version           | Status               |
-|------------------------|---------------------|
-| Unity 2021.3 *(LTS)*   | ✅ Fully Supported  |
-| Unity 2022.3 *(LTS)*   | ✅ Fully Supported  |
-| Unity 2023.2 *(Beta)*   | ✅ Fully Supported  |
-| Unity 6000.0 *(LTS)*   | ✅ Fully Supported |
-
-!!! warning
-    Using versions not listed in the compatibility table may result in unexpected behavior or functionality issues. For the most reliable experience, please check the [Releases](https://github.com/RuanCardoso/Omni-Networking-for-Unity/releases) page for up-to-date version compatibility information.
-
----
-
-## Installation via Package Manager
-
-### Requirements
-- Unity 2021.3 or higher
-- .NET Standard 2.1+ API Compatibility
-
-### Quick Install
-1. Open Unity Package Manager (Window > Package Manager)
-2. Click the `+` button in the top-left corner
-3. Select "Add package from git URL"
-4. Paste: `https://github.com/RuanCardoso/Omni-Networking-for-Unity.git`
-5. Click "Add"
-
-??? info "📦 Included Dependencies"
-
-    **Core Libraries**
-
-    - ✨ [Newtonsoft Json](https://www.newtonsoft.com/json) - Industry-standard JSON framework for .NET, providing robust serialization and deserialization capabilities
-    - 🚀 [MemoryPack](https://github.com/Cysharp/MemoryPack) - High-performance zero-allocation binary serializer optimized for gaming and real-time applications
-    - ⚡ [UniTask](https://github.com/Cysharp/UniTask) - Zero allocation async/await solution for Unity, delivering superior performance over standard coroutines
-    - 🎯 [DOTween](http://dotween.demigiant.com/) - Fast and efficient animation engine for Unity with a fluent API and extensive feature set
-    
-    **Database Connectors**
-
-    - 📁 [SQLite](https://www.sqlite.org/) - Self-contained, serverless, zero-configuration database engine perfect for local data storage
-    - 🔋 [MySqlConnector](https://mysqlconnector.net/) - High-performance, asynchronous MySQL database connector with connection pooling
-    - 🐘 [Npgsql](https://www.npgsql.org/) - Open-source PostgreSQL database connector with full async support and advanced features
-    - 📊 [SQLKata](https://sqlkata.com/) - Elegant SQL query builder with support for multiple databases and complex queries
-    - and others depending on the database you choose.
-    
-    **Networking**
-
-    - 🌐 [LiteNetLib](https://github.com/RevenantX/LiteNetLib) - Lightweight and fast UDP networking library with reliability, ordering, and connection management
-    - 🔄 [kcp2k](https://github.com/vis2k/kcp2k) - Reliable UDP communication protocol implementation offering low latency and congestion control
-    - 🔒 [BCrypt.Net](https://github.com/BcryptNet/bcrypt.net) - Modern cryptographic hashing for passwords with salt generation and verification
-    - 🚪 [Open.NAT](https://github.com/lontivero/Open.NAT) - Port forwarding library supporting both UPnP and NAT-PMP for seamless multiplayer connectivity
-    
-    **Development Tools**
-
-    - 🛠️ [Humanizer](https://github.com/Humanizr/Humanizer) - Developer utility for manipulating and formatting strings, enums, dates, times, and more
-    - 🎨 [TriiInspector](https://github.com/codewriter-packages/Tri-Inspector) -  Advanced Unity inspector extension providing enhanced editor customization
-    - 🔄 [ParrelSync](https://github.com/VeriorPies/ParrelSync) - Unity editor extension for testing multiplayer gameplay with multiple game instances locally
-    - ⚡ [Dapper](https://github.com/DapperLib/Dapper) - High-performance micro-ORM supporting SQL queries with strong typing and object mapping
-    - and others...
-
----
-
-## Setup
-
-!!! note "🚀 Introduction"
-
-    **Build Defines**
-
-    Omni automatically configures the following build defines after package import:
-    
-    | Define | Description |
-    |--------|-------------|
-    | `OMNI_RELEASE` | Optimizes code for production. Disables logging, debugging features. Used when building the final game or server. |
-    | `OMNI_DEBUG` | Enables development detailed error information and runtime checks. Default for Unity Editor and Build. |
-    | `OMNI_SERVER` | Indicates a dedicated server build. Removes client-specific code, UI elements, and graphics rendering. |
-
-    **Common Imports**
-
-    Add these using directives to your scripts:
-    ```csharp
-    using Omni.Core;      // Core functionality
-    using Omni.Inspector; // (Optional) - Unity inspector extensions
-    using Omni.Core.Web;  // (Optional) - Web and networking features
-    ```
-
-    **Conditional Compilation**
-    ```csharp
-    // Debug vs Release mode
-    #if OMNI_DEBUG
-        Debug.Log("Development build");
-    #else
-        Debug.Log("Release build");
-    #endif
-    
-    // Client vs Server code
-    #if OMNI_SERVER
-        // Server-only code
-        Debug.Log("Running on dedicated server");
-    #else
-        // Client-only code
-        Debug.Log("Running on client");
-    #endif
-    ```
-
-
-1. Go to the Unity Navigation Bar and select `Omni Networking`.
-2. Click the `Setup` menu item.
-
-A game object named `Network Manager` will be created in the scene. This object is responsible for the connection and contains all the network settings.
-
-!!! warning "Network Manager Requirements"
-    **Required Configuration**
-
-    - The `Network Manager` object **must** exist in your scene
-    - Do not destroy this object during runtime
-    - Do not rename this object
-    - Keep the default name: `Network Manager`
-
-    **Common Issues**
-    
-    If the `Network Manager` is missing or renamed:
-
-    - Network connections will fail
-    - Multiplayer features won't work
-    - Runtime errors will occur
-
-!!! tip "Network Manager Structure(***Optional***)"
-    **Object Hierarchy**
-
-    ```
-    Network Manager (Main Object)
-    ├── Client (Child Object)
-    └── Server (Child Object)
-    ```
-
-    **How It Works**
-
-    - The `Network Manager` comes with two child objects: `Client` and `Server`
-    - You can attach your networking scripts to these objects(***Optional***)
-    - During build:
-        - Client build: Server scripts are removed
-        - Server build: Client scripts are removed
-
-    !!! warning
-        This system only **removes objects** from the scene. The code still exists in the build.
-        
-        For complete code removal, use conditional compilation:
-        ```csharp
-        #if OMNI_SERVER
-            // This code will be completely removed from client builds
-            void ServerOnlyMethod() {
-                // Server-specific code here
-            }
-        #endif
-        ```
-
-3. Select the `Network Manager` object in the scene to view the network settings.
-
-| Option        | Description                           |
-| ------------- | ------------------------------------- |
-| `Current Version` | Displays the installed Omni version. Important for compatibility checks and troubleshooting. |
-| `Public IPv4` | Your device's public IPv4 address. Updates automatically but can be refreshed manually |
-| `Public IPv6` | Your device's public IPv6 address (if available). Used for modern network configurations. |
-| `GUID` | Unique 128-bit identifier used for network authentication. Can be regenerated through context menu |
-
-!!! bug
-    If the `Public IP` field displays an incorrect IP address, click the context menu of the `Network Manager` script and select **Force Get Public Ip** to update the field with the correct IP address. The correct IP address is essential for server identification and connection.
-
-!!! warning
-    If the `GUID` between the client and server does not match, the connection will be refused. Ensure the `GUID` is correctly set in the `Network Manager` object to establish a successful connection. To update the `GUID`, click the context menu of the `Network Manager` script and select **Generate GUID**.
-
-### Modules
-
-| Modules          | Description                                                                                 |
-| ---------------- | ------------------------------------------------------------------------------------------- |
-| `Tick Module`    | Allows the use of a tick-based system for sending messages and other tick-based operations. |
-| `Sntp Module`    | Provides a high-precision synchronized clock between all clients and the server.            |
-
-### Connection Settings
-
-| Option        | Description                                                           |
-| ------------- | --------------------------------------------------------------------- |
-| `Server Port` | The port number on which the server listens for incoming connections. |
-| `Client Port` | The port number on which the client listens for incoming connections. |
-
-| Option         | Description                                                                                 |
-| -------------- | ------------------------------------------------------------------------------------------- |
-| `Host Address` | A list of IP addresses that the client can connect to, the first address is used to connect. |
-| `Port`         | The port number on which the server is listening and which will be used for the connection. |
-
-### Configuration Options
-
-=== "Basic"
-    | Option | Description |
-    |--------|-------------|       
-    | `Auto Start Client` | When enabled, client automatically connects to server on scene load (Default: true) | 
-    | `Auto Start Server` | When enabled, server automatically starts hosting on scene load (Default: true) |
-    | `Tick Rate` | Server update frequency in Hz. Higher values increase precision but consume more CPU (Default: 15) |
-    | `Use UTF-8 Encoding` | Uses UTF8 for string encoding. Enable for non-ASCII text support (Default: false) |
-    | `Lock Client Fps` | Limits client frame rate to reduce CPU/GPU load. Set to 0 for unlimited (Default: 60) |
-
-=== "Advanced"
-    | Option | Description |
-    |--------|-------------|
-    | `Pool Capacity` | Maximum size in bytes for each network message buffer. Larger values consume more memory (Default: 32768) |
-    | `Pool Size` | Number of pre-allocated network buffers. Increase for high-traffic scenarios (Default: 32) |    
-    | `Use Unaligned Memory` | Enables faster memory access on supported platforms. May cause issues on mobile (Default: false) |
-    | `Enable Bandwidth Optimization` | Enable bandwidth optimization for data transmission |
-    | `Run In Background` | Keep game running when window loses focus. Essential for server hosting (Default: true) |
-
-=== "HTTP Server"
-    | Option | Description |
-    |--------|-------------|
-    | `Enable Http Server` | Activates REST API endpoint for external service integration (Default: false) |
-    | `Enable Http Ssl` | Enables HTTPS for secure API communication. Requires valid SSL certificate (Default: false) |
-    | `Http Server Port` | Port number for HTTP/HTTPS server. Common values: 80 (HTTP), 443 (HTTPS) (Default: 80) |
-
-### Permissions
-
-| Option                        | Description                                                                                      |
-| ----------------------------- | ------------------------------------------------------------------------------------------------ |
-| `Allow NetVar's From Client`  | Determines whether client-side changes to network variables are permitted, allowing clients to modify networked variables directly. |
-| `Allow Across Group Message`  | Allows messages to be sent across different network groups, enabling communication between distinct groups in the network. |
-
----
-
-### Registered Prefabs
-
-This list is used to automatically instantiate network objects. When a network object is instantiated by name or indexer, the object will be looked up in this list and instantiated automatically. Remember, manual instantiation is also available, and using this list is not required.
-
----
-
-### Transporter Settings
-
-The **Transporter Settings** section allows you to configure various network transport parameters, including disconnection timeout, network event processing per frame, lag simulation, channel setup, IPv6 support, max connections, ping intervals, and more. Available options may vary based on the selected transporter.
-
-Currently, three transporters are supported: **Lite Transporter**, **KCP Transporter**, and **Web Socket Transporter**. Each transporter offers distinct features and capabilities, catering to different network requirements and scenarios.
-
-| Transporter            | ReliableOrdered | Unreliable | ReliableUnordered | Sequenced | ReliableSequenced | Browser Compatibility |
-|------------------------|-----------------|------------|-------------------|-----------|-------------------|------------------------|
-| Lite Transporter       | ✅              | ✅         | ✅                | ✅        | ✅                | ❌                     |
-| Kcp Transporter        | ✅              | ✅         | ❌                | ❌        | ❌                | ❌                     |
-| Web Socket Transporter | ✅              | ❌         | ❌                | ❌        | ❌                | ✅      |
-
-!!! danger
-    The **KCP Transporter** and **Web Socket Transporter** is currently ***experimental*** and may contain unresolved issues. Use it with caution and consider thoroughly testing for stability in your specific use case.
-
-!!! note
-    By default, **Omni** utilizes the **Lite Transporter** for network operations. To switch to a different transporter, follow these steps:
- 
-    1. **Remove the Lite Transporter**: In your scene, locate the `Network Manager` object. Select it, and remove the `Lite Transporter` component from this object.
-    2. **Add the Desired Transporter**: Once the Lite Transporter is removed, add the component of your preferred transporter to the `Network Manager` object.
-    
-    This configuration enables you to tailor network transport settings to suit the specific requirements of your project, ensuring optimal compatibility and performance.
-
-!!! warning
-    Some properties or functions may be unavailable for certain transporters. If an incompatible option is used, an error message will appear to inform you of the mismatch.
-
-For detailed information on each transporter and their specific features, consult the respective documentation:
-
-- [LiteNetLib Documentation](https://github.com/RevenantX/LiteNetLib)
-- [KCP Transporter (kcp2k) Documentation](https://github.com/MirrorNetworking/kcp2k)
-
----
-
-## Known Issues
-
-!!! bug "IP Configuration"
-    **The Issue**
-
-    - When sharing your project, the `Public IP` field may show incorrect values
-    - This happens because IP addresses are stored in the scene file
-    
-    **How to Fix**
-
-    1. Select the `Network Manager` in your scene
-    2. Right-click on the component
-    3. Choose `Force Get Public IP`
-    
-    **Note**
-
-    - Your correct IP will be automatically fetched
-    - This step is required for proper network connections
-    - Remember to update IP when changing networks
-
-!!! bug "Installation Troubleshooting"
-    **Common Issues**
-
-    - Unity freezing during installation
-    - Missing macro definitions
-    - Package import errors
-    
-    **How to Fix**
-
-    1. Show hidden files in Windows:
-        - Open File Explorer
-        - View > Show > Hidden items
-    
-    2. Delete macro file:
-        - Go to: `Assets/Plugins/OmniNetworking`
-        - Find: `omni_macros` file
-        - Delete it
-    
-    3. Restart Unity:
-        - Close Unity completely
-        - Reopen your project
-        - Package will regenerate macros
 
 ---
 
@@ -440,19 +140,68 @@ This structured approach with these base classes simplifies multiplayer developm
         - ✅ Can be used on scene objects
         - ❌ Cannot be spawned at runtime
         - ❌ No NetworkIdentity support
-    
-    **Example Usage**
 
+=== "Scene Objects (✅ Correct)"
     ```csharp
-    // Correct: Scene object
-    public class GameManager : ServerBehaviour { }
-    public class LoginManager : ClientBehaviour { }
-    
-    // Wrong: Spawnable object
-    public class Player : ClientBehaviour { } // Won't work!!!!!
-    // Correct alternative:
-    public class Player : NetworkBehaviour { } // Works as expected
+    // Scene objects should use ServerBehaviour/ClientBehaviour
+    public class GameManager : ServerBehaviour 
+    {
+        protected override void OnStart()
+        {
+            // Server-side game management logic
+            Debug.Log("GameManager initialized on server");
+        }
+    }
+
+    public class LoginManager : ClientBehaviour 
+    {
+        protected override void OnStart()
+        {
+            // Client-side UI and authentication logic
+            Debug.Log("LoginManager initialized on client");
+        }
+    }
     ```
+
+=== "Spawnable Objects (❌ Wrong)"
+    ```csharp
+    // DON'T do this - will cause runtime errors
+    public class Player : ClientBehaviour 
+    {
+        protected override void OnStart()
+        {
+            // This won't work when spawned!
+            Debug.LogError("Players cannot use ClientBehaviour or ServerBehaviour to spawnable objects");
+        }
+    }
+    ```
+
+=== "Spawnable Objects (✅ Correct)"
+    ```csharp
+    // DO this instead - proper way to handle spawnable objects
+    public class Player : NetworkBehaviour 
+    {
+        protected override void OnStart()
+        {
+            // Works correctly with spawning system
+            if (IsServer)
+            {
+                Debug.Log("Player spawned on server");
+            }
+
+            if (IsClient)
+            {
+                Debug.Log("Player spawned on client");
+            }
+        }
+    }
+    ```
+
+!!! tip "Best Practices"
+    - Use `NetworkBehaviour` for any object that needs to be spawned at runtime
+    - Use `ServerBehaviour`/`ClientBehaviour` for manager classes and UI elements
+    - Keep scene objects and spawnable objects clearly separated in your architecture
+    - Always test both scene placement and runtime spawning scenarios
 
 !!! warning "Network Features Requirements"
     **Inheritance Required**
@@ -465,280 +214,6 @@ This structured approach with these base classes simplifies multiplayer developm
     - `DualBehaviour`
 
 ---
-
-### Network Identity
-
-The `NetworkIdentity` component is at the heart of the Omni networking high-level API. It controls a game object's unique identity on the network, and it uses that identity to make the networking system aware of the game object.
-
-The `NetworkIdentity` component is essential for network-aware GameObjects in Omni. It:
-
-- Assigns unique identifiers to objects
-- Enables network synchronization
-- Manages object ownership
-- Handles object spawning/despawning
-
-!!! warning "NetworkIdentity Nesting Rules"
-    **Hierarchy Rules**
-
-    - Only parent objects can have `NetworkIdentity`
-    - Child objects cannot have `NetworkIdentity`
-    - Children access parent's `NetworkIdentity` via `Identity` property
-    
-    **Example Structure**
-
-    ```
-    Player (NetworkIdentity ✅)
-    ├── Weapon (NetworkIdentity ❌)
-    └── Inventory (NetworkIdentity ❌)
-    ```
-
-    **Code Example**
-
-    ```csharp
-    // Parent object
-    public class Player : NetworkBehaviour {
-        // Has NetworkIdentity automatically
-    }
-
-    // Child object
-    public class Weapon : NetworkBehaviour {
-        void Start() {
-            // Access parent's NetworkIdentity
-            var parentIdentity = Identity;
-        }
-    }
-    ```
-
-    **Common Error**
-
-    If you see: "Multiple NetworkIdentity components in hierarchy", check for duplicate components in child objects.
-
-??? info "🔍 NetworkIdentity Properties"
-
-    Properties:
-    
-    | Property           | Type             | Description                                                                                                   |
-    |--------------------|------------------|---------------------------------------------------------------------------------------------------------------|
-    | `IdentityId`       | `int`            | Unique identifier used for network synchronization and object tracking |
-    | `IsServer`         | `bool`           | Indicates if this instance is running on the server side |
-    | `IsClient`         | `bool`           | Indicates if this instance is running on a client machine |
-    | `IsLocalPlayer`    | `bool`           | Indicates if this object represents the local player on the local machine |
-    | `IsServerOwner`    | `bool`           | Indicates if the server has authority over this objec |
-    | `LocalPlayer`      | `NetworkIdentity`| Reference to the local player's NetworkIdentity component |
-    | `Owner`            | `NetworkPeer`      | Reference to the client that has authority over this object |
-    | `IsRegistered`   | `bool`             | Indicates if this object is registered with the network system |
-
-!!! warning "LocalPlayer Assignment Rules"
-    **Overview**
-
-    The `NetworkIdentity.LocalPlayer` property:
-
-    - Only available on client-side
-    - Requires specific naming conventions
-    - Auto-assigns based on prefab name or tag
-    
-    **Valid Naming Patterns**
-
-    Prefab name must include "Player":
-
-    ```csharp
-    MyPlayer           // ✅ Valid
-    PlayerCharacter    // ✅ Valid
-    Character          // ❌ Invalid
-    ```
-
-    **Valid Tag Patterns**
-
-    GameObject tag must include "Player":
-
-    ```csharp
-    "Player"          // ✅ Valid
-    "BluePlayer"      // ✅ Valid
-    "Character"       // ❌ Invalid
-    ```
-
-    **Troubleshooting**
-
-    If `LocalPlayer` is null, check:
-
-    - Prefab name contains "Player"
-    - GameObject tag contains "Player"
-    - Script is running on client-side
-
----
-
-## Service Locator Pattern
-
-The **Service Locator** pattern is a design pattern that provides a centralized registry or "locator" for retrieving instances of services or dependencies at runtime. This pattern allows for flexible dependency management and reduces the coupling between objects, making it ideal for complex applications like multiplayer games.
-
-Key Benefits of the Service Locator Pattern
-
-- **Centralized Access to Services**: By acting as a central registry, the Service Locator allows different parts of the application to access services without tightly coupling dependencies.
-- **Flexible and Scalable**: Services can be registered, replaced, or removed dynamically, providing flexibility for handling different networked components and systems in a multiplayer environment.
-- **Reduced Dependency on Singleton**: Unlike the Singleton pattern, which can introduce issues in multiplayer setups (such as unwanted global state persistence), the Service Locator keeps services manageable and avoids potential conflicts.
-- **Improved Testing and Maintainability**: The pattern facilitates testing and maintainability by allowing services to be swapped or mocked, which is crucial in a large multiplayer codebase.
-
-### Service Locator vs. Singleton
-
-While the **Singleton pattern** is commonly used to ensure only one instance of a class exists, it can lead to issues in multiplayer environments. Singletons often hold global state, which can interfere with networked instances and create unpredictable behavior, especially when managing player-specific data.
-
-!!! tip
-    Omni recommends using the **Service Locator** pattern instead of Singletons for multiplayer development. The Service Locator provides better control over dependencies and avoids the pitfalls of global state inherent in Singletons, making it a more stable choice for complex networked systems.
-
-### Usage Guide
-
-By default, any script that inherits from a network class(`NetworkBehaviour`, `ServerBehaviour`, `ClientBehaviour`, `DualBehaviour` or `ServiceBehaviour`) is automatically registered in the **Service Locator**. This registration simplifies access to network services across your game's architecture. 
-
-Service Naming and Customization
-
-- **Automatic Naming**: Each service name is assigned automatically upon registration, based on the script's name.
-- **Customizable Names**: You can modify the default service name directly in the Unity Inspector, allowing flexibility in organizing and identifying services as needed.
-
-Types of Service Locators in Omni
-
-Omni provides two types of Service Locators to manage service instances effectively within different scopes:
-
-1. **Global Service Locator**: A shared Service Locator accessible across all networked instances. This global registry is ideal for managing universal services that need to be accessed by multiple objects or systems throughout the game.
-
-2. **Local Service Locator**: Each `NetworkIdentity` has its own local Service Locator, unique to that networked identity. allows you to retrieve specific services within the same identity, providing fine control over dependencies and enabling isolated management of services per networked object.
-
----
-
-With this dual Service Locator approach, Omni offers a flexible, scalable structure that enhances dependency management in multiplayer environments, ensuring services are easily accessible while maintaining clear separation between global and local contexts.
-
-=== "Global Service Locator"
-     ```csharp
-     // Example usage of the Global Service Locator
-     // 1. Define your services
-     public class UIManager : ServiceBehaviour
-     { 
-         public void ShowMenu() { }
-     }
-
-     public class LoginManager : ClientBehaviour 
-     { 
-        public void Login() { }
-     }
-    
-     // 2. Access services from anywhere
-     public class Player : NetworkBehaviour
-     {
-        void Example()
-        {
-           // Accessing the `LoginManager` from the Global Service Locator
-           LoginManager loginManager = NetworkService.Get<LoginManager>();
-           loginManager.Login();
-    
-           // Accessing the `UIManager` from the Global Service Locator with a custom name
-           UIManager uiManager = NetworkService.Get<UIManager>("MyUIManager");
-           uiManager.ShowMenu();
-        }
-     }
-     ```
-
-=== "Local Service Locator"
-     ```csharp
-     // Example usage of the Local Service Locator
-     // This script must be attached to the same networked object(`NetworkIdentity`).
-     // 1. Define components on same GameObject
-     public class WeaponManager : NetworkBehaviour
-     { 
-        public void Fire() { }
-     }
-    
-     public class PlayerManager : NetworkBehaviour
-     {
-        void Example()
-        {
-           // Accessing the `WeaponManager` from the Local Service Locator using my own identity
-           // Get component from same NetworkIdentity
-           WeaponManager weaponManager = Identity.Get<WeaponManager>();
-           weaponManager.Fire();
-
-           // Get named component
-           var secondary = Identity.Get<WeaponManager>("SecondaryWeapon");
-           secondary.Fire();
-        }
-     }
-     ```
-
-!!! note
-    The service locator can find services regardless of their depth within the hierarchy, ensuring accessibility even in deeply nested objects.
-
-!!! warning "Multiple Services"
-    **When using multiple instances of same service:**
-
-    1. Set unique names in Inspector
-    2. Use named lookup:
-    ```csharp
-    // Get specific weapon manager
-    var pistol = Identity.Get<WeaponManager>("PistolManager");
-    var rifle = Identity.Get<WeaponManager>("RifleManager");
-    ```
-
-    An exception will be thrown if the service is not found or if multiple instances of the same type have the same name.
-
----
-
-#### With Dependency Injection
-```csharp
-// Example usage of the Global Service Locator with Dependency Injection
-// 1. Define your services
-public class ServerManager : ServerBehaviour
-{ 
-    public void SendAnnouncement(string message) { }
-} 
-
-public class WeaponManager : NetworkBehaviour
-{ 
-    public void Fire() { }
-} 
-
-// 2. Access services from anywhere
-// 3. Properties or fields are automatically injected by the Source Generator
-public partial class Player : NetworkBehaviour
-{
-    [GlobalService]
-    private ServerManager serverManager; 
-
-    [LocalService]
-    private WeaponManager weaponManager; 
-
-    // named service
-    [LocalService("SecondaryWeapon")]
-    private WeaponManager secondaryWeaponManager; 
-
-    void Example()
-    {
-        // Accessing the `ServerManager` from the Global Service Locator
-        serverManager.SendAnnouncement("Hello, world!"); 
-
-        // Accessing the `WeaponManager` from the Local Service Locator
-        weaponManager.Fire();
-    }
-}
-```
-
-!!! warning "Dependency Injection Lifecycle"
-    **When using dependency injection:**
-
-    - Dependencies are **NOT** available in `Awake()`
-    - Dependencies are available starting from `Start()` onwards
-    - Access services in `Awake()` manually if needed using `NetworkService.Get<T>()` or `Identity.Get<T>()`
-
-    **Supported Classes**
-
-    Dependencies will only be injected in:
-
-    - `NetworkBehaviour`
-    - `ClientBehaviour` and `ServerBehaviour`
-    - `DualBehaviour` and `ServiceBehaviour`
-    - for other classes (like `MonoBehaviour`), use manual access
-
-!!! tip
-    The Service Locator is designed to be fast and efficient, with minimal performance cost, unlike `GetComponent`, making it suitable for frequent use.
-
-*See the API Reference for more information about the Service Locator and its usage.*
 
 ## Build & Deployment
 

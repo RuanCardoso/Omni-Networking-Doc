@@ -1,0 +1,80 @@
+[data-md-color-scheme="slate"] {
+  /* Fundo escuro com tom mais suave */
+  --md-default-bg-color: hsla(var(--md-hue), 15%, 8%, 1);
+
+  /* Texto principal com melhor contraste */
+  --md-default-fg-color: hsla(0, 0%, 95%, 1);
+  --md-default-fg-color--light: hsla(0, 0%, 80%, 1);
+  --md-default-fg-color--lighter: hsla(0, 0%, 65%, 1);
+
+  /* Links mais vibrantes */
+  --md-typeset-a-color: hsla(210, 100%, 75%, 1);
+  --md-typeset-a-color--hover: hsla(210, 100%, 85%, 1);
+
+  /* Fundo escuro para melhor contraste */
+  --md-code-bg-color: hsla(240, 20%, 12%, 1);
+  --md-code-fg-color: hsla(0, 0%, 90%, 1);
+
+  /* Paleta de C# */
+  --md-code-hl-keyword-color: hsla(286, 60%, 65%, 1); /* Palavras-chave */
+  --md-code-hl-string-color: hsla(114, 45%, 60%, 1); /* Strings */
+  --md-code-hl-number-color: hsla(32, 85%, 55%, 1); /* Números */
+  --md-code-hl-comment-color: hsla(120, 15%, 50%, 1); /* Comentários */
+  --md-code-hl-constant-color: hsla(267, 75%, 65%, 1); /* Constantes */
+  --md-code-hl-function-color: hsla(200, 85%, 65%, 1); /* Métodos */
+  --md-code-hl-operator-color: hsla(180, 50%, 70%, 1); /* Operadores */
+  --md-code-hl-variable-color: hsla(210, 50%, 75%, 1); /* Variáveis */
+  --md-code-hl-punctuation-color: hsla(
+    0,
+    0%,
+    75%,
+    1
+  ); /* Caracteres especiais */
+  --md-code-hl-special-color: hsla(340, 83%, 66%, 1); /* Caracteres especiais */
+  --md-code-hl-generic-color: hsla(210, 20%, 70%, 1); /* Genérico */
+
+  /* Melhor separação visual */
+  --md-typeset-table-color: hsla(var(--md-hue), 15%, 12%, 1);
+  --md-typeset-border-color: hsla(var(--md-hue), 15%, 15%, 1);
+}
+
+[data-md-color-scheme="default"] {
+  /* Fundo claro com tom mais suave */
+  --md-default-bg-color: hsla(0, 0%, 100%, 1);
+  --md-default-bg-color--light: hsla(0, 0%, 98%, 1);
+
+  /* Texto principal com melhor legibilidade */
+  --md-default-fg-color: hsla(0, 0%, 13%, 1);
+  --md-default-fg-color--light: hsla(0, 0%, 33%, 1);
+  --md-default-fg-color--lighter: hsla(0, 0%, 53%, 1);
+
+  /* Links mais distintos */
+  --md-typeset-a-color: hsla(210, 100%, 45%, 1);
+  --md-typeset-a-color--hover: hsla(210, 100%, 35%, 1);
+
+  /* Fundo claro */
+  --md-code-bg-color: hsla(0, 0%, 97%, 1);
+  --md-code-fg-color: hsla(0, 0%, 13%, 1);
+
+  /* Paleta de C# ajustada para fundo claro */
+  --md-code-hl-keyword-color: hsla(286, 60%, 45%, 1); /* Palavras-chave */
+  --md-code-hl-string-color: hsla(114, 45%, 45%, 1); /* Strings */
+  --md-code-hl-number-color: hsla(32, 85%, 45%, 1); /* Números */
+  --md-code-hl-comment-color: hsla(120, 15%, 45%, 1); /* Comentários */
+  --md-code-hl-constant-color: hsla(267, 75%, 45%, 1); /* Constantes */
+  --md-code-hl-function-color: hsla(200, 85%, 45%, 1); /* Métodos */
+  --md-code-hl-operator-color: hsla(180, 50%, 45%, 1); /* Operadores */
+  --md-code-hl-variable-color: hsla(210, 50%, 45%, 1); /* Variáveis */
+  --md-code-hl-punctuation-color: hsla(
+    0,
+    0%,
+    40%,
+    1
+  ); /* Caracteres especiais */
+  --md-code-hl-special-color: hsla(340, 83%, 47%, 1); /* Caracteres especiais */
+  --md-code-hl-generic-color: hsla(210, 20%, 45%, 1); /* Genérico */
+
+  /* Melhor separação visual */
+  --md-typeset-table-color: hsla(0, 0%, 98%, 1);
+  --md-typeset-border-color: hsla(0, 0%, 90%, 1);
+}

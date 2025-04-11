@@ -2,14 +2,15 @@ site_name: Omni Documentation
 site_url: https://ruancardoso.github.io/Omni-Networking-Doc
 repo_url: https://github.com/RuanCardoso/Omni-Networking-for-Unity
 repo_name: Omni Networking for Unity
-copyright: Copyright &copy; 2024 Ruan Cardoso
+copyright: Copyright &copy; 2025 Ruan Cardoso
 theme:
   features:
+    - announce
     - search.share
     - content.code.copy
     - content.code.select
     - toc.follow
-    - toc.integrate
+    #- toc.integrate
     - navigation.footer
     - navigation.instant
     - navigation.instant.prefetch
@@ -26,10 +27,11 @@ theme:
   font:
     text: Roboto
   name: material
+  custom_dir: overrides
   palette:
     # Palette toggle for light mode
     - scheme: default
-      primary: black
+      primary: white
       accent: pink
       toggle:
         icon: material/brightness-7
@@ -44,17 +46,34 @@ theme:
         name: Switch to light mode
 # extra_javascript:
 #   - javascripts/feedback.js
+extra_css:
+  - assets/styles/extra.css
 extra:
-  generator: false
+  generator: true
   social:
     - icon: fontawesome/brands/discord
       link: https://discord.gg/X3una5fgZJ
+    - icon: fontawesome/brands/github
+      link: https://github.com/RuanCardoso/Omni-Networking-for-Unity
 nav:
-  - Getting Started: index.md
-  - Communication: communication.md
-  - Spawning: spawning.md
-  - API Reference: api_reference.md
-  - Database: database.md
+  - 🏠 Getting Started:
+      - 📌 Overview: index.md
+      - 🛠️ Installation: GettingStarted/installation.md
+      - ⚙️ Setup: GettingStarted/setup.md
+      - 🐛 Known Issues: GettingStarted/known-issues.md
+  - 🔧 Core Features:
+      - 🔗 Communication: CoreFeatures/communication.md
+      - 🎮 Spawning: CoreFeatures/spawning.md
+      - 🔍 Service Locator: CoreFeatures/service-locator.md
+      - 🏗️ Network Identity: CoreFeatures/network-identity.md
+  - 🗄️ Database: database.md
+  - 🚀 Deployment:
+      - 📦 Build Guide: build.md
+      - 🌐 Server Setup: server-setup.md
+  - 📖 API Reference: api_reference.md
+  - 🌍 Community:
+      - 🤝 Contributing: contributing.md
+      - 🆘 Support: support.md
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -81,5 +100,17 @@ markdown_extensions:
   - toc:
       permalink: ⚓️
 plugins:
-  - with-pdf:
-      output_path: pdf/omni-documentation.pdf
+  - search:
+      lang: en
+      separator: '[\s\-\.]+'
+      min_search_length: 3
+      prebuild_index: true
+      indexing:
+        full_text: true
+# plugins:
+#   - with-pdf:
+#       output_path: pdf/omni-documentation.pdf
+  # - git-committers:
+ 
+  #     repository: RuanCardoso/Omni-Networking-Doc
+  #     branch: main
