@@ -2,42 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ruancardoso.github.io/Omni-Networking-Doc/</loc>
-         <lastmod>2025-02-25</lastmod>
-    </url>
-    <url>
-         <loc>https://ruancardoso.github.io/Omni-Networking-Doc/api_reference/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <lastmod>2025-04-13</lastmod>
     </url>
     <url>
          <loc>https://ruancardoso.github.io/Omni-Networking-Doc/database/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <lastmod>2025-04-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ruancardoso.github.io/Omni-Networking-Doc/APIReference/api_reference_networkbehaviour/</loc>
+         <lastmod>2025-04-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ruancardoso.github.io/Omni-Networking-Doc/APIReference/api_reference_networkhelper/</loc>
+         <lastmod>2025-04-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ruancardoso.github.io/Omni-Networking-Doc/APIReference/api_reference_networkidentity/</loc>
+         <lastmod>2025-04-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ruancardoso.github.io/Omni-Networking-Doc/APIReference/api_reference_networkmanager/</loc>
+         <lastmod>2025-04-13</lastmod>
     </url>
     <url>
          <loc>https://ruancardoso.github.io/Omni-Networking-Doc/CoreFeatures/communication/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <lastmod>2025-04-13</lastmod>
     </url>
     <url>
          <loc>https://ruancardoso.github.io/Omni-Networking-Doc/CoreFeatures/network-identity/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <lastmod>2025-04-13</lastmod>
     </url>
     <url>
          <loc>https://ruancardoso.github.io/Omni-Networking-Doc/CoreFeatures/service-locator/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <lastmod>2025-04-13</lastmod>
     </url>
     <url>
          <loc>https://ruancardoso.github.io/Omni-Networking-Doc/CoreFeatures/spawning/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <lastmod>2025-04-13</lastmod>
     </url>
     <url>
          <loc>https://ruancardoso.github.io/Omni-Networking-Doc/GettingStarted/installation/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <lastmod>2025-04-13</lastmod>
     </url>
     <url>
          <loc>https://ruancardoso.github.io/Omni-Networking-Doc/GettingStarted/known-issues/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <lastmod>2025-04-13</lastmod>
     </url>
     <url>
          <loc>https://ruancardoso.github.io/Omni-Networking-Doc/GettingStarted/setup/</loc>
-         <lastmod>2025-02-25</lastmod>
+         <lastmod>2025-04-13</lastmod>
     </url>
 </urlset>
