@@ -1,4 +1,4 @@
-## Network Manager
+# Network Manager
 
 The `NetworkManager` class is the core component of the Omni Networking library for Unity. It provides a framework for managing network operations, including client-server communication, synchronization, and data transmission.
 
@@ -6,9 +6,9 @@ The `NetworkManager` class is responsible for handling the initialization, confi
 
 ---
 
-### Methods
+## Methods
 
-#### ClearCaches
+### ClearCaches
 
 Clears all global caches, removing all entries from both append and overwrite cache collections.
 
@@ -27,7 +27,7 @@ The `ClearCaches` method removes all entries in the global append and overwrite 
 
 ---
 
-#### DestroyAllCaches
+### DestroyAllCaches
 
 Destroys all caches associated with the specified `NetworkPeer`, removing both global and overwrite caches marked for auto-destruction.
 
@@ -53,7 +53,7 @@ Parameters
 
 ---
 
-#### DeleteCache
+### DeleteCache
 
 Deletes a cache entry based on the provided `DataCache` and optional `groupId`, or a `DataCache` associated with a specific `NetworkPeer`.
 
@@ -110,7 +110,7 @@ Overloads
 
 ---
 
-#### Invoke(Server) by Instance
+### Invoke(Server) by Instance
 
 Invokes a Remote Procedure Call (RPC) on clients, targeting a specific network identity and script instance by their IDs, with customizable options for target, delivery mode, grouping, and sequencing.
 
@@ -213,7 +213,7 @@ Remarks
 
 ---
 
-#### Invoke(Server)
+### Invoke(Server)
 
 Invokes a Remote Procedure Call (RPC) on clients, targeting a specific network identity by its unique ID, with options for target, delivery mode, grouping, and sequencing.
 
@@ -312,7 +312,7 @@ Remarks
 
 ---
 
-#### GlobalInvoke(Server)
+### GlobalInvoke(Server)
 
 Invokes a global Remote Procedure Call (RPC) on clients, independent of script instance or identity, using customizable options for target, delivery mode, grouping, and sequencing.
 
@@ -407,7 +407,66 @@ Remarks
 
 ---
 
-#### TryGetIdentity
+### GetIdentity
+
+Retrieves a `NetworkIdentity` instance by its unique identity ID.
+
+- **Signature**: `public static NetworkIdentity GetIdentity(int identityId)`
+
+Description
+
+The `GetIdentity` method attempts to retrieve a `NetworkIdentity` instance using its unique identifier. If the identity is found, it returns the corresponding `NetworkIdentity` instance; otherwise, it logs an error message and returns `null`. This method is available on both server and client sides.
+
+Parameters
+
+| Parameter    | Type  | Description                                           |
+|-------------|-------|-------------------------------------------------------|
+| `identityId`| `int` | The unique ID of the `NetworkIdentity` to retrieve.   |
+
+Returns
+
+- **`NetworkIdentity`**: The network identity instance if found; `null` otherwise.
+
+=== "Server Side"
+    ```csharp
+    // Example of retrieving a NetworkIdentity on the server
+    NetworkIdentity identity = NetworkManager.Server.GetIdentity(101);
+    if (identity != null)
+    {
+        Debug.Log($"Found NetworkIdentity: {identity.name}");
+    }
+    else
+    {
+        Debug.Log("NetworkIdentity not found");
+    }
+    ```
+
+=== "Client Side"
+    ```csharp
+    // Example of retrieving a NetworkIdentity on the client
+    NetworkIdentity identity = NetworkManager.Client.GetIdentity(101);
+    if (identity != null)
+    {
+        Debug.Log($"Found NetworkIdentity: {identity.name}");
+    }
+    else
+    {
+        Debug.Log("NetworkIdentity not found");
+    }
+    ```
+
+Remarks
+
+- If the identity is not found, an error message is logged using `NetworkLogger`.
+- For safer access to network identities, consider using `TryGetIdentity` which provides a boolean return value indicating success.
+- The method is available on both server and client sides, but will only return identities that are known to the respective side.
+
+!!! note
+    When using this method, it's recommended to check for `null` return values to handle cases where the identity might not exist.
+
+---
+
+### TryGetIdentity
 
 Attempts to retrieve a `NetworkIdentity` instance by its unique identity ID.
 
@@ -454,7 +513,7 @@ Returns
 
 ---
 
-#### AddPrefab
+### AddPrefab
 
 Adds a prefab to the NetworkManager's registration list if it hasn’t been registered already.
 
@@ -478,7 +537,7 @@ Registers a `NetworkIdentity` prefab for network spawning. This method checks if
 
 ---
 
-#### GetPrefab
+### GetPrefab
 
 Retrieves a prefab from the NetworkManager's registered list by either its name or index.
 
@@ -550,7 +609,7 @@ Remarks
 
 ---
 
-#### Connect
+### Connect
 
 Establishes a connection to a specified server address and port. There are two overloads for this method, allowing you to specify a client listening port if needed.
 
@@ -607,7 +666,7 @@ Remarks
 
 ---
 
-#### DisconnectPeer
+### DisconnectPeer
 
 Disconnects a specified peer from the server.
 
@@ -640,7 +699,7 @@ The `DisconnectPeer` method removes the specified `NetworkPeer` from the server 
 
 ---
 
-#### Disconnect
+### Disconnect
 
 Disconnects the local client from the server.
 
@@ -666,7 +725,7 @@ The `Disconnect` method terminates the connection between the local client and t
 
 ---
 
-#### StopClient
+### StopClient
 
 Stops the local client and ends its connection to the server.
 
@@ -692,7 +751,7 @@ The `StopClient` method halts the local client’s network operations, fully dis
 
 ---
 
-#### FastWrite
+### FastWrite
 
 Writes one or more primitive values to a `DataBuffer`, utilizing `stackalloc` to avoid allocations and ensure high performance. This method is available in multiple overloads, allowing for writing up to six primitive values in a single call.
 
@@ -831,7 +890,7 @@ Remarks
 
 ---
 
-#### FromBinary
+### FromBinary
 
 Deserializes an object from binary format using `MemoryPackSerializer`.
 
@@ -867,7 +926,7 @@ Returns
 
 ---
 
-#### ToBinary
+### ToBinary
 
 Converts an object to binary format using `MemoryPackSerializer`.
 
@@ -910,7 +969,7 @@ Returns
 
 ---
 
-#### FromJson
+### FromJson
 
 Deserializes an object from JSON format.
 
@@ -953,7 +1012,7 @@ Returns
 
 ---
 
-#### ToJson
+### ToJson
 
 Converts an object to JSON format.
 
@@ -996,7 +1055,7 @@ Returns
 
 ---
 
-#### InitializeModule
+### InitializeModule
 
 Initializes a specified network module based on the provided `Module` type.
 
@@ -1045,7 +1104,7 @@ Remarks
 
 ---
 
-#### LoadScene / LoadSceneAsync
+### LoadScene / LoadSceneAsync
 
 Loads a scene by name or index, with options for synchronous or asynchronous loading. These methods also provide optional parameters to destroy the current scene before loading a new one.
 
@@ -1138,7 +1197,7 @@ Remarks
 
 ---
 
-#### UnloadSceneAsync
+### UnloadSceneAsync
 
 Asynchronously unloads a scene by its name or index with options for unloading behavior.
 
@@ -1201,7 +1260,7 @@ Remarks
 
 ---
 
-#### SpawnOnClient
+### SpawnOnClient
 
 Instantiates a network identity on the client.
 
@@ -1233,7 +1292,7 @@ Returns
 
 ---
 
-#### SpawnOnServer
+### SpawnOnServer
 
 Instantiates a network identity on the server for a specific peer or with a specified ID.
 
@@ -1313,7 +1372,124 @@ Remarks
 
 ---
 
-#### SendMessage(Client)
+### Split
+
+Splits binary data into blocks of a specified size, ensuring efficient data handling and transmission.
+
+- **Signature**: `public static List<byte[]> Split(ReadOnlySpan<byte> data, int blockSize = 128)`
+
+Parameters
+
+| Parameter   | Type              | Description                                                                |
+|-------------|-------------------|----------------------------------------------------------------------------|
+| `data`      | `ReadOnlySpan<byte>` | The binary data to be split into blocks.                              |
+| `blockSize` | `int`            | The size of each block in bytes. Must be a power of 2. Defaults to 128.    |
+
+Description
+
+The `Split` method divides a large binary data array into smaller blocks of equal size. This is particularly useful for network transmission when dealing with large data sets that need to be sent in smaller chunks. The method ensures that the block size is a power of 2 for optimal performance.
+
+Returns
+
+- **`List<byte[]>`**: A list containing the data blocks, each as a byte array.
+
+Exceptions
+
+- Throws an `Exception` if the input data length is less than or equal to the block size.
+- Throws an `Exception` if the block size is not a power of 2.
+
+???+ example
+    ```csharp
+    // Example of splitting data into blocks
+    byte[] largeData = GetLargeDataArray(); // Assume this returns a large byte array
+    List<byte[]> blocks = NetworkManager.Split(largeData, 256);
+    
+    foreach (byte[] block in blocks)
+    {
+        // Process each block
+        Debug.Log($"Block size: {block.Length} bytes");
+    }
+    ```
+
+---
+
+### StartServer
+
+Starts the network server with optional port configuration.
+
+- **Signature**: 
+  - `public static void StartServer()`
+  - `public static void StartServer(int port)`
+
+Parameters
+
+| Parameter | Type  | Description                                           |
+|-----------|-------|-------------------------------------------------------|
+| `port`    | `int` | The port number on which the server will listen.      |
+
+Description
+
+The `StartServer` method initializes and starts the network server. When called without parameters, it uses the default port configured in the NetworkManager. The server generates RSA keys for secure communication and begins listening for incoming connections.
+
+Remarks
+
+- Only available in debug mode, editor, or server builds.
+- Throws an exception if the server is already running.
+- In release mode on client builds, server functionality is disabled.
+
+???+ example
+    ```csharp
+    // Example of starting server with default port
+    NetworkManager.StartServer();
+    
+    // Example of starting server with specific port
+    NetworkManager.StartServer(7777);
+    ```
+
+---
+
+### StopServer
+
+Stops the network server and cleans up all associated resources.
+
+- **Signature**: `public static void StopServer()`
+
+Description
+
+The `StopServer` method terminates the server if it is currently active. It performs cleanup operations including:
+
+- Clearing all peer references
+- Removing all group references
+- Clearing RPC handlers
+- Releasing network identities
+- Shutting down the server transport
+
+Exceptions
+
+- Throws an `Exception` if attempting to stop the server when it's not running.
+
+???+ example
+    ```csharp
+    // Example of stopping the server
+    try
+    {
+        NetworkManager.StopServer();
+        Debug.Log("Server stopped successfully");
+    }
+    catch (Exception ex)
+    {
+        Debug.LogError($"Failed to stop server: {ex.Message}");
+    }
+    ```
+
+Remarks
+
+- Ensure all clients are properly disconnected before stopping the server.
+- After stopping, the server must be restarted using `StartServer()` to accept new connections.
+
+---
+
+### SendMessage(Client)
 
 Sends a message from the client to the server, with options for specifying message content, delivery mode, and sequence channel.
 
@@ -1388,7 +1564,7 @@ Remarks
 
 ---
 
-#### SendMessage(Server)
+### SendMessage(Server)
 
 Sends a message from the server to a client or from a client to other networked peers on the server side, with optional configurable options for target, delivery mode, grouping, and sequencing.
 
@@ -1477,9 +1653,9 @@ Remarks
 
 ---
 
-### Properties
+## Properties
 
-#### ReceivedBandwidth
+### ReceivedBandwidth
 
 Gets the `BandwidthMonitor` for monitoring the server's or client incoming bandwidth.
 
@@ -1510,7 +1686,7 @@ Returns
 
 ---
 
-#### SentBandwidth
+### SentBandwidth
 
 Gets the `BandwidthMonitor` for monitoring the server's or client outgoing bandwidth.
 
@@ -1541,7 +1717,7 @@ Returns
 
 ---
 
-#### ServerPeer
+### ServerPeer
 
 Gets the server peer, which represents the server within the network as a special `NetworkPeer` instance.
 
@@ -1573,7 +1749,7 @@ Remarks
 
 **Client-Side**: When `NetworkManager.Client.ServerPeer` is used, it represents the server peer on the client side, exclusively for encryption keys.
 
-#### Peers
+### Peers
 
 A dictionary that maps peer IDs to `NetworkPeer` instances, providing access to all connected peers by their unique IDs.
 
@@ -1620,7 +1796,7 @@ Returns
 
 ---
 
-#### Identities
+### Identities
 
 A dictionary that stores all `NetworkIdentity` instances, mapped by their unique identity IDs.
 
@@ -1675,7 +1851,7 @@ Returns
 
 ---
 
-#### ClientListenPort
+### ClientListenPort
 
 Gets the port on which the client listens for incoming connections.
 
@@ -1698,7 +1874,7 @@ Returns
 
 ---
 
-#### ServerListenPort
+### ServerListenPort
 
 Gets the port on which the server listens for incoming connections.
 
@@ -1721,7 +1897,7 @@ Returns
 
 ---
 
-#### ConnectPort
+### ConnectPort
 
 Gets the port on which the client connects to the server.
 
@@ -1744,7 +1920,7 @@ Returns
 
 ---
 
-#### ConnectAddress
+### ConnectAddress
 
 Gets the IP address or hostname that the client uses to connect to the server.
 
@@ -1767,7 +1943,7 @@ Returns
 
 ---
 
-#### Framerate
+### Framerate
 
 Gets the current framerate of the application.
 
@@ -1790,7 +1966,7 @@ Returns
 
 ---
 
-#### CpuTimeMs
+### CpuTimeMs
 
 Gets the CPU time in milliseconds per frame.
 
@@ -1813,7 +1989,7 @@ Returns
 
 ---
 
-#### ClockTime
+### ClockTime
 
 Gets the current clock time in seconds, based on tick timing or elapsed stopwatch time.
 
@@ -1840,7 +2016,7 @@ Returns
 
 ---
 
-#### UseTickTiming
+### UseTickTiming
 
 Indicates whether the application is using tick-based timing for the `ClockTime` property.
 
@@ -1869,7 +2045,7 @@ Returns
 
 ---
 
-#### LocalEndPoint
+### LocalEndPoint
 
 Gets the local network endpoint, represented by an `IPEndPoint` instance.
 
@@ -1892,7 +2068,7 @@ Returns
 
 ---
 
-#### IsClientActive
+### IsClientActive
 
 Indicates whether the client is currently active, authenticated, and connected.
 
@@ -1921,7 +2097,7 @@ Returns
 
 ---
 
-#### IsServerActive
+### IsServerActive
 
 Indicates whether the server is currently active.
 
@@ -1950,7 +2126,7 @@ Returns
 
 ---
 
-#### SharedPeer
+### SharedPeer
 
 Gets the shared peer, which is used to secure communication between peers and the server. This peer is useful for handling encryption and authentication in network communications.
 
@@ -1978,7 +2154,7 @@ Returns
 
 ---
 
-#### LocalPeer
+### LocalPeer
 
 Gets the local network peer, representing the client in the network.
 
@@ -2008,7 +2184,7 @@ Returns
 
 ---
 
-#### MainThreadId
+### MainThreadId
 
 Gets the ID of the main thread on which the application is running.
 
@@ -2031,7 +2207,7 @@ Returns
 
 ---
 
-#### Pool
+### Pool
 
 Gets the pool of `DataBuffer` instances, used to allocate and deallocate `DataBuffer` objects efficiently.
 
@@ -2061,7 +2237,7 @@ Returns
 
 ---
 
-#### Console
+### Console
 
 Gets the `NetworkConsole` instance, which provides access to the network console module for sending and receiving commands.
 
@@ -2095,7 +2271,7 @@ Returns
 
 ---
 
-#### Matchmaking
+### Matchmaking
 
 Gets the `NetworkMatchmaking` instance, which provides access to the matchmaking module for managing groups and connections.
 
@@ -2124,7 +2300,7 @@ Returns
 
 ---
 
-#### Sntp
+### Sntp
 
 Gets the `SimpleNtp` instance, which provides access to the NTP (Network Time Protocol) clock module for synchronized time and network latency metrics.
 
@@ -2157,7 +2333,7 @@ Returns
 
 ---
 
-#### TickSystem
+### TickSystem
 
 Gets the `NetworkTickSystem` instance, which manages tick-based events that execute at a fixed rate for consistent network timing.
 
@@ -2173,9 +2349,9 @@ Returns
 
 ---
 
-### Events
+## Events
 
-#### OnSceneLoaded
+### OnSceneLoaded
 
 An event that is triggered when a scene is loaded, providing access to the scene and the load mode.
 
@@ -2209,7 +2385,7 @@ Event Parameters
 
 ---
 
-#### OnSceneUnloaded
+### OnSceneUnloaded
 
 An event that is triggered when a scene is unloaded, providing access to the scene that was removed.
 
@@ -2242,7 +2418,7 @@ Event Parameters
 
 ---
 
-#### OnBeforeSceneLoad
+### OnBeforeSceneLoad
 
 An event that is triggered just before a scene is loaded or unloaded, providing the scene and the operation mode (load or unload).
 
@@ -2290,7 +2466,7 @@ The `SceneOperationMode` enum defines the operation type for a scene:
 
 ---
 
-#### OnServerInitialized
+### OnServerInitialized
 
 An event that is triggered when the server has been successfully initialized.
 
@@ -2318,7 +2494,7 @@ The `OnServerInitialized` event is invoked once the server has been fully initia
 
 ---
 
-#### OnServerPeerConnected
+### OnServerPeerConnected
 
 An event that is triggered when a peer (client) connects to the server, providing access to the connected peer and the connection phase.
 
@@ -2371,7 +2547,7 @@ The `Phase` enum defines the phases of the peer connection process:
 
 ---
 
-#### OnServerPeerDisconnected
+### OnServerPeerDisconnected
 
 An event that is triggered when a peer (client) disconnects from the server, providing access to the disconnected peer and the disconnection phase.
 
@@ -2424,7 +2600,7 @@ The `Phase` enum defines the phases of the peer disconnection process:
 
 ---
 
-#### OnClientConnected
+### OnClientConnected
 
 An event that is triggered when the client successfully connects to the server.
 
@@ -2452,7 +2628,7 @@ The `OnClientConnected` event is invoked when the client establishes a successfu
 
 ---
 
-#### OnClientDisconnected
+### OnClientDisconnected
 
 An event that is triggered when the client disconnects from the server, providing a message with the disconnection reason.
 
@@ -2486,7 +2662,7 @@ Event Parameters
 
 ---
 
-#### OnClientIdentitySpawned
+### OnClientIdentitySpawned
 
 An event that is triggered when a `NetworkIdentity` is spawned on the client, providing access to the spawned identity.
 
@@ -2520,7 +2696,85 @@ Event Parameters
 
 ---
 
-#### OnMessage(Client)
+### OnPeerSharedDataChanged
+
+An event that is triggered on the client when the server modifies a specific key in the shared data of a network peer.
+
+- **Signature**: `public static event Action<NetworkPeer, string> OnPeerSharedDataChanged`
+
+Description
+
+The `OnPeerSharedDataChanged` event is invoked whenever the server updates a key in a peer's shared data. This event provides both the affected `NetworkPeer` instance and the key that was modified, allowing clients to react to changes in peer-specific shared data.
+
+Event Parameters
+
+| Parameter      | Type          | Description                                              |
+|----------------|---------------|----------------------------------------------------------|
+| `NetworkPeer`  | `NetworkPeer` | The peer whose shared data was modified.                 |
+| `string`       | `string`      | The key in the shared data that was changed.            |
+
+???+ example
+    ```csharp
+    // Example of subscribing to peer shared data changes
+    NetworkManager.OnPeerSharedDataChanged += (peer, key) =>
+    {
+        Debug.Log($"Peer {peer.Id} had shared data modified for key: {key}");
+        // Access the updated value
+        if (peer.SharedData.TryGetValue(key, out object value))
+        {
+            Debug.Log($"New value for key {key}: {value}");
+        }
+    };
+    
+    // Example of unsubscribing from the event
+    NetworkManager.OnPeerSharedDataChanged -= (peer, key) =>
+    {
+        Debug.Log($"Stopped listening to shared data changes for peer {peer.Id}");
+    };
+    ```
+
+---
+
+### OnGroupSharedDataChanged
+
+An event that is triggered on the client when the server modifies a specific key in the shared data of a network group.
+
+- **Signature**: `public static event Action<NetworkGroup, string> OnGroupSharedDataChanged`
+
+Description
+
+The `OnGroupSharedDataChanged` event is invoked whenever the server updates a key in a group's shared data. This event provides both the affected `NetworkGroup` instance and the key that was modified, allowing clients to react to changes in group-specific shared data.
+
+Event Parameters
+
+| Parameter      | Type          | Description                                              |
+|----------------|---------------|----------------------------------------------------------|
+| `NetworkGroup` | `NetworkGroup`| The group whose shared data was modified.                |
+| `string`       | `string`      | The key in the shared data that was changed.            |
+
+???+ example
+    ```csharp
+    // Example of subscribing to group shared data changes
+    NetworkManager.OnGroupSharedDataChanged += (group, key) =>
+    {
+        Debug.Log($"Group {group.Identifier} had shared data modified for key: {key}");
+        // Access the updated value
+        if (group.SharedData.TryGetValue(key, out object value))
+        {
+            Debug.Log($"New value for key {key}: {value}");
+        }
+    };
+    
+    // Example of unsubscribing from the event
+    NetworkManager.OnGroupSharedDataChanged -= (group, key) =>
+    {
+        Debug.Log($"Stopped listening to shared data changes for group {group.Identifier}");
+    };
+    ```
+
+---
+
+### OnMessage(Client)
 
 Represents an event that is triggered when a custom message is received by the client, providing the message ID, data buffer, and sequence channel.
 
@@ -2556,7 +2810,7 @@ Event Parameters
 
 ---
 
-#### OnMessage(Server)
+### OnMessage(Server)
 
 An event that is triggered when a custom message is received by the server, providing access to the message ID, data buffer, originating peer, and sequence channel.
 
@@ -2590,3 +2844,4 @@ Event Parameters
         Debug.Log($"Unsubscribed from custom message {msgId}");
     };
     ```
+

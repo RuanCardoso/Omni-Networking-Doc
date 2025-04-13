@@ -1,4 +1,4 @@
-## Setup
+# Setup
 
 !!! note "🚀 Introduction"
 
@@ -125,21 +125,21 @@ A game object named `Network Manager` will be created in the scene. This object 
 !!! warning
     If the `GUID` between the client and server does not match, the connection will be refused. Ensure the `GUID` is correctly set in the `Network Manager` object to establish a successful connection. To update the `GUID`, click the context menu of the `Network Manager` script and select **Generate GUID**.
 
-### Modules
+## Modules
 
 | Modules          | Description                                                                                 |
 | ---------------- | ------------------------------------------------------------------------------------------- |
 | `Tick Module`    | Allows the use of a tick-based system for sending messages and other tick-based operations. |
 | `Sntp Module`    | Provides a high-precision synchronized clock between all clients and the server.            |
 
-### Connection Settings
+## Connection Settings
 
 | Option         | Description                                                                                 |
 | -------------- | ------------------------------------------------------------------------------------------- |
 | `Host Address` | A list of IP addresses that the client can connect to, the first address is used to connect. |
 | `Port`         | The server port number used for both listening and client connections. |
 
-### Configuration Options
+## Configuration Options
 
 === "Basic"
     | Option | Description |
@@ -167,7 +167,7 @@ A game object named `Network Manager` will be created in the scene. This object 
     | `Enable Http Ssl` | Enables HTTPS for secure API communication. Requires valid SSL certificate (Default: false) |
     | `Http Server Port` | Port number for HTTP/HTTPS server. Common values: 80 (HTTP), 443 (HTTPS) (Default: 80) |
 
-### Permissions
+## Permissions
 
 | Option                        | Description                                                                                      |
 | ----------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -176,7 +176,7 @@ A game object named `Network Manager` will be created in the scene. This object 
 
 ---
 
-### Registered Prefabs
+## Registered Prefabs
 
 The Registered Prefabs list provides a centralized way to manage network-spawnable objects. When objects are registered, they can be instantiated across the network using either their name or index.
 
@@ -204,7 +204,7 @@ The Registered Prefabs list provides a centralized way to manage network-spawnab
 
 ---
 
-### Transporter Settings
+## Transporter Settings
 
 The **Transporter Settings** section allows you to configure various network transport parameters, including disconnection timeout, network event processing per frame, lag simulation, channel setup, IPv6 support, max connections, ping intervals, and more. Available options may vary based on the selected transporter.
 
@@ -225,7 +225,7 @@ Caption:
 - Reliable Sequenced: Guarantees that only the latest packet in a sequence is delivered reliably, discarding older packets in transit.  
 - Browser: Supported in web browsers. 
 
-#### Message Delivery Methods
+### Message Delivery Methods
 
 Each delivery method serves a specific purpose in networked applications.
 

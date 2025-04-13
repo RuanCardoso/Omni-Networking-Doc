@@ -12,16 +12,16 @@ Compatibility Table:
 
 ---
 
-## Installation
+# Installation
 
-### Requirements
+## Requirements
 
 !!! info "System Requirements"
     - Unity `2021.3` or higher
     - .NET Standard `2.1+` API Compatibility
     - Git installed on your system(<kbd>Optional</kbd>)
 
-### Quick Install
+## Quick Install
 
 === "Package Manager (Recommended)"
     1. Open Unity Package Manager (<kbd>Window</kbd> > <kbd>Package Manager</kbd>)

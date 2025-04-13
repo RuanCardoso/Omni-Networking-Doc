@@ -10,7 +10,7 @@ theme:
     - content.code.copy
     - content.code.select
     - toc.follow
-    #- toc.integrate
+    ## - toc.integrate
     - navigation.footer
     - navigation.instant
     - navigation.instant.prefetch
@@ -70,7 +70,11 @@ nav:
   - 🚀 Deployment:
       - 📦 Build Guide: build.md
       - 🌐 Server Setup: server-setup.md
-  - 📖 API Reference: api_reference.md
+  - 📖 API Reference: 
+      -  Network Manager: APIReference/api_reference_networkmanager.md
+      -  Network Helper: APIReference/api_reference_networkhelper.md
+      -  Network Identity: APIReference/api_reference_networkidentity.md
+      -  Network Behaviour: APIReference/api_reference_networkbehaviour.md
   - 🌍 Community:
       - 🤝 Contributing: contributing.md
       - 🆘 Support: support.md
