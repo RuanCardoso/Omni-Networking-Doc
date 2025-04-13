@@ -1,0 +1,39 @@
+unresgiter bug
+joingroup bug
+tick system ping
+nat
+revisar mensagem de logs
+tryget, shareddata, masterclient, matchmaking
+hmac, criptografia, dddos
+
+stopserver bug no transporter, implementar ping nos transportes não suportados
+netwrokhelper, ordem de awake, start, etc no network behaviour
+Usa GroupId e ChannelId objeto em vez de primitivos..
+packet spoofing and injection, ddos protection
+
+Split method improved
+thrown
+
+Spawn return null if peer does not exists
+
+spawner and despawner finish, matchmaking finish, groups finish, etc..etc, sntp
+
+Fork:
+
+TriiInspector
+Http
+etc
+
+else if (typeof(IEnumerable).IsAssignableFrom(type))
+{
+    // Slower than the other checks, but it is the only way to compare complex types(List<T>, Dictionary<T>()).
+    // It may be more recommended to avoid using complex types or just disable equality checking for these types.
+    string oldJson = NetworkManager.ToJson(oldValue);
+    string newJson = NetworkManager.ToJson(newValue);
+
+    JToken oldToken = JToken.Parse(oldJson);
+    JToken newToken = JToken.Parse(newJson);
+    return JToken.DeepEquals(oldToken, newToken);
+}
+
+para todos os tipos: deep equals

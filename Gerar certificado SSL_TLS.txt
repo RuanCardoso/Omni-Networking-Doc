@@ -1,0 +1,22 @@
+Comando 1: Gerar certificado SSL/TLS com Certbot via DNS
+
+sudo certbot certonly --manual --preferred-challenges=dns --rsa-key-size 2048 --key-type rsa -d seu-dominio.com
+
+Use este comando para gerar o certificado via HTTP:
+
+sudo certbot certonly --standalone --rsa-key-size 2048 --key-type rsa -d seu-dominio.com
+
+Instalar o Certbot (se ainda não estiver instalado):
+
+sudo apt install certbot
+
+Navegue até a pasta onde estão os arquivos de certificado emitidos para seu domínio
+
+Comando 2:
+
+openssl pkcs12 -legacy -export -out cert.pfx -inkey privkey.pem -in cert.pem -certfile chain.pem
+
+Copie o cert.pfx para a pasta do servidor Unity e mude a senha dentro de "cert_conf.json" para a senha do seu certificado que você definiu na hora da emissão.
+
+-legacy     é necessário para versões acima da 3 do OpenSSL
+--rsa-key-size 2048 --key-type rsa       é necessário para compatibilidade com o Mono.
