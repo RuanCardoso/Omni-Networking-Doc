@@ -1,5 +1,3 @@
-unresgiter bug
-joingroup bug
 tick system ping
 nat
 revisar mensagem de logs
